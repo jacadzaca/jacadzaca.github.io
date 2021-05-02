@@ -1,0 +1,63 @@
+body {
+    background: #151516;
+    color: lightgray;
+    max-width: 950px;
+    padding: 0 16px;
+    font-family: sans-serif;
+    margin: auto;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+}
+
+summary {
+  cursor: pointer;
+}
+
+a {
+    color: lightblue;
+}
+
+a:visited {
+    color: lightblue;
+}
+
+h1 {
+    text-align: center;
+}
+
+li {
+    padding: 0.25em;
+}
+
+hr {
+    border: 0.01em solid #ccc;
+}
+
+.fancy-nav {
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.fancy-nav a {
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.avatar {
+    max-width: 140px;
+    min-width: 140px;
+    min-height: 80px;
+    float: right;
+}
+

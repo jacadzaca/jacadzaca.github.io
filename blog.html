@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>jaca's blog</title>
+        <link rel="stylesheet" href="style.css"></link>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="jaca's blog">
+    </head>
+    <body>
+        <hr>
+        <nav class="fancy-nav">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog 🇬🇧 </a>
+            <a href="blog_pl.html">Blog 🇵🇱 </a>
+        </nav>
+        <hr>
+            <h2>psa use vimium</h2>
+            <small>
+                [
+                <a href="#psa_use_vimium">link</a> —
+                <a href="blog/psa_use_vimium.html">standalone</a>
+                ] Sun, 25 Apr 2021 00:17:08
+            </small>
+            <blockquote id="psa use vimium">
+                <p>
+            <p>
+            Aren't you tired of having to use your mouse in order to click a link?
+            Of course you are, but worry no more - there exists a remedy.
+            </p>
+            <p>
+                <a href="https://github.com/philc/vimium">Vimium</a> is a browser
+                (<a href="https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb">download for Chrome</a>,
+                 <a href="https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/">download for Firefox</a>)
+                 extension that binds all the functionality that you would need to some key combination.
+                 You can go to the previous/next page, you can look through your bookmarks, you can
+                 even copy the URL of the page you are looking at.
+                 <hr>
+                 <a href="/pix/vimium.png"><img src="/pix/vimium.png" title="full list of vimium's keybinds"></img></a>
+                 <hr>
+                 What's also great is the fact that you remap Vimium's key-binds how you like.
+            </p>
+            <p>
+                <h2>Link hints</h2>
+                While being able search your bookmarks etc. is all fun and games, all Vimium's feature pale in comparison
+                to link hints. By default, pressing ctrl-f will make little boxes with letters (called link hints)
+                appear next to all the links on the web-page. You now are only (at most) two key-strokes away from
+                <b>clicking</b> that link!
+                <hr>
+                <video controls>
+                    <source src="/pix/vimium.mp4">
+                </video>
+                <hr>
+                You can customize the boxes' look with CSS, however the feature seems to be a little clunky -
+                CSS sometimes only loads after refreshing a page.
+            </p>
+            By the way, I've brought back a <a href="/redpandalore/index.html">ridiculously random site</a> about red pandas.
+            I think it was supposed to be a fan-fiction about
+            <a href="https://www.youtube.com/channel/UCjdQaSJCYS4o2eG93MvIwqg">Killian</a>,
+            but I can't really remeber.
+        </p>
+            </blockquote>
+            <h2>browser dark mode</h2>
+            <small>
+                [
+                <a href="#browser_dark_mode">link</a> —
+                <a href="blog/browser_dark_mode.html">standalone</a>
+                ] Sat, 24 Apr 2021 22:04:01
+            </small>
+            <blockquote id="browser dark mode">
+                <p>
+            Today I've discovered CSS media queries, one of which has
+            especially caught my attention:
+            <blockquote>
+            <a target="_blank"
+             href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">@media (prefers-color-scheme dark)</a>
+            </blockquote>
+            Browsers have a built-in dark mode!
+            As I am a dark mode <em>connoisseur</em>, I've decided to enable it in my
+            browser.
+            <p>The first thing that popped into my head was to check the
+            <i>chrome://settings/appearance</i>
+            page, but it turned out that the theme there was already set to a dark one.
+            </p>
+            <p>I had to dig deeper.</p>
+            After a moment of googling, I've discovered the
+            <i>chrome://flags/</i> page,
+            where I've found the <i>Web Platform Controls Dark Mode</i> and
+            the <i>Force Dark Mode for Web Contents</i> options, which I enabled
+            both. The first option was the one I was looking for, but the second was the
+            one I was <em>really</em> looking for. It forces <em>every</em> page to
+            render in dark mode, to be honest it makes some pages look a little clunky,
+            but they are still usable:
+            <hr>
+            <img style="margin-bottom: 10px" src="/pix/clunky.png" title="there is some white stuff there, yuck!">
+            <img src="/pix/clunky1.png" title="the empty levels are not visible, the puppets arms are barely visible">
+            <hr>
+            <h2>What if I don't use Chrome?</h2>
+            During my search, I've also stumbled upon this <a target="_blank" href="https://darkreader.org/">plugin</a>,
+            it works with every popular browser, including Chrome (in my opinion though,
+            it produces worse looking pages than the naitive option).
+        </p>
+            </blockquote>
+            <h2>welcome!</h2>
+            <small>
+                [
+                <a href="#welcome!">link</a> —
+                <a href="blog/welcome!.html">standalone</a>
+                ] Sat, 03 Apr 2021 18:28:15
+            </small>
+            <blockquote id="welcome!">
+                <p>
+        I've decided to take up blogging. I'm mainly going to
+        write about programming, but from time to time I will write a piece about
+        some cool math fact that I've learned or a book review. I plan to keep the
+        site bare-bones (<b>no js!</b>), because I belive that the web should be faster.
+        <br>
+        To build this website, I've rolled out my own static site generator (e.g. a
+        few python3 scripts and some jinja templates), which you can find <a href="https://github.com/jacadzaca/blog-gen" target="_blank">here</a>.
+        <pre>
+        <a style="text-decoration: none;"
+            href="https://www.alwaysownyourplatform.com/"
+            target="_blank">
+             (•_•)
+            <)  )╯Always
+             /  \
+            \(•_•)
+            (  (> Own
+            /   \
+             (•_•)
+            <)  )> Your Platform
+             /  \</a>
+        </pre>
+        </p>
+            </blockquote>
+        <hr>
+        <footer class="fancy-nav">
+            <a href="linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
+            <a href="mailto:vitouejj@gmail.com" title="Get in contact">Email</a>
+            <a href="jacadzaca.gpg" title="Pretty good privacy">PGP</a>
+            <a target="_blank" href="rss.xml" title="Stay updated">Feed</a>
+            <a href="bookmarks.html" title="Browser bookmarks">Interesting Links</a>
+        </footer>
+        <hr>
+    </body>
+</html>

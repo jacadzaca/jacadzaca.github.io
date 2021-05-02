@@ -1,0 +1,119 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>przystań jacy</title>
+        <description>rss przystań jacy</description>
+        <language>pl</language>
+        <link>https://jacadzaca.github.io/rss_pl.xml</link>
+        <atom:link href="https://jacadzaca.github.io/rss_pl.xml" rel="self" type="application/rss+xml"/>
+        <image>
+            <title>przystań jacy</title>
+            <url>https://jacadzaca.github.io//pix/avatar.jpg</url>
+            <link>https://jacadzaca.github.io/rss.xml</link>
+        </image>
+            <item>
+                <title>niestrawne polaczenia</title>
+                <guid>https://jacadzaca.github.io/blog_pl/niestrawne_polaczenia.html</guid>
+                <link>https://jacadzaca.github.io/blog_pl/niestrawne_polaczenia.html</link>
+                <pubDate>sob, 17 kwi 2021 00:51:26 0200</pubDate>
+                <description>
+                    <![CDATA[ 
+            Ostatnio musiałem napisać pracę na zaliczenie przedmiotu. Na szczęście
+            temat nie był narzucony! Napisałem pracę, w której zachęcam
+            czytelnika do zapoznania się z <i>Rocky Horror Picture Show</i> używając
+            <em>trudnych słów</em> i luźnych nawiązań do gnostycyzmu.
+            <p>
+                Lubię pisać teksty, ledwo spajające dwa odległe zjawiska, a do tego
+                zawierające <em>trudne słowa</em>, które ledwo rozumiem. Pamiętam, że
+                jak dostałem kosza od jakiejś dziewczyny napisałem na ten temat
+                <i>"Marksistowską analizę"</i>, wzorując się na
+                <a target="_blank" href="https://www.youtube.com/watch?v=pWbaUnbo-_c">tym</a> wideo.
+            </p>
+            <p>
+                Z moim artykulikiem można zapoznać się <a href="/RockyHorrorPictureShowAGnostycyzm.pdf">tutaj</a> (pdf),
+                <a href="/RockyHorrorPictureShowAGnostycyzm.tex">albo tutaj</a> (tex). <i>Rocky Horror Picture Show</i>
+                można obejrzeć <a target="_blank "href="https://archive.org/details/therockyhorrorpictureshowvosejimsharman1975_20191212">tutaj</a>. Filmu nie polecam
+                osobom mocno religijnym.
+            </p>
+            <p>
+                PS: na dniach planuję zmienić wygląd strony z postami;
+                zamiast listy z linkami do osobnych podstron zamierzam
+                mieć jedną duża stronę. Wydaję mi się, że to jest lepsze
+                rozwiązanie, bo moje posty nie są raczej długie, a klikanie myszką
+                (ew. tabowanie się) w linki jest uciążliwe. Jeżeli macie jakieś
+                lepsze pomysły - <a href="mailto:vitouejj@gmail.com">piszcie</a>.
+            </p>
+         ]]>
+                </description>
+            </item>
+            <item>
+                <title>jeden motwy by rządzić wszystkimi</title>
+                <guid>https://jacadzaca.github.io/blog_pl/jeden_motwy_by_rządzić_wszystkimi.html</guid>
+                <link>https://jacadzaca.github.io/blog_pl/jeden_motwy_by_rządzić_wszystkimi.html</link>
+                <pubDate>sob, 17 kwi 2021 00:43:40 0200</pubDate>
+                <description>
+                    <![CDATA[ 
+            Dzisiaj odkryłem <i>CSS media queries</i>, jedna z nich szczególnie
+            przykuła moją uwagę:
+            <blockquote>
+            <a target="_blank"
+             href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">@media (prefers-color-scheme dark)</a>
+            </blockquote>
+            Przeglądarki mają wbudowany ciemny motyw!!!
+            Jako, że jestem entuzjastą ciemnych motywów, postanowiłem go włączyć.
+            <p>
+                Pierwszą rzeczą, która przyszła mi do głowy było sprawdzenie zakładki
+                <i>chrome://settings/appearance</i>. Niestety, okazało się, że tryb
+                nocny był już włączony!
+            </p>
+            <p>Szukałem dalej...</p>
+            <i>Duckowanie</i> (czyli wyszukiwanie przy pomocy DuckDuckGo)
+            ujawniło stronę <i>chrome://flags/</i>, gdzie znalazłem dwie opcje:
+            <i>Web Platform Controls Dark Mode</i> i <i>Force Dark Mode for Web
+                Contents</i>. Pierwsza opcja okazała się opcją, której szukałem, za
+            to druga była tą której <em>potrzebowałem</em>. Ta druga opcja wymusza
+            na stronie stosowanie ciemnego motywu. Czasami trochę się psuje, ale
+            działa wystarczająco dobrze:
+            <hr>
+            <img style="margin-bottom: 10px" src="/pix/clunky.png" title="biała fujka">
+            <img src="/pix/clunky1.png" title="nie widać pustych poziomów, a ramiona potworka są ledwo widoczne">
+            <hr>
+            <h2>Co jeżeli nie używam Chrome'a?</h2>
+            Podczas poszukiwań znalazłem też <a target="_blank" href="https://darkreader.org/">plugin</a>, który działa z każdą popularną przeglądarką (pewnie też
+            z najróżniejszymi ich forkami). W mojej skromnej opinii, DarkReader
+            generuje gorzej wyglądające strony niż domyślny "podmieniacz"
+            (przynajmniej ten z Chromium).
+         ]]>
+                </description>
+            </item>
+            <item>
+                <title>witaj swiecie!</title>
+                <guid>https://jacadzaca.github.io/blog_pl/witaj_swiecie!.html</guid>
+                <link>https://jacadzaca.github.io/blog_pl/witaj_swiecie!.html</link>
+                <pubDate>sob, 03 kwi 2021 17:53:45 0200</pubDate>
+                <description>
+                    <![CDATA[ 
+        Postanowiłem zacząć blogować. Planuję głownie pisać o programowaniu, ale od czas do
+        czasu na pewno zapostuję jakieś zadanko z matmy albo recenzję książki. Blog będzie
+        utrzymywany w minimalistycznym duchu, tzn. <b>zero js'a!</b> I tak w sieci jest go za
+        dużo...
+        <br>
+        Zestaw skryptów (python3+jinja) użytych do generacji tego bloga znajdziecie <a href="https://github.com/jacadzaca/blog-gen" target="_blank">tutaj</a>.
+        <pre>
+        <a style="text-decoration: none; overflow:visible"
+            href="https://www.alwaysownyourplatform.com/"
+            target="_blank">
+             (•_•)
+            <)  )╯Always
+             /  \
+            \(•_•)
+            (  (> Own
+            /   \
+             (•_•)
+            <)  )> Your Platform
+             /  \</a>
+        </pre>
+         ]]>
+                </description>
+            </item>
+    </channel>
+</rss>

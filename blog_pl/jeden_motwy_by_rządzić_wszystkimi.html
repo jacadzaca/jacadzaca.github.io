@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <title>Jak włączyć ciemny motwy w przegądarce?</title>
+        <link rel="stylesheet" href="../style.css"></link>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Mój pierwszy wpis na blogu">
+    </head>
+    <body>
+        <h1 style="text-align: left">Ciemny motyw wszędzie</h1>
+        <hr>
+        <nav class="fancy-nav">
+            <a href="../index.html">Home</a>
+            <a href="../blog.html">Blog 🇬🇧 </a>
+            <a href="../blog_pl.html">Blog 🇵🇱 </a>
+        </nav>
+        <hr>
+        <p id="post">
+            Dzisiaj odkryłem <i>CSS media queries</i>, jedna z nich szczególnie
+            przykuła moją uwagę:
+            <blockquote>
+            <a target="_blank"
+             href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">@media (prefers-color-scheme dark)</a>
+            </blockquote>
+            Przeglądarki mają wbudowany ciemny motyw!!!
+            Jako, że jestem entuzjastą ciemnych motywów, postanowiłem go włączyć.
+            <p>
+                Pierwszą rzeczą, która przyszła mi do głowy było sprawdzenie zakładki
+                <i>chrome://settings/appearance</i>. Niestety, okazało się, że tryb
+                nocny był już włączony!
+            </p>
+            <p>Szukałem dalej...</p>
+            <i>Duckowanie</i> (czyli wyszukiwanie przy pomocy DuckDuckGo)
+            ujawniło stronę <i>chrome://flags/</i>, gdzie znalazłem dwie opcje:
+            <i>Web Platform Controls Dark Mode</i> i <i>Force Dark Mode for Web
+                Contents</i>. Pierwsza opcja okazała się opcją, której szukałem, za
+            to druga była tą której <em>potrzebowałem</em>. Ta druga opcja wymusza
+            na stronie stosowanie ciemnego motywu. Czasami trochę się psuje, ale
+            działa wystarczająco dobrze:
+            <hr>
+            <img style="margin-bottom: 10px" src="/pix/clunky.png" title="biała fujka">
+            <img src="/pix/clunky1.png" title="nie widać pustych poziomów, a ramiona potworka są ledwo widoczne">
+            <hr>
+            <h2>Co jeżeli nie używam Chrome'a?</h2>
+            Podczas poszukiwań znalazłem też <a target="_blank" href="https://darkreader.org/">plugin</a>, który działa z każdą popularną przeglądarką (pewnie też
+            z najróżniejszymi ich forkami). W mojej skromnej opinii, DarkReader
+            generuje gorzej wyglądające strony niż domyślny "podmieniacz"
+            (przynajmniej ten z Chromium).
+        </p>
+        <hr>
+        <footer class="fancy-nav">
+            <a href="../linux_tech_tips.html" title="">Fakty o Linuxie</a>
+            <a href="mailto:vitouejj@gmail.com" title="Napisz">Email</a>
+            <a href="../jacadzaca.gpg" title="Pretty good privacy">PGP</a>
+            <a target="_blank" href="../rss_pl.xml" title="Bądź na bieżąco">Feed</a>
+            <a href="../bookmarks.html" title="Moje zakładki">Ciekawe Linki</a>
+        </footer>
+        <hr>
+    </body>
+</html>
+

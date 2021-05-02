@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>How to force a dark mode in your browser?</title>
+        <link rel="stylesheet" href="../style.css"></link>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="How to enable dark mode in your browser?">
+        <meta name="keywords" content="dark-mode dark mode browser">
+        <meta name="author" content="jacadzaca">
+    </head>
+    <body>
+        <h1 style="text-align: left">Forcing a dark mode in your browser</h1>
+        <hr>
+        <nav class="fancy-nav">
+            <a href="../index.html">Home</a>
+            <a href="../blog.html">Blog 🇬🇧 </a>
+            <a href="../blog_pl.html">Blog 🇵🇱 </a>
+        </nav>
+        <hr>
+        <p id="post">
+            Today I've discovered CSS media queries, one of which has
+            especially caught my attention:
+            <blockquote>
+            <a target="_blank"
+             href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">@media (prefers-color-scheme dark)</a>
+            </blockquote>
+            Browsers have a built-in dark mode!
+            As I am a dark mode <em>connoisseur</em>, I've decided to enable it in my
+            browser.
+            <p>The first thing that popped into my head was to check the
+            <i>chrome://settings/appearance</i>
+            page, but it turned out that the theme there was already set to a dark one.
+            </p>
+            <p>I had to dig deeper.</p>
+            After a moment of googling, I've discovered the
+            <i>chrome://flags/</i> page,
+            where I've found the <i>Web Platform Controls Dark Mode</i> and
+            the <i>Force Dark Mode for Web Contents</i> options, which I enabled
+            both. The first option was the one I was looking for, but the second was the
+            one I was <em>really</em> looking for. It forces <em>every</em> page to
+            render in dark mode, to be honest it makes some pages look a little clunky,
+            but they are still usable:
+            <hr>
+            <img style="margin-bottom: 10px" src="/pix/clunky.png" title="there is some white stuff there, yuck!">
+            <img src="/pix/clunky1.png" title="the empty levels are not visible, the puppets arms are barely visible">
+            <hr>
+            <h2>What if I don't use Chrome?</h2>
+            During my search, I've also stumbled upon this <a target="_blank" href="https://darkreader.org/">plugin</a>,
+            it works with every popular browser, including Chrome (in my opinion though,
+            it produces worse looking pages than the naitive option).
+        </p>
+        <hr>
+        <footer class="fancy-nav">
+            <a href="../linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
+            <a href="mailto:vitouejj@gmail.com" title="Get in contact">Email</a>
+            <a href="../jacadzaca.gpg" title="Pretty good privacy">PGP</a>
+            <a target="_blank" href="../rss.xml" title="Stay updated">Feed</a>
+            <a href="../bookmarks.html" title="Browser bookmarks">Interesting Links</a>
+        </footer>
+        <hr>
+    </body>
+</html>
+
