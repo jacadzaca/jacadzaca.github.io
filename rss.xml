@@ -11,6 +11,77 @@
             <link>https://jacadzaca.github.io/rss.xml</link>
         </image>
             <item>
+                <title>btw i use arch</title>
+                <guid>https://jacadzaca.github.io/blog/btw_i_use_arch.html</guid>
+                <link>https://jacadzaca.github.io/blog/btw_i_use_arch.html</link>
+                <pubDate>Sun, 23 May 2021 15:29:14 0200</pubDate>
+                <description>
+                    <![CDATA[ 
+        I've finally got around to installing Arch Linux on my laptop.
+        Installing Arch was simple enough, the only problem that I've had
+        was understanding the difference between a boot partition and a
+        'boot partition'. A BIOS boot partition is a type of a partition, whereas
+        a 'boot partition' is a partition you create for your /boot/ directory -
+        you don't actually need a 'boot partition', while a boot partition
+        is more or less required - manually telling your boot loader
+        (most likely GRUB) where everything is located is way too tedious.
+            <p>
+            <h2>Programs I run</h2>
+            The first thing that I installed was GNOME3. I run GNOME on my
+            Ubuntu desktop and it works just fine, I especially like the DE; it
+            looks nice out of the box and the Activities tab is amazing. But
+            that's mutter36 (mutter is the GNOME DE). mutter40 is nothing like it.
+            As of now I run <a href="https://wiki.archlinux.org/title/Xfce">xfce4</a>
+            on my laptop and it's alright, albeit a little retro. Actually, xfce's so
+            vintage that it might be the best desktop environment for
+            an eldery person, but that's neither here or there.
+            I'm actually thinking of switching to <a href="https://dwm.suckless.org/">
+            dwm</a> or <a href="https://i3wm.org/">i3</a>, but I'm yet
+            to decide which one is better. For the login manager I've chosen
+            LightDM - it just worked.
+            </p>
+            <p>
+            I don't run <a href="https://developer.gnome.org/NetworkManager/stable/NetworkManager.html">NetworkManager</a>, because
+            I have no need for it - just connecting to wi-fi with <a href="https://wiki.archlinux.org/title/Iwd">iwd</a>
+            and running a dhcpcd daemon in the background works for me. I also
+            installed an <a href="https://github.com/J-Lentz/iwgtk">iwd frontend program</a>,
+            because some normal person might have to input a wi-fi password into my
+            laptop someday.
+            </p>
+            <p>
+            I use <a href="https://wiki.archlinux.org/title/Udisks">udisks</a> with
+            <a href="https://man.archlinux.org/man/community/udiskie/udiskie.8.en">udiskie</a>
+            for automating USB mounting. I also run gvfs, so I can have a Trash bin (which
+            is less useful than I've thought). gvfs also seems to provide an
+            alternative to <a href="https://wiki.archlinux.org/title/Insync">insync</a>, but
+            it remains unclear whether you can actually use gvfs effectively without all the
+            GNOME bloat.
+            </p>
+            <p>
+            I use <a href="https://wiki.archlinux.org/title/CUPS">CUPS</a> directly
+            for printer manging. I even have a desktop shortcut to a
+            <a href="https://www.mankier.com/1/chromium-browser#--app">chromium app</a>
+            that starts the CUPS web gui.
+            </p>
+            <p>
+            I also considered installing a cron-like program (most probably <a href="https://en.wikipedia.org/wiki/Anacron">anacron</a>)
+            and running a simple pacman update script, but after a little <a href="https://bbs.archlinux.org/viewtopic.php?id=83118">
+                research</a>, I've decided to postpone creating such cron job.
+            If after a while of updating nothing breaks, I will surely consider it.
+            </p>
+            <p>
+            <h2>Final thoughts</h2>
+            As of now, Arch Linux is my favourite distro; it boots faster than
+            Ubuntu, it eats a lot less RAM (which is cool, becouse now I can
+            brag on the internet about how little memory my setup needs) and the
+            package manager seems to be full of useful programs, especially
+            compared to apt. Also, there's AUR, which looks like a both more
+            managable and faster version of snap,
+            </p>
+         ]]>
+                </description>
+            </item>
+            <item>
                 <title>psa use vimium</title>
                 <guid>https://jacadzaca.github.io/blog/psa_use_vimium.html</guid>
                 <link>https://jacadzaca.github.io/blog/psa_use_vimium.html</link>
@@ -29,7 +100,7 @@
                  You can go to the previous/next page, you can look through your bookmarks, you can
                  even copy the URL of the page you are looking at.
                  <hr>
-                     <a href="/pix/vimium.png"><img src="/pix/vimium.png" title="full list of vimium's keybinds"></img></a>
+                 <a href="/pix/vimium.png"><img src="/pix/vimium.png" title="full list of vimium's keybinds"></img></a>
                  <hr>
                  What's also great is the fact that you remap Vimium's key-binds how you like.
             </p>
