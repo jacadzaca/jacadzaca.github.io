@@ -11,45 +11,10 @@
             <link>https://jacadzaca.github.io/rss.xml</link>
         </image>
             <item>
-                <title>niestrawne polaczenia</title>
-                <guid>https://jacadzaca.github.io/blog_pl/niestrawne_polaczenia.html</guid>
-                <link>https://jacadzaca.github.io/blog_pl/niestrawne_polaczenia.html</link>
-                <pubDate>sob, 17 kwi 2021 00:51:26 0200</pubDate>
-                <description>
-                    <![CDATA[ 
-            Ostatnio musiałem napisać pracę na zaliczenie przedmiotu. Na szczęście
-            temat nie był narzucony! Napisałem pracę, w której zachęcam
-            czytelnika do zapoznania się z <i>Rocky Horror Picture Show</i> używając
-            <em>trudnych słów</em> i luźnych nawiązań do gnostycyzmu.
-            <p>
-                Lubię pisać teksty, ledwo spajające dwa odległe zjawiska, a do tego
-                zawierające <em>trudne słowa</em>, które ledwo rozumiem. Pamiętam, że
-                jak dostałem kosza od jakiejś dziewczyny napisałem na ten temat
-                <i>"Marksistowską analizę"</i>, wzorując się na
-                <a target="_blank" href="https://www.youtube.com/watch?v=pWbaUnbo-_c">tym</a> wideo.
-            </p>
-            <p>
-                Z moim artykulikiem można zapoznać się <a href="/RockyHorrorPictureShowAGnostycyzm.pdf">tutaj</a> (pdf),
-                <a href="/RockyHorrorPictureShowAGnostycyzm.tex">albo tutaj</a> (tex). <i>Rocky Horror Picture Show</i>
-                można obejrzeć <a target="_blank "href="https://archive.org/details/therockyhorrorpictureshowvosejimsharman1975_20191212">tutaj</a>. Filmu nie polecam
-                osobom mocno religijnym.
-            </p>
-            <p>
-                PS: na dniach planuję zmienić wygląd strony z postami;
-                zamiast listy z linkami do osobnych podstron zamierzam
-                mieć jedną duża stronę. Wydaję mi się, że to jest lepsze
-                rozwiązanie, bo moje posty nie są raczej długie, a klikanie myszką
-                (ew. tabowanie się) w linki jest uciążliwe. Jeżeli macie jakieś
-                lepsze pomysły - <a href="mailto:vitouejj@gmail.com">piszcie</a>.
-            </p>
-         ]]>
-                </description>
-            </item>
-            <item>
                 <title>jeden motwy by rządzić wszystkimi</title>
                 <guid>https://jacadzaca.github.io/blog_pl/jeden_motwy_by_rządzić_wszystkimi.html</guid>
                 <link>https://jacadzaca.github.io/blog_pl/jeden_motwy_by_rządzić_wszystkimi.html</link>
-                <pubDate>sob, 17 kwi 2021 00:43:40 0200</pubDate>
+                <pubDate>nie, 04 kwi 2021 22:29:32 0200</pubDate>
                 <description>
                     <![CDATA[ 
             Dzisiaj odkryłem <i>CSS media queries</i>, jedna z nich szczególnie
