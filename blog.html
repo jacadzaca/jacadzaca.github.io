@@ -15,6 +15,52 @@
             <a href="blog_pl.html">Blog 🇵🇱 </a>
         </nav>
         <hr>
+            <h2>transfer files with netcat</h2>
+            <small>
+                [
+                <a href="#transfer_files_with_netcat">link</a> —
+                <a href="blog/transfer_files_with_netcat.html">standalone</a>
+                ] Tue, 27 Jul 2021 01:25:29
+            </small>
+            <blockquote id="transfer_files_with_netcat">
+                <p>
+
+        As I don't use my <a target="_blank" href="/blog/btw_i_use_arch.html">arch laptop</a> that much, I've figured
+        that I can use it as a backup storage for my collections - collections of memes and movies.
+            <p>
+                <h2>Rsync is bloat?</h2>
+                Using some kind of a USB as an intermediary wouldn't do the
+                trick, because my meme collection is 14GB big (pathetic), whereas my movies
+                take 139GB. My first though was to use <a target="_blank" href="https://rsync.samba.org/examples.html">rsync</a>.
+                I've never used rsync before, so I perused its man page and quickly found out that you can use:
+                <pre>
+<code>rsync -vzP /some/path user@remote:/some/other/path</code>
+                </pre>
+                to sync the files. Then... I got a ssh error. I couldn't be bothered to install a ssh server on
+                my laptop, because that would only bloat my precious <em><strong>Arch</strong></em> Linux install. I continued the search.
+            </p>
+            <p>
+                <h2>Rsync is bloat, so let's pipe stuff into some program</h2>
+                I've <a target="_blank" href="https://superuser.com/questions/153176/how-to-rsync-a-large-file-with-as-little-cpu-and-bandwidth-expense-as-possible#answer-1020737">stumbled on this</a>
+                StackOverflow answer. Not only does this guy have a method that would allow me to transfer my movies without installing a ssh server, but he also claims that it's faster
+                (rsync shines more when it comes to syncing
+                <a target="_blank" href="https://fedoramagazine.org/copying-large-files-with-rsync-and-some-misconceptions/">files that are 'similar'</a>).
+                It turns out that you can compress the files with tar and then use netcat to send them over the network with:
+                <pre>
+<code>tar -cpv --atime-preserve=system /path/to/ | nc -q 10 -l -p 45454</code>
+                </pre>
+                on the source machine, and
+                <pre>
+<code>nc -w 10 X.X.X.X 45454 | tar -xpv</code>
+                </pre>
+                on the destination computer. The traffic isn't encrypted at all, but that's not a problem over LAN (e.g sending movies
+                to my laptop). Albeit, <a target="_blank" href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-35">encryption can be provided with ssh</a> or 
+                <a target="_blank" href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-936">with a VPN</a>.
+            </p>
+        I think this method is very linux-like, because it combines two programs in some unusual fashion to create something new. I might consider replacing
+        <a target="_blank" href="https://www.man7.org/linux/man-pages/man1/scp.1.html">scp</a> with the ssh version of this trick.
+        </p>
+            </blockquote>
             <h2>my calendar system</h2>
             <small>
                 [
