@@ -15,14 +15,65 @@
             <a href="blog_pl.html">Blog 🇵🇱 </a>
         </nav>
         <hr>
-            <h2>how sin is computed?</h2>
+            <h2>other way to find sin of 18</h2>
             <small>
                 [
-                <a href="#how_sin_is_computed?">link</a> —
-                <a href="blog/how_sin_is_computed?.html">standalone</a>
+                <a href="#other_way_to_find_sin_of_18">link</a> —
+                <a href="blog/other_way_to_find_sin_of_18.html">standalone</a>
+                ] Tue, 28 Sep 2021 13:30:50
+            </small>
+            <blockquote id="other_way_to_find_sin_of_18">
+                <p>
+        It turns out that you can find the value of sin(18&#176;) by the following method:
+        <p>
+            Notice that by the sin addition formula:
+            <pre>
+    1&#176; sin(54&#176;) - sin(18&#176;) = 2 * cos(<sup>(54&#176; + 18&#176;)</sup>&frasl;<sub>2</sub>) * sin(<sup>(54&#176; - 18&#176;)</sup>&frasl;<sub>2</sub>) = 2 * cos(36&#176;) * sin(18&#176;)
+            </pre>
+            Also:
+            <pre>
+    sin(54&#176;) - sin(18&#176;) = cos(90&#176; - 54&#176;) - sin(18&#176;) = cos(36&#176;) - sin(18&#176;)
+            </pre>
+            Moreover, by the double cosine formula:
+            <pre>
+    2&#176; cos(36&#176;) = cos[(2 * 18)&#176;] = cos<sup>2</sup>(18&#176;) - sin<sup>2</sup>(18&#176;)
+            </pre>
+            Now use the Pythagorean identity like this:
+            <pre>
+    cos<sup>2</sup>(18&#176;) - sin<sup>2</sup>(18&#176;) = 1 - sin<sup>2</sup>(18&#176;) - sin<sup>2</sup>(18&#176;) = 1 - 2 * sin<sup>2</sup>(18&#176;)
+            </pre>
+            Now equate the right-hand side of equation 2&#176; with the right-hand side of statement 1&#176;, and substitute for <i>cos(36&#176;)</i>:
+            <pre>
+    cos(36&#176;) - sin(18&#176;) = 2 * cos(36&#176;) * sin(18&#176;)
+    1 - 2 * sin<sup>2</sup>(18&#176;) - sin(18&#176;) = 2 * [1 - 2 * sin<sup>2</sup>(18&#176;)] * sin(18&#176;) = 2 * sin(18&#176;) - 2 * sin<sup>3</sup>(18&#176;)
+    4 * sin<sup>3</sup>(18&#176;) - 2 * sin<sup>2</sup>(18&#176;) - 3 * sin(18&#176;) + 1 = 0
+    t := sin(18&#176;)
+    4t<sup>3</sup> - 2t<sup>2</sup> - 3t + 1 = 0
+            </pre>
+            Notice that for t = 1 the equation is satisfied, so:
+            <pre>
+    4t<sup>3</sup> - 2t<sup>2</sup> - 3t + 1 = (t - 1)(4t<sup>2</sup> + 2t - 1) = 0 &lt;=&gt; t = 1 or 4t<sup>2</sup> + 2t - 1 = 0
+    4t<sup>2</sup> + 2t - 1 = 0
+    &Delta; = 4 + 4 * 4 = 4 * 5
+    &#8730;&Delta; = 2&#8730;5
+    t<sub>1</sub> = <sup>(-2 + 2&#8730;5)</sup>&frasl;<sub>8</sub> = <sup>(-1 + &#8730;5)</sup>&frasl;<sub>4</sub>
+    t<sub>2</sub> = <sup>(-2 - 2&#8730;5)</sup>&frasl;<sub>8</sub> = <sup>(-1 - &#8730;5)</sup>&frasl;<sub>4</sub>
+            </pre>
+            Now notice that <i>1 &gt; t &gt; 0</i>, because <i>sin(x)</i> is an increasing function when <i>90 &gt; x &gt; 0</i> and <i>sin(90&#176;) = 1 > sin(18&#176;) > sin(0&#176;) = 0</i>,
+            so <i> t = sin(18&#176;) = <sup>(-1 + &#8730;5)</sup>&frasl;<sub>4</sub> </i>, since that's the only solutions that meets the criteria
+        </p>
+        While this method works, it's not easy to come up with the first equation. I stumbled on it by pure coincidence.
+        I personally prefer the <a href="/pix/geo_sin18.png">geometrical</a> way of finding the value of sin(18), because it strikes me as the more obvious way of doing it.
+        </p>
+            </blockquote>
+            <h2>how sin is computed</h2>
+            <small>
+                [
+                <a href="#how_sin_is_computed">link</a> —
+                <a href="blog/how_sin_is_computed.html">standalone</a>
                 ] Wed, 18 Aug 2021 14:35:08
             </small>
-            <blockquote id="how_sin_is_computed?">
+            <blockquote id="how_sin_is_computed">
                 <p>
             I can recall the first time I wrote a program that used a trigonometric function - it
             was back in secondary school. I was making a game and wanted to make some object float around
