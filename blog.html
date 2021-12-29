@@ -15,6 +15,138 @@
             <a href="blog_pl.html">Blog 🇵🇱 </a>
         </nav>
         <hr>
+            <h2>hacking a warcraft 3 map</h2>
+            <small>
+                [
+                <a href="#hacking_a_warcraft_3_map">link</a> —
+                <a href="blog/hacking_a_warcraft_3_map.html">standalone</a>
+                ] Wed, 29 Dec 2021 16:15:35
+            </small>
+            <blockquote id="hacking_a_warcraft_3_map">
+                <p>
+
+        <p>
+            I'm a big Warcraft fan. Actually, I consider Warcraft 3 to be the best video game of all time. I like the story, the voice-acting (polish voice-over was great until Reforged), and
+            the music fits game-play. But what's best about Warcraft 3 is its universal game engine that combined with the powerful game editor would lead to creation of many unique mods. Of course, I have my favorite:
+            a polish modification called <i>Alchemicy</i> - a combination of a hero defense and a crafting game. Although the mod is loads of fun, one aspect of it always bugged me: there are characters that you can only play as after
+            either making a donation to the author or if you know him in-game. What's more, the donation service was <a target="_blank" href="https://warrttssgames.blogspot.com/p/premium-alchemicy.html">shut-down in 2012</a> with the guy quting the game. Since the map is protected,
+            meaning nobody can open the mod file in the editor, the characters seemed to have been lost to the sands of time... Until I figured out a way to produce a patch that removes the paywall.
+        </p>
+
+        <h2>Protections, how do they work?</h2>
+        <p>
+            First, a brief introduction to the Warcraft map file format (w3x). For my purposes, every Warcraft 3 mod is basically an archive (<a target="_blank" href="https://world-editor-tutorials.thehelper.net/cat_usersubmit.php?view=42787">see here for proper docs</a>) that contains
+            <a target="_blank" href="https://github.com/ChiefOfGxBxL/WC3MapTranslator#file-support">a few files</a>, each relating to different aspects of the mod. <a target="_blank" href="http://www.3ice.hu/blog/protect-warcraft-maps/#delete">Certain files</a> (from now on - <em>header files</em>)
+            only carry data that's required by the game editor to open up the map, other files are mandatory (for example, the map file), there also might be some auxiliary files; most probably custom models, icons or sounds. What's crucial is that each file contains information that
+            allows a human to identify it (e.g, the file defining custom units contains units' names, hitpoints etc.)
+            <p>
+                All map protection software dose is remove the header files, therefore making the editor crush each time you try to open a protected map with it.
+                It also removes the MPQ's (name of the archiving format) listfile, therefore obfuscating files' names.
+            </p>
+        </p>
+
+        <h2>The plan</h2>
+        <p>
+            Since I'm familiar with the Warcraft ecosystem, a glance at the map in-game revealed that there must be a certain upgrade that
+            is granted to all 'premium' users. Since all of the custom upgrades are in the <i>war3map.w3q</i> file, I figured that all I need to do
+            is:
+            <ol>
+                <li>identify the .w3q file</li>
+                <li>byte patch the mod-file directly or:</li>
+                    <ol type="i">
+                        <li>convert the file into editable form</li>
+                        <li>make applicable changes</li>
+                        <li>convert the file back and patch the mod-file using an editor</li>
+                    </ol>
+            </ol>
+            Sadly, this approach doesn't work, because:
+            <ol>
+                <li>files in the MPQ are somehow compressed, so you cannot byte-patch them directly</li>
+                <li>the MPQ's listfile is gone, so you cannot add new files. You cannot replace a file without adding a file</li>
+                <li>the .w3q files only cotains the upgrade's definition (ID, description etc). The correct place to apply the patch is in the <i>war3map.w3u</i> file</li>
+            </ol>
+            Luckily, the new insight allowed me to conjure an approach that works:
+            <ol>
+                <li>acquire a Warcraft map with a listfile - a template</li>
+                <li>extract and identify the files inside the <i>Alchemicy</i> mod file</li>
+                <li>make applicable changes to the <i>war3map.w3u</i> file</li>
+                <li>replace the files inside the template with the ones extracted</li>
+            </ol>
+            We are going to need:
+            <ol>
+                <li>the <a target="_blank" href="http://www.zezula.net/en/mpq/download.html">MPQ editor</a> (it runs under Wine) to both extract, and overwrite files found in a .w3x file</li>
+                <li><a target="_blank" href="https://github.com/ChiefOfGxBxL/WC3MapTranslator/tree/v1.1.0">this w3x parser</a> to identify the files</li>
+                <li><a download href="https://www.epicwar.com/maps/download/231379/688fa38f47c622d9e3e3afddb95520c5a2a4707c64c5ec23c5ee994b1e3826f461c63b9f/Alchemicy%203.22v.w3x"><i>Alchemicy</i> map file</a></li>
+                <li>a 128 by 128, <i>Cityscape</i> tileset, Warcraft map to use as a template</li>
+            </ol>
+        </p>
+
+        <h2>The implementation</h2>
+        <p>
+            First, I downloaded one of my old, unfinished maps for a template. Then, I created two directories:
+            <i>identified-files</i> and <i>unidentified-files</i> and extracted all files from the map (save for .blp and .mdx files) into the second one. Second, I noticed that it's possible to
+            identify few of the files just by either looking at them or by opening them in your <a target="_blank" href="https://neovim.io/">favorite text editor</a>:
+            <ol>
+                <li>since File00000000.w3e has an extension, it's probably the war3map.w3e file</li>
+                <li>by comparsion with your template map, File00000001.xxx is the war3map.w3i file</li>
+                <li>since File00000002.xxx is fillied with strings, it must be the war3map.wts file</li>
+                <li>since File00000003.xxx looks like computer code, it must be the war3map.j file</li>
+                <li>since File00000007.wpm has an extension, it's probably the war3map.wpm file</li>
+                <li>the File0000000008.doo is either the the war3map.doo or the war3mapUnits.doo</li>
+                <li>by comparsion with your template map, File00000015.xxx is the war3mapMisc.txt file</li>
+                <li>by comparsion with your template map, File00000016.xxx is the war3mapExtra.txt file</li>
+            </ol>
+            I renamed the identified files and moved them into the other directory. I also ran <a target="_blank" href="https://raw.githubusercontent.com/ChiefOfGxBxL/WC3MapTranslator/v1.1.0/examples/jsonToWar/entity/doodads.js">this example script</a>
+            that is provided by the parser to figure out that the .doo file is the war3Map.doo file. Nearly all other files can be identified using <a target="_blank" href="https://gist.githubusercontent.com/jacadzaca/9f094f8aa8131278a375f5d96caeb748/raw/4be413027c1444b3e9ebf27d6306258371e05cd5/check.sh">this script</a>,
+            after applying this 'patch' inside the <i>WC3MapTranslator/examples/warToJson</i> directory:
+            <p>
+                <code>
+                    find . -name '*js' -exec sed -i -e 's|fs.writeFileSync(jsonPath, |console.log(|g' {} \;
+                </code>
+            </p>
+             File00000004, File00000006 and File00000012 couldn't be parsed into anything sensible. I would later figure out that
+             (using a method of trail and error) File00000004 is the .shd file and that File00000006 is the .mmp file. I couldn't figure what File00000012 is.
+            <p>
+                Thirdly, I would convert both the <a target="_blank" href="">.w3q</a> and the <a target="_blank" href="">.w3u file</a> into JSON and compare them:
+            </p>
+            <hr>
+            <a target="_blank" href="/pix/json_comparison.png"><img loading="lazy" alt="a side-by-side comparision of JSON representation of the .w3q and .w3u" title="a side-by-side comparision of JSON representation of the .w3q and .w3u" src="/pix/json_comparison.png"></a>
+            <hr>
+            I figured that the simplest solution would be to blank-out the <i>value</i> record with:
+            <p>
+                <code>
+                    sed -i -e 's|R000||g' units.json
+                </code>
+            </p>
+            Then, I would convert the edited <a target="_blank" href="https://raw.githubusercontent.com/ChiefOfGxBxL/WC3MapTranslator/v1.1.0/examples/jsonToWar/object/units.js">JSON back into a .w3u file</a>
+            and continue as planned.
+        </p>
+        <h2>Conclusions</h2>
+        <p>
+            Although the patch works (see [1]), it's somehow rough around (points [2-5]) the edges:
+            <hr>
+            <a target="_blank" href="/pix/hero_selection_comparison.png"><img loading="lazy" alt="a side-by-side comparison of original Alchemicy map and its 'hacked' version" title="a side-by-side comparison of original Alchemicy map and its 'hacked' version" src="/pix/hero_selection_comparison.png"></a>
+            <hr>
+            I also think it's also worth mentioning that:
+            <ol>
+                <li>although my way of identifying the files works, it turns out that <a target="_blank" href="http://www.zezula.net/en/mpq/war3maps.html">MPQ Editor</a> automates this process.</li>
+                <li>although the patched map can be opened in the editor, the game crushes when I try to launch the map</li>
+                <li>there exist <a target="_blank" href="https://www.youtube.com/watch?v=98nXuBiKVig">a program</a> that can automate the whole process, but:</li>
+                <ol type="i">
+                    <li>it's literally a sketchy, Russian program from the internet</li>
+                    <li>I've never seen any explanation of it's inner workings</li>
+                </ol>
+                <li>I later used the MPQ Editor's <i>Name Scanner</i> feature to fix issues [2-5], it turns out that:</li>
+                <ol type="i">
+                    <li>File00000016 is actually war3mapSkin.txt - renaming the file fixes [2] and [4]</li>
+                    <li>one of the .blp files was the wa3mapMap.blp - including this file in the patch fixes [3]</li>
+                    <li>other .blp and .mdx files were custom models/icons - including them in the patch fixes [5]</li>
+                </ol>
+                <li><i>warcraft3mapUnit.doo</i> is a header file</li>
+            </ol>
+        </p>
+        </p>
+            </blockquote>
             <h2>are landlords cringe</h2>
             <small>
                 [
