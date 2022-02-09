@@ -12,10 +12,16 @@
     <body>
         <h1 style="text-align: left">transfer files with netcat</h1>
         <hr>
-        <nav class="fancy-nav">
+        <nav class="nav">
             <a href="/index.html">Home</a>
-            <a href="/blog.html">Blog 🇬🇧 </a>
-            <a href="/blog_pl.html">Blog 🇵🇱 </a>
+            <a href="/blog.html">Blog</a>
+            <ul title="Ways we can get in touch">
+                Contact
+                <div class="dropdown-content">
+                    <li><a href="mailto:vitouejj@gmail.com" title="Please encrypt your emails with PGP">Email</a></li>
+                    <li><a href="/jacadzaca.gpg" title="Pretty good privacy">PGP</a></li>
+                </div>
+            </ul>
         </nav>
         <hr>
         <p id="post">
@@ -28,9 +34,7 @@
                 trick, because my meme collection is 14GB big (pathetic), whereas my movies
                 take 139GB. My first though was to use <a target="_blank" href="https://rsync.samba.org/examples.html">rsync</a>.
                 I've never used rsync before, so I perused its man page and quickly found out that you can use:
-                <pre>
-<code>rsync -vzP /some/path user@remote:/some/other/path</code>
-                </pre>
+                <div class="highlight"><pre><span></span><span class="n">rsync</span><span class="w"> </span><span class="o">-</span><span class="n">vzP</span><span class="w"> </span><span class="o">/</span><span class="ow">some</span><span class="o">/</span><span class="k">path</span><span class="w"> </span><span class="k">user</span><span class="nv">@remote</span>:<span class="o">/</span><span class="ow">some</span><span class="o">/</span><span class="n">other</span><span class="o">/</span><span class="k">path</span><span class="w"></span></pre></div>
                 to sync the files. Then... I got a ssh error. I couldn't be bothered to install a ssh server on
                 my laptop, because that would only bloat my precious <em><strong>Arch</strong></em> Linux install. I continued the search.
             </p>
@@ -41,13 +45,9 @@
                 (rsync shines more when it comes to syncing
                 <a target="_blank" href="https://fedoramagazine.org/copying-large-files-with-rsync-and-some-misconceptions/">files that are 'similar'</a>).
                 It turns out that you can compress the files with tar and then use netcat to send them over the network with:
-                <pre>
-<code>tar -cpv --atime-preserve=system /path/to/ | nc -q 10 -l -p 45454</code>
-                </pre>
+                <div class="highlight"><pre><span></span>tar -cpv --atime-preserve<span class="o">=</span>system /path/to/ <span class="p">|</span> nc -q <span class="m">10</span> -l -p <span class="m">45454</span></pre></div>
                 on the source machine, and
-                <pre>
-<code>nc -w 10 X.X.X.X 45454 | tar -xpv</code>
-                </pre>
+                <div class="highlight"><pre><span></span>nc -w <span class="m">10</span> X.X.X.X <span class="m">45454</span> <span class="p">|</span> tar -xpv</pre></div>
                 on the destination computer. The traffic isn't encrypted at all, but that's not a problem over LAN (e.g sending movies
                 to my laptop). Albeit, <a target="_blank" href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-35">encryption can be provided with ssh</a> or 
                 <a target="_blank" href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-936">with a VPN</a>.
@@ -56,12 +56,10 @@
         <a target="_blank" href="https://www.man7.org/linux/man-pages/man1/scp.1.html">scp</a> with the ssh version of this trick.
         </p>
         <hr>
-        <footer class="fancy-nav">
+        <footer class="nav">
             <a href="/linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
-            <a href="mailto:vitouejj@gmail.com" title="Get in touch">Email</a>
-            <a href="/jacadzaca.gpg" title="Pretty good privacy">PGP</a>
             <a target="_blank" href="/rss.xml" title="Stay updated">Feed</a>
-            <a href="/bookmarks.html" title="Browser bookmarks">Interesting Links</a>
+            <a href="/bookmarks.html" title="Browser bookmarks">Bookmarked pages</a>
         </footer>
         <hr>
     </body>

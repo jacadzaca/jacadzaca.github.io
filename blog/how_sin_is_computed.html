@@ -12,10 +12,16 @@
     <body>
         <h1 style="text-align: left">how sin is computed?</h1>
         <hr>
-        <nav class="fancy-nav">
+        <nav class="nav">
             <a href="/index.html">Home</a>
-            <a href="/blog.html">Blog 🇬🇧 </a>
-            <a href="/blog_pl.html">Blog 🇵🇱 </a>
+            <a href="/blog.html">Blog</a>
+            <ul title="Ways we can get in touch">
+                Contact
+                <div class="dropdown-content">
+                    <li><a href="mailto:vitouejj@gmail.com" title="Please encrypt your emails with PGP">Email</a></li>
+                    <li><a href="/jacadzaca.gpg" title="Pretty good privacy">PGP</a></li>
+                </div>
+            </ul>
         </nav>
         <hr>
         <p id="post">
@@ -31,9 +37,7 @@
             <h2>Taylors, how do they work?</h2>
             Taylor series is a tool to express some function as a polynomial, using its nth derivative.
             Since <i>sin(x)</i> and its derivatives are differentiable, we can express <i>f(x) = sin(x)</i> as:
-            <pre>
-            p(x) = &sum;<sub>n=0</sub><sup>&infin;</sup>f<sup>(n)</sup>(a) * <sup>(x-a)<sup>n</sup></sup>&frasl;<sub>n!</sub>
-            </pre>
+            <a target="_blank" href="/pix/taylor_equation.svg"><img src="/pix/taylor_equation.svg"/></a>
             In this case, we can't add infinitely many terms in a finite amount of time, so we have
             to approximate. Since this is a toy implementation, we will just compare it with python's
             math.sin implementation and call it quits when they will converge <i>good enough</i>.
@@ -46,36 +50,29 @@
             to see, is that derivatives with an ordinal that yields a reminder of two or three when divided by four are the
             derivatives with and minus sign. I don't know how to formally prove it... <em>yet</em>, but you need to trust me on this one.
             Translating into python code:
-            <pre><code>
-                def nth_sin_derivative(n, a=math.pi/2):
-                    if n % 4 in (2,3):
-                        sign = -1
-                    else:
-                        sign = 1
-                    if n % 2 == 0:
-                        function = sin
-                    else:
-                        function = cos
-                return sign * function(a)
-            </code></pre>
-
+            <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nth_sin_derivative</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">4</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">function</span> <span class="o">=</span> <span class="n">sin</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">function</span> <span class="o">=</span> <span class="n">cos</span>
+<span class="k">return</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></pre></div>
             Second, we need to actually be able to evaluate both <i>cos(x)</i> and <i>sin(x)</i> at our center. Since we are implementing <i>sin(x)</i>,
             we should deal with <i>cos(x)</i> first. We don't have to implement <i>cos(x)</i> separately -  notice that <i>sin(<sup>&#960</sup>&frasl;<sub>2</sub> - x) = cos(x)</i>:
-            <code><pre>
-                def cos(x):
-                    return sin((math.pi/2) - x)
-            </code></pre>
+            <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cos</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">((</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span></pre></div>
             Great. That solves the <i>cos(x)</i> part. Now, we can finally implement <i>sin(x)</i>:
-            <code><pre>
-            def sin(x, center=math.pi/2, term_count=5):
-                if x == math.pi/2:
-                    return 1
-                elif x == 0:
-                    return 0
-                else:
-                    values = (((x - center)**i / math.factorial(i)) * nth_sin_derivative(i, a=center) for i in range(term_count))
-                    return sum(values)
-            </code></pre>
+            <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">term_count</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">(((</span><span class="n">x</span> <span class="o">-</span> <span class="n">center</span><span class="p">)</span><span class="o">**</span><span class="n">i</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">*</span> <span class="n">nth_sin_derivative</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">center</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">term_count</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span></pre></div>
             We specify two special cases: <i>x = <sup>&#960</sup>&frasl;<sub>2</sub></i> for evaluating sin derivatives that require to compute <i>sin(x)</i> at center,
             and <i>x = 0</i> for evaluating sin derivatives that require to compute <i>cos(x)</i> at center. Else, we compute the Taylor series.
             </p>
@@ -85,7 +82,6 @@
             math.sin:
             <hr>
             <a target="_blank" href="/pix/sin_taylor_series_barplot.gif"><img src="/pix/sin_taylor_series_barplot.gif"></img></a>
-            <hr>
             <hr>
             <a target="_blank" href="/pix/sin_taylor_series.gif"><img src="/pix/sin_taylor_series.gif"></img></a>
             <hr>
@@ -98,12 +94,10 @@
             </p>
         </p>
         <hr>
-        <footer class="fancy-nav">
+        <footer class="nav">
             <a href="/linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
-            <a href="mailto:vitouejj@gmail.com" title="Get in touch">Email</a>
-            <a href="/jacadzaca.gpg" title="Pretty good privacy">PGP</a>
             <a target="_blank" href="/rss.xml" title="Stay updated">Feed</a>
-            <a href="/bookmarks.html" title="Browser bookmarks">Interesting Links</a>
+            <a href="/bookmarks.html" title="Browser bookmarks">Bookmarked pages</a>
         </footer>
         <hr>
     </body>
