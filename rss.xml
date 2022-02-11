@@ -11,6 +11,33 @@
             <link>https://jacadzaca.github.io/rss.xml</link>
         </image>
             <item>
+                <title>website update</title>
+                <guid>https://jacadzaca.github.io/blog/website_update.html</guid>
+                <link>https://jacadzaca.github.io/blog/website_update.html</link>
+                <pubDate>Fri, 11 Feb 2022 17:38:02 0200</pubDate>
+                <description>
+                    <![CDATA[ 
+            <ol>
+                <li>there's a link to my <a target="_blank" href="https://codeberg.org/">Codeberg</a> account on my <a href="/">homepage</a> now</li>
+                <li>all contact info was moved into the 'Contact' drop-down menu on the</li>
+                <li>I've replaced the 'webring' page with a 'Links' drop-down menu on my homepage</li>
+                <li>images' backgrounds now fit the blog's color scheme (e.g. they're black)</li>
+                <li>nearly all images were converted from PNGs into <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#avif_image">AVIFs</a></li>
+                <li>images on the blog page are now <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading">loaded lazily</a></li>
+                <li>I've changed my <a target="_blank" href="/pix/avatar.avif">avatar</a> (I still have a copy of the silly badger - don't worry)</li>
+                <li>I've added an <a target="_blank" href="/pix/favicons/1250x1250.jpg">favicon</a></li>
+                <li>mathematical equations are now rendered with an SVG image</li>
+                <li>code snippets are now syntax-highlighted with <a target="_blank" href="https://pygments.org/">pygments</a></li>
+                <li>'long' code line are now wrapped</li>
+                <li>
+                    I've added <a target="_blank" href="https://ogp.me/">OpenGraph</a>, <a target="_blank" href="https://loqbooq.app/blog/add-favicon-modern-browser-guide">favicon</a> [<a target="_blank" href="https://www.emergeinteractive.com/insights/detail/The-Essentials-of-FavIcons/">1</a>] and <a href="https://tutorials.comandeer.pl/html5-blog.html?fbclid=IwAR11hQRNjYrNUFAlnJ7zmvs7rO2oxnwvXj40dr-NaxcHfJCBVUXv4OkdNNY">some other</a> metadata tags.
+                    There's also a <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Manifest">manifest.json</a> file now (this means you <em>should</em> be able to add this blog to your smartphone's home-screen)
+                </li>
+            </ol>
+         ]]>
+                </description>
+            </item>
+            <item>
                 <title>hacking a warcraft 3 map</title>
                 <guid>https://jacadzaca.github.io/blog/hacking_a_warcraft_3_map.html</guid>
                 <link>https://jacadzaca.github.io/blog/hacking_a_warcraft_3_map.html</link>
@@ -485,46 +512,6 @@
             I think it was supposed to be a fan-fiction about
             <a href="https://www.youtube.com/channel/UCjdQaSJCYS4o2eG93MvIwqg">Killian</a>,
             but I can't really remeber.
-         ]]>
-                </description>
-            </item>
-            <item>
-                <title>browser dark mode</title>
-                <guid>https://jacadzaca.github.io/blog/browser_dark_mode.html</guid>
-                <link>https://jacadzaca.github.io/blog/browser_dark_mode.html</link>
-                <pubDate>Sat, 24 Apr 2021 22:04:01 0200</pubDate>
-                <description>
-                    <![CDATA[ 
-            Today I've discovered CSS media queries, one of which has
-            especially caught my attention:
-            <p style="text-indent: 5%">
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">@media (prefers-color-scheme dark)</a>
-            </p>
-            Browsers have a built-in dark mode!
-            As I am a dark mode <em>connoisseur</em>, I've decided to enable it in my
-            browser.
-            <p>The first thing that popped into my head was to check the
-            <i>chrome://settings/appearance</i>
-            page, but it turned out that the theme there was already set to a dark one.
-            </p>
-            <p>I had to dig deeper.</p>
-            After a moment of googling, I've discovered the
-            <i>chrome://flags/</i> page,
-            where I've found the <i>Web Platform Controls Dark Mode</i> and
-            the <i>Force Dark Mode for Web Contents</i> options, which I enabled
-            both. The first option was the one I was looking for, but the second was the
-            one I was <em>really</em> looking for. It forces <em>every</em> page to
-            render in dark mode, to be honest it makes some pages look a little clunky,
-            but they are still usable:
-            <hr>
-            <a target="_blank" href="/pix/clunky.avif"><img loading="lazy" style="margin-bottom: 10px" src="/pix/clunky.avif" title="there is some white stuff there, yuck!"></a>
-            <hr>
-            <a target="_blank" href="/pix/clunky1.avif"><img loading="lazy" src="/pix/clunky1.avif" title="the empty levels are not visible, the puppets arms are barely visible"></a>
-            <hr>
-            <h2>What if I don't use Chrome?</h2>
-            During my search, I've also stumbled upon this <a target="_blank" href="https://darkreader.org/">plugin</a>,
-            it works with every popular browser, including Chrome (in my opinion though,
-            it produces worse looking pages than the naitive option).
          ]]>
                 </description>
             </item>
