@@ -17,7 +17,6 @@
                 <pubDate>Wed, 29 Dec 2021 16:15:35 0200</pubDate>
                 <description>
                     <![CDATA[ 
-
         <p>
             I'm a big Warcraft fan. Actually, I consider Warcraft 3 to be the best video game of all time. I like the story, the voice-acting (polish voice-over was great until Reforged), and
             the music fits game-play. But what's best about Warcraft 3 is its universal game engine that combined with the powerful game editor would lead to creation of many unique mods. Of course, I have my favorite:
@@ -25,7 +24,6 @@
             either making a donation to the author or if you know him in-game. What's more, the donation service was <a target="_blank" href="https://warrttssgames.blogspot.com/p/premium-alchemicy.html">shut-down in 2012</a> with the guy quting the game. Since the map is protected,
             meaning nobody can open the mod file in the editor, the characters seemed to have been lost to the sands of time... Until I figured out a way to produce a patch that removes the paywall.
         </p>
-
         <h2>Protections, how do they work?</h2>
         <p>
             First, a brief introduction to the Warcraft map file format (w3x). For my purposes, every Warcraft 3 mod is basically an archive (<a target="_blank" href="https://world-editor-tutorials.thehelper.net/cat_usersubmit.php?view=42787">see here for proper docs</a>) that contains
@@ -37,7 +35,6 @@
                 It also removes the MPQ's (name of the archiving format) listfile, therefore obfuscating files' names.
             </p>
         </p>
-
         <h2>The plan</h2>
         <p>
             Since I'm familiar with the Warcraft ecosystem, a glance at the map in-game revealed that there must be a certain upgrade that
@@ -73,7 +70,6 @@
                 <li>a 128 by 128, <i>Cityscape</i> tileset, Warcraft map to use as a template</li>
             </ol>
         </p>
-
         <h2>The implementation</h2>
         <p>
             First, I downloaded one of my old, unfinished maps for a template. Then, I created two directories:
@@ -118,7 +114,7 @@
         <p>
             Although the patch works (see [1]), it's somehow rough around (points [2-5]) the edges:
             <hr>
-            <a target="_blank" href="/pix/hero_selection_comparison.png"><img loading="lazy" alt="a side-by-side comparison of original Alchemicy map and its 'hacked' version" title="a side-by-side comparison of original Alchemicy map and its 'hacked' version" src="/pix/hero_selection_comparison.png"></a>
+            <a target="_blank" href="/pix/hero_selection_comparison.avif"><img loading="lazy" alt="a side-by-side comparison of original Alchemicy map and its 'hacked' version" title="a side-by-side comparison of original Alchemicy map and its 'hacked' version" src="/pix/hero_selection_comparison.avif"></a>
             <hr>
             I also think it's also worth mentioning that:
             <ol>
@@ -185,43 +181,19 @@
         It turns out that you can find the value of sin(18&#176;) by the following method:
         <p>
             Notice that by the sin addition formula:
-            <pre>
-    1&#176; sin(54&#176;) - sin(18&#176;) = 2 * cos(<sup>(54&#176; + 18&#176;)</sup>&frasl;<sub>2</sub>) * sin(<sup>(54&#176; - 18&#176;)</sup>&frasl;<sub>2</sub>) = 2 * cos(36&#176;) * sin(18&#176;)
-            </pre>
+            <a target="_blank" href="/pix/equation1.svg"><img loading="lazy" src="/pix/equation1.svg"/></a>
             Also:
-            <pre>
-    sin(54&#176;) - sin(18&#176;) = cos(90&#176; - 54&#176;) - sin(18&#176;) = cos(36&#176;) - sin(18&#176;)
-            </pre>
+            <a target="_blank" href="/pix/equation2.svg"><img loading="lazy" src="/pix/equation2.svg"/></a>
             Moreover, by the double cosine formula:
-            <pre>
-    2&#176; cos(36&#176;) = cos[(2 * 18)&#176;] = cos<sup>2</sup>(18&#176;) - sin<sup>2</sup>(18&#176;)
-            </pre>
+            <a target="_blank" href="/pix/equation3.svg"><img loading="lazy" src="/pix/equation3.svg"/></a>
             Now use the Pythagorean identity like this:
-            <pre>
-    cos<sup>2</sup>(18&#176;) - sin<sup>2</sup>(18&#176;) = 1 - sin<sup>2</sup>(18&#176;) - sin<sup>2</sup>(18&#176;) = 1 - 2 * sin<sup>2</sup>(18&#176;)
-            </pre>
+            <a target="_blank" href="/pix/equation4.svg"><img loading="lazy" src="/pix/equation4.svg"/></a>
             Now equate the right-hand side of equation 2&#176; with the right-hand side of statement 1&#176;, and substitute for <i>cos(36&#176;)</i>:
-            <pre>
-    cos(36&#176;) - sin(18&#176;) = 2 * cos(36&#176;) * sin(18&#176;)
-    1 - 2 * sin<sup>2</sup>(18&#176;) - sin(18&#176;) = 2 * [1 - 2 * sin<sup>2</sup>(18&#176;)] * sin(18&#176;) = 2 * sin(18&#176;) - 4 * sin<sup>3</sup>(18&#176;)
-    4 * sin<sup>3</sup>(18&#176;) - 2 * sin<sup>2</sup>(18&#176;) - 3 * sin(18&#176;) + 1 = 0
-    t := sin(18&#176;)
-    4t<sup>3</sup> - 2t<sup>2</sup> - 3t + 1 = 0
-            </pre>
+            <a target="_blank" href="/pix/equation5.svg"><img loading="lazy" src="/pix/equation5.svg"/></a>
             Notice that for t = 1 the equation is satisfied, so:
-            <pre>
-    4t<sup>3</sup> - 2t<sup>2</sup> - 3t + 1 = (t - 1)(4t<sup>2</sup> + 2t - 1) = 0 &lt;=&gt; t = 1 or 4t<sup>2</sup> + 2t - 1 = 0
-    4t<sup>2</sup> + 2t - 1 = 0
-    &Delta; = 4 + 4 * 4 = 4 * 5
-    &#8730;&Delta; = 2&#8730;5
-    t<sub>1</sub> = <sup>(-2 + 2&#8730;5)</sup>&frasl;<sub>8</sub> = <sup>(-1 + &#8730;5)</sup>&frasl;<sub>4</sub>
-    t<sub>2</sub> = <sup>(-2 - 2&#8730;5)</sup>&frasl;<sub>8</sub> = <sup>(-1 - &#8730;5)</sup>&frasl;<sub>4</sub>
-            </pre>
+            <a target="_blank" href="/pix/equation6.svg"><img loading="lazy" src="/pix/equation6.svg"/></a>
             Now notice that <i>1 &gt; t &gt; 0</i>, because <i>sin(x)</i> is an increasing function when <i>90 &gt; x &gt; 0</i> and <i>sin(90&#176;) = 1 > sin(18&#176;) > sin(0&#176;) = 0</i>,
             so <i> t = sin(18&#176;) = <sup>(-1 + &#8730;5)</sup>&frasl;<sub>4</sub> </i>, since that's the only solutions that meets the criteria
-        </p>
-        While this method works, it's not easy to come up with the first equation. I stumbled on it by pure coincidence.
-        I personally prefer the <a href="/pix/geo_sin18.png">geometrical</a> way of finding the value of sin(18), because it strikes me as the more obvious way of doing it.
          ]]>
                 </description>
             </item>
@@ -244,9 +216,7 @@
             <h2>Taylors, how do they work?</h2>
             Taylor series is a tool to express some function as a polynomial, using its nth derivative.
             Since <i>sin(x)</i> and its derivatives are differentiable, we can express <i>f(x) = sin(x)</i> as:
-            <pre>
-            p(x) = &sum;<sub>n=0</sub><sup>&infin;</sup>f<sup>(n)</sup>(a) * <sup>(x-a)<sup>n</sup></sup>&frasl;<sub>n!</sub>
-            </pre>
+            <a target="_blank" href="/pix/taylor_equation.svg"><img loading="lazy" src="/pix/taylor_equation.svg"/></a>
             In this case, we can't add infinitely many terms in a finite amount of time, so we have
             to approximate. Since this is a toy implementation, we will just compare it with python's
             math.sin implementation and call it quits when they will converge <i>good enough</i>.
@@ -259,36 +229,29 @@
             to see, is that derivatives with an ordinal that yields a reminder of two or three when divided by four are the
             derivatives with and minus sign. I don't know how to formally prove it... <em>yet</em>, but you need to trust me on this one.
             Translating into python code:
-            <pre><code>
-                def nth_sin_derivative(n, a=math.pi/2):
-                    if n % 4 in (2,3):
-                        sign = -1
-                    else:
-                        sign = 1
-                    if n % 2 == 0:
-                        function = sin
-                    else:
-                        function = cos
-                return sign * function(a)
-            </code></pre>
-
+            <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nth_sin_derivative</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">4</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">function</span> <span class="o">=</span> <span class="n">sin</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">function</span> <span class="o">=</span> <span class="n">cos</span>
+<span class="k">return</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></pre></div>
             Second, we need to actually be able to evaluate both <i>cos(x)</i> and <i>sin(x)</i> at our center. Since we are implementing <i>sin(x)</i>,
             we should deal with <i>cos(x)</i> first. We don't have to implement <i>cos(x)</i> separately -  notice that <i>sin(<sup>&#960</sup>&frasl;<sub>2</sub> - x) = cos(x)</i>:
-            <code><pre>
-                def cos(x):
-                    return sin((math.pi/2) - x)
-            </code></pre>
+            <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cos</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">((</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span></pre></div>
             Great. That solves the <i>cos(x)</i> part. Now, we can finally implement <i>sin(x)</i>:
-            <code><pre>
-            def sin(x, center=math.pi/2, term_count=5):
-                if x == math.pi/2:
-                    return 1
-                elif x == 0:
-                    return 0
-                else:
-                    values = (((x - center)**i / math.factorial(i)) * nth_sin_derivative(i, a=center) for i in range(term_count))
-                    return sum(values)
-            </code></pre>
+            <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">term_count</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">(((</span><span class="n">x</span> <span class="o">-</span> <span class="n">center</span><span class="p">)</span><span class="o">**</span><span class="n">i</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">*</span> <span class="n">nth_sin_derivative</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">center</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">term_count</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span></pre></div>
             We specify two special cases: <i>x = <sup>&#960</sup>&frasl;<sub>2</sub></i> for evaluating sin derivatives that require to compute <i>sin(x)</i> at center,
             and <i>x = 0</i> for evaluating sin derivatives that require to compute <i>cos(x)</i> at center. Else, we compute the Taylor series.
             </p>
@@ -297,10 +260,9 @@
             Well, it sure can compute <i>sin(x)</i>! With term_count=19 the approximation is nearly as good as the python's
             math.sin:
             <hr>
-            <a target="_blank" href="/pix/sin_taylor_series_barplot.gif"><img src="/pix/sin_taylor_series_barplot.gif"></img></a>
+            <a target="_blank" href="/pix/sin_taylor_series_barplot.gif"><img loading="lazy" src="/pix/sin_taylor_series_barplot.gif"></img></a>
             <hr>
-            <hr>
-            <a target="_blank" href="/pix/sin_taylor_series.gif"><img src="/pix/sin_taylor_series.gif"></img></a>
+            <a target="_blank" href="/pix/sin_taylor_series.gif"><img loading="lazy" src="/pix/sin_taylor_series.gif"></img></a>
             <hr>
             However, assemblies actually provide an <a target="_blank" href="https://cs.fit.edu/~mmahoney/cse3101/nasmdocb.html#section-B.4.100">fsin</a> instruction, so
             computing <i>sin(x)</i> in software when speed matters is kinda cringe. On the side note, CPUs don't actually use a Taylor series
@@ -319,7 +281,6 @@
                 <pubDate>Tue, 27 Jul 2021 01:25:29 0200</pubDate>
                 <description>
                     <![CDATA[ 
-
         As I don't use my <a target="_blank" href="/blog/btw_i_use_arch.html">arch laptop</a> that much, I've figured
         that I can use it as a backup storage for my collections - collections of memes and movies.
             <p>
@@ -328,9 +289,7 @@
                 trick, because my meme collection is 14GB big (pathetic), whereas my movies
                 take 139GB. My first though was to use <a target="_blank" href="https://rsync.samba.org/examples.html">rsync</a>.
                 I've never used rsync before, so I perused its man page and quickly found out that you can use:
-                <pre>
-<code>rsync -vzP /some/path user@remote:/some/other/path</code>
-                </pre>
+                <div class="highlight"><pre><span></span><span class="n">rsync</span><span class="w"> </span><span class="o">-</span><span class="n">vzP</span><span class="w"> </span><span class="o">/</span><span class="ow">some</span><span class="o">/</span><span class="k">path</span><span class="w"> </span><span class="k">user</span><span class="nv">@remote</span>:<span class="o">/</span><span class="ow">some</span><span class="o">/</span><span class="n">other</span><span class="o">/</span><span class="k">path</span><span class="w"></span></pre></div>
                 to sync the files. Then... I got a ssh error. I couldn't be bothered to install a ssh server on
                 my laptop, because that would only bloat my precious <em><strong>Arch</strong></em> Linux install. I continued the search.
             </p>
@@ -341,13 +300,9 @@
                 (rsync shines more when it comes to syncing
                 <a target="_blank" href="https://fedoramagazine.org/copying-large-files-with-rsync-and-some-misconceptions/">files that are 'similar'</a>).
                 It turns out that you can compress the files with tar and then use netcat to send them over the network with:
-                <pre>
-<code>tar -cpv --atime-preserve=system /path/to/ | nc -q 10 -l -p 45454</code>
-                </pre>
+                <div class="highlight"><pre><span></span>tar -cpv --atime-preserve<span class="o">=</span>system /path/to/ <span class="p">|</span> nc -q <span class="m">10</span> -l -p <span class="m">45454</span></pre></div>
                 on the source machine, and
-                <pre>
-<code>nc -w 10 X.X.X.X 45454 | tar -xpv</code>
-                </pre>
+                <div class="highlight"><pre><span></span>nc -w <span class="m">10</span> X.X.X.X <span class="m">45454</span> <span class="p">|</span> tar -xpv</pre></div>
                 on the destination computer. The traffic isn't encrypted at all, but that's not a problem over LAN (e.g sending movies
                 to my laptop). Albeit, <a target="_blank" href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-35">encryption can be provided with ssh</a> or 
                 <a target="_blank" href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-936">with a VPN</a>.
@@ -402,7 +357,7 @@
             </p>
             <p>
                 <h2>Results</h2>
-                <a target="_blank" href="/pix/calendar.png"><img src="/pix/calendar.png"></img></a>
+                <a target="_blank" href="/pix/calendar.avif"><img loading="lazy" src="/pix/calendar.avif"></img></a>
                 <p>
                 Basically, over the last three years I've spent around 36.8% of my time on mindless Internet browsing, while allocating
                 about 2.3% of it to being 'off the grid' (relaxing + social).
@@ -513,7 +468,7 @@
                  You can go to the previous/next page, you can look through your bookmarks, you can
                  even copy the URL of the page you are looking at.
                  <hr>
-                 <a href="/pix/vimium.png"><img src="/pix/vimium.png" title="full list of vimium's keybinds"></img></a>
+                 <a href="/pix/vimium.avif"><img loading="lazy" src="/pix/vimium.avif" title="full list of vimium's keybinds"></img></a>
                  <hr>
                  What's also great is the fact that you remap Vimium's key-binds how you like.
             </p>
@@ -523,11 +478,6 @@
                 to link hints. By default, pressing ctrl-f will make little boxes with letters (called link hints)
                 appear next to all the links on the web-page. You now are only (at most) two key-strokes away from
                 <b>clicking</b> that link!
-                <hr>
-                <video controls>
-                    <source src="/pix/vimium.mp4">
-                </video>
-                <hr>
                 You can customize the boxes' look with CSS, however the feature seems to be a little clunky -
                 CSS sometimes only loads after refreshing a page.
             </p>
@@ -547,10 +497,9 @@
                     <![CDATA[ 
             Today I've discovered CSS media queries, one of which has
             especially caught my attention:
-            <blockquote>
-            <a target="_blank"
-             href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">@media (prefers-color-scheme dark)</a>
-            </blockquote>
+            <p style="text-indent: 5%">
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">@media (prefers-color-scheme dark)</a>
+            </p>
             Browsers have a built-in dark mode!
             As I am a dark mode <em>connoisseur</em>, I've decided to enable it in my
             browser.
@@ -568,8 +517,9 @@
             render in dark mode, to be honest it makes some pages look a little clunky,
             but they are still usable:
             <hr>
-            <img style="margin-bottom: 10px" src="/pix/clunky.png" title="there is some white stuff there, yuck!">
-            <img src="/pix/clunky1.png" title="the empty levels are not visible, the puppets arms are barely visible">
+            <a target="_blank" href="/pix/clunky.avif"><img loading="lazy" style="margin-bottom: 10px" src="/pix/clunky.avif" title="there is some white stuff there, yuck!"></a>
+            <hr>
+            <a target="_blank" href="/pix/clunky1.avif"><img loading="lazy" src="/pix/clunky1.avif" title="the empty levels are not visible, the puppets arms are barely visible"></a>
             <hr>
             <h2>What if I don't use Chrome?</h2>
             During my search, I've also stumbled upon this <a target="_blank" href="https://darkreader.org/">plugin</a>,

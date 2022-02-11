@@ -1,21 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" vocab="http://schema.org" typeof="Blog">
     <head>
         <title>Link Library</title>
-        <link rel="stylesheet" href="style.css"></link>
+
+        <link rel="author" href="jacadzaca">
+        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/rss.xml">
+        <link rel="icon" href="/pix/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/pix/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/pix/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
+        <link rel="icon" href="/pix/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
+        <link rel="icon" href="/pix/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
+        <link rel="apple-touch-icon" href="/pix/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
+        <link rel="apple-touch-icon" href="/pix/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
+        <link rel="stylesheet" href="/style.css">
+        <link rel="manifest" href="/manifest.json">
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Link I consider intresting">
+        <meta name="theme-color" content="#171716">
+        <meta name="description" content="Links I consider intresting enough to bookmark">
+        <meta property="og:type" content="website">
+        <meta property="og:description" content="jaca's bookmarks">
+        <meta property="og:site_name" content="jaca's safe haven">
+        <meta property="og:title" content="jaca's bookmarks">
+        <meta property="og:image" content="/pix/favicons/1250x1250.jpg">
+        <meta property="og:image:width" content="1250">
+        <meta property="og:image:height" content="1250">
+        <meta property="og:image:alt" content="jaca's blog logo">
     </head>
     <body>
         <hr>
         <nav class="nav">
-            <a href="index.html">Home</a>
-            <a href="blog.html">Blog</a>
-            <a target="_blank" href="https://github.com/jacadzaca">Code</a>
+            <a href="/index.html">Home</a>
+            <a href="/blog.html">Blog</a>
+            <ul title="Ways we can get in touch">
+                Contact
+                <div class="dropdown-content">
+                    <li><a href="mailto:vitouejj@gmail.com" title="Please encrypt your emails with PGP">Email</a></li>
+                    <li><a href="/jacadzaca.gpg" title="Pretty good privacy">PGP</a></li>
+                </div>
+            </ul>
         </nav>
         <hr>
-            <details open>
+        <main>
+                <details open>
         <summary><h1>Security</h1></summary>
         <ul>
                     <li>
@@ -168,7 +196,7 @@
                     </li>
         </ul>
     </details>
-            <details open>
+                <details open>
         <summary><h1>Computer Science</h1></summary>
         <ul>
                     <li>
@@ -362,11 +390,19 @@
                     <a target="_blank"
                         href="https://dtai.cs.kuleuven.be/problog/index.html#">Introduction. — ProbLog: Probabilistic Programming</a>
                     </li>
+                    <li>
+                    <a target="_blank"
+                        href="https://www.inklestudios.com/ink/">ink - inkle's narrative scripting language</a>
+                    </li>
+                    <li>
+                    <a target="_blank"
+                        href="https://en.wikipedia.org/wiki/Andrea_del_Verrocchio">Andrea del Verrocchio - Wikipedia</a>
+                    </li>
         </ul>
     </details>
         </ul>
     </details>
-            <details open>
+                <details open>
         <summary><h1>Maths</h1></summary>
         <ul>
                     <li>
@@ -503,7 +539,7 @@
                     </li>
         </ul>
     </details>
-            <details open>
+                <details open>
         <summary><h1>Server</h1></summary>
         <ul>
                     <li>
@@ -694,9 +730,13 @@
                     <a target="_blank"
                         href="https://github.com/netlify/gocommerce">netlify/gocommerce: A headless e-commerce for JAMstack sites</a>
                     </li>
+                    <li>
+                    <a target="_blank"
+                        href="https://github.com/tonarino/innernet">tonarino/innernet: A private network system that uses WireGuard under the hood.</a>
+                    </li>
         </ul>
     </details>
-            <details open>
+                <details open>
         <summary><h1>Document Formatting</h1></summary>
         <ul>
                     <li>
@@ -709,7 +749,7 @@
                     </li>
         </ul>
     </details>
-            <details open>
+                <details open>
         <summary><h1>Finance</h1></summary>
         <ul>
                     <li>
@@ -804,9 +844,13 @@
                     <a target="_blank"
                         href="https://ksiegarnia.pwn.pl/Reforma-polskiego-systemu-bankowego-w-latach-1987-2004-we-wspomnieniach-jej-tworcow,494174408,p.html">Reforma polskiego systemu bankowego w latach 1987-2004 we wspomnieniach jej twórców - Piotr Aleksandrowicz, Aleksandra Fandrejewska-Tomczyk - Książka - Księgarnia Internetowa PWN</a>
                     </li>
+                    <li>
+                    <a target="_blank"
+                        href="https://klubjagiellonski.pl/2022/01/05/kaczynski-zlosliwie-podnosi-ceny-gazu-10-pytan-o-koszty-energii-na-ktore-wszyscy-powinni-znac-odpowiedz-ale-nikt-ich-nie-zadaje/">Kaczyński złośliwie podnosi ceny gazu? 10 pytań o koszty energii, na które wszyscy powinni znać odpowiedź, ale nikt ich nie zadaje — Klub Jagielloński</a>
+                    </li>
         </ul>
     </details>
-            <details open>
+                <details open>
         <summary><h1>Social</h1></summary>
         <ul>
                     <li>
@@ -1149,9 +1193,41 @@
                     <a target="_blank"
                         href="https://krytykapolityczna.pl/gospodarka/marcin-wrobel-16-godzin-praca-klasa-srednia/">Możemy zapierdalać 16 godzin dziennie, ale do wygrania jest co najwyżej nagroda pocieszenia</a>
                     </li>
+                    <li>
+                    <a target="_blank"
+                        href="https://twotw.xyz/p/cant-fix-internet.html">We Can't Fix the Internet</a>
+                    </li>
+                    <li>
+                    <a target="_blank"
+                        href="https://klubjagiellonski.pl/2022/01/04/jak-odkorkowac-przeciazane-sady-do-sejmu-trafily-cztery-projekty-wprowadzajace-instytucje-sedziow-pokoju/">Jak odkorkować przeciążone sądy? Do Sejmu trafiły cztery projekty wprowadzające instytucję sędziów pokoju — Klub Jagielloński</a>
+                    </li>
+                    <li>
+                    <a target="_blank"
+                        href="https://klubjagiellonski.pl/2021/12/28/belchatow-miasto-ktore-zniknie-bez-zdecydowanej-transformacji-energetycznej-na-ratunek-elektrownia-atomowa/">Bełchatów – miasto, które „zniknie” bez zdecydowanej transformacji energetycznej. Na ratunek… elektrownia atomowa? — Klub Jagielloński</a>
+                    </li>
+                    <li>
+                    <a target="_blank"
+                        href="https://klubjagiellonski.pl/2021/12/23/polska-najwieksza-ofiara-drenazu-mozgow-w-ue-mamy-szanse-odwrocic-ten-trend-kierujac-wzrok-w-strone-azji-i-afryki/">Polska największą ofiarą drenażu mózgów w UE. Mamy szansę odwrócić ten trend, kierując wzrok w stronę Azji i Afryki — Klub Jagielloński</a>
+                    </li>
+                    <li>
+                    <a target="_blank"
+                        href="https://krytykapolityczna.pl/kultura/czytaj-dalej/alicja-urbanik-kopec-pan-i-sluzaca-od-pracy-na-sluzbie-do-pracy-seksualnej/">Pan i służąca. Od pracy na służbie do pracy seksualnej</a>
+                    </li>
+                    <li>
+                    <a target="_blank"
+                        href="https://www.cambridge.org/core/journals/perspectives-on-politics/article/how-nonmajoritarian-institutions-make-silent-majorities-vocal-a-political-explanation-of-authoritarian-populism/7C0394317BD81AEB207F23684DA29CEB">How Non-Majoritarian Institutions Make Silent Majorities Vocal: A Political Explanation of Authoritarian Populism | Perspectives on Politics | Cambridge Core</a>
+                    </li>
+                    <li>
+                    <a target="_blank"
+                        href="https://krytykapolityczna.pl/kultura/czytaj-dalej/fajny-ten-atom-ale-taki-nie-bardzo-dla-polski/">Fajny ten atom, ale taki nie bardzo dla Polski</a>
+                    </li>
+                    <li>
+                    <a target="_blank"
+                        href="https://klubjagiellonski.pl/2022/02/02/dyskryminacja-ze-wzgledu-na-wiek-na-polskim-rynku-pracy-badania-pie-pokazuja-ze-jak-najbardziej/">Dyskryminacja ze względu na wiek na polskim rynku pracy? Badania PIE pokazują, że jak najbardziej — Klub Jagielloński</a>
+                    </li>
         </ul>
     </details>
-            <details open>
+                <details open>
         <summary><h1>Environment</h1></summary>
         <ul>
                     <li>
@@ -1168,7 +1244,7 @@
                     </li>
         </ul>
     </details>
-            <details open>
+                <details open>
         <summary><h1>Game Development</h1></summary>
         <ul>
                     <li>
@@ -1201,7 +1277,7 @@
                     </li>
         </ul>
     </details>
-            <details open>
+                <details open>
         <summary><h1>WoW Emulation</h1></summary>
         <ul>
                     <li>
@@ -1234,7 +1310,7 @@
                     </li>
         </ul>
     </details>
-            <details open>
+                <details open>
         <summary><h1>Old Web</h1></summary>
         <ul>
                     <li>
@@ -1313,15 +1389,22 @@
                     <a target="_blank"
                         href="http://dorlana.webd.pl/sws/index.php?sid=9e56d70ec3d92cf1d5a01b4a9cb725a0">~ Smoki Wolnych Stad :: Strona Główna</a>
                     </li>
+                    <li>
+                    <a target="_blank"
+                        href="http://www.oldflutes.com/">Rick Wilson's Historical Flutes Page</a>
+                    </li>
+                    <li>
+                    <a target="_blank"
+                        href="https://didntask.neocities.org/christposting/ifGodexists.html">"If God exists..."</a>
+                    </li>
         </ul>
     </details>
+        </main>
         <hr>
         <footer class="nav">
-            <a href="linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
-            <a href="mailto:vitouejj@gmail.com" title="Get in touch">Email</a>
-            <a href="jacadzaca.gpg" title="Pretty good privacy">PGP</a>
-            <a target="_blank" href="rss.xml" title="Stay updated">Feed</a>
-            <a href="bookmarks.html" title="Browser bookmarks">Interesting Links</a>
+            <a href="/linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
+            <a target="_blank" href="/rss.xml" title="Stay updated">Feed</a>
+            <a href="/bookmarks.html" title="Browser bookmarks">Bookmarked pages</a>
         </footer>
         <hr>
     </body>

@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" vocab="http://schema.org" typeof="Blog">
     <head>
         <title>jaca's Homepage</title>
-        <link rel="stylesheet" href="style.css"></link>
+
+        <link rel="author" href="jacadzaca">
+        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/rss.xml">
+        <link rel="icon" href="/pix/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/pix/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/pix/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
+        <link rel="icon" href="/pix/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
+        <link rel="icon" href="/pix/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
+        <link rel="apple-touch-icon" href="/pix/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
+        <link rel="apple-touch-icon" href="/pix/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
+        <link rel="stylesheet" href="/style.css"></link>
+        <link rel="manifest" href="/manifest.json">
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="jaca's website">
+        <meta name="theme-color" content="#171716">
+        <meta name="description" content="jaca's safe haven - a blog">
+        <meta property="og:type" content="website">
+        <meta property="og:description" content="jaca's homepage">
+        <meta property="og:site_name" content="jaca's safe haven">
+        <meta property="og:title" content="jaca's homepage">
+        <meta property="og:image" content="/pix/favicons/1250x1250.jpg">
+        <meta property="og:image:width" content="1250">
+        <meta property="og:image:height" content="1250">
+        <meta property="og:image:alt" content="jaca's blog logo">
     </head>
     <body>
         <h1 style="text-align: left;">jaca's safe haven</h1>
@@ -13,7 +34,12 @@
         <nav class="nav">
             <a href="/index.html">Home</a>
             <a href="/blog.html">Blog</a>
-            <a target="_blank" href="https://github.com/jacadzaca">Code</a>
+            <ul title="My programs">
+                <a target="_blank" href="https://github.com/jacadzaca">Github</a>
+                <div class="dropdown-content">
+                    <li><a target="_blank" href="https://codeberg.org/jacadzaca" title="Github alternative">Codeberg</a></li>
+                </div>
+            </ul>
             <ul title="Ways we can get in touch">
                 Contact
                 <div class="dropdown-content">
@@ -23,35 +49,37 @@
             </ul>
         </nav>
         <hr>
-        <img class="avatar" src="pix/avatar.jpg"/>
-        <p>
-            I major in applied-maths, keep a diary and a <a href="https://en.wikipedia.org/wiki/Dream_diary">dream diary</a>.
-            On my blog I write about the <a target="_blank" href="https://github.com/jacadzaca/">programs I've written</a> or maths.
+        <main>
+            <img loading="lazy" class="avatar" src="pix/avatar.avif"/>
             <p>
-                If the page looks odd on your device, feel free to
-                <a href="mailto:vitouejj@gmail.com">email</a> me.
+                I major in applied-maths, keep a diary and a <a href="https://en.wikipedia.org/wiki/Dream_diary">dream diary</a>.
+                On my blog I write about the <a target="_blank" href="https://github.com/jacadzaca/">programs I've written</a> or maths.
+                <p>
+                    If the page looks odd on your device, feel free to
+                    <a href="mailto:vitouejj@gmail.com">email</a> me.
+                </p>
             </p>
-        </p>
-        <h2>Recent posts
-            <a title="Newsletters are bloat, rss is 1337" href="rss.xml">(feed)</a>:
-        </h2>
-        <ul>
-                <li>
-                    <a href="blog/hacking_a_warcraft_3_map.html">hacking a warcraft 3 map</a>
-                </li>
-                <li>
-                    <a href="blog/are_landlords_cringe.html">are landlords cringe</a>
-                </li>
-                <li>
-                    <a href="blog/other_way_to_find_sin_of_18.html">other way to find sin of 18</a>
-                </li>
-                <li>
-                    <a href="blog/how_sin_is_computed.html">how sin is computed</a>
-                </li>
-                <li>
-                    <a href="blog/transfer_files_with_netcat.html">transfer files with netcat</a>
-                </li>
-        </ul>
+            <h2>Recent posts
+                <a title="Newsletters are bloat, rss is 1337" href="rss.xml">(feed)</a>:
+            </h2>
+            <ul>
+                    <li>
+                        <a href="blog/hacking_a_warcraft_3_map.html">hacking a warcraft 3 map</a>
+                    </li>
+                    <li>
+                        <a href="blog/are_landlords_cringe.html">are landlords cringe</a>
+                    </li>
+                    <li>
+                        <a href="blog/other_way_to_find_sin_of_18.html">other way to find sin of 18</a>
+                    </li>
+                    <li>
+                        <a href="blog/how_sin_is_computed.html">how sin is computed</a>
+                    </li>
+                    <li>
+                        <a href="blog/transfer_files_with_netcat.html">transfer files with netcat</a>
+                    </li>
+            </ul>
+        </main>
         <hr>
         <footer class="nav">
             <a href="/linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
