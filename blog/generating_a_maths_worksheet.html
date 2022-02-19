@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" vocab="http://schema.org" typeof="Blog">
+    <head>
+        <title>generating a maths worksheet | jaca's safe haven</title>
+
+        <link rel="author" href="https://jacadzaca.github.io/">
+        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/rss.xml">
+        <link rel="icon" href="/pix/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/pix/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/pix/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
+        <link rel="icon" href="/pix/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
+        <link rel="icon" href="/pix/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
+        <link rel="apple-touch-icon" href="/pix/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
+        <link rel="apple-touch-icon" href="/pix/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
+        <link rel="stylesheet" href="/style.css"></link>
+        <link rel="manifest" href="/manifest.json">
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#171716">
+        <meta name="keywords" content="maths problem generator worksheet">
+        <meta name="description" content="describing how to write a simple maths worksheet generator">
+        <meta property="og:type" content="article">
+        <meta property="article:published_time" content="2022-02-19T16:53:33">
+        <meta property="article:section" content="technology">
+        <meta property="article:tag" content="maths">
+        <meta property="article:tag" content="problem generator">
+        <meta property="article:tag" content="worksheet generator">
+        <meta property="og:description" content="describing how to write a simple maths worksheet generator">
+        <meta property="og:site_name" content="jaca's safe haven">
+        <meta property="og:title" content="generating a maths worksheet">
+        <meta property="og:image" content="/pix/favicons/1250x1250.jpg">
+        <meta property="og:image:width" content="1250">
+        <meta property="og:image:height" content="1250">
+        <meta property="og:image:alt" content="jaca's blog logo">
+    </head>
+    <body>
+        <h1 style="text-align: left">generating a maths worksheet</h1>
+        <hr>
+        <nav class="nav">
+            <a href="/index.html">Home</a>
+            <a href="/blog.html">Blog</a>
+            <ul title="Ways we can get in touch">
+                Contact
+                <div class="dropdown-content">
+                    <li><a href="mailto:vitouejj@gmail.com" title="Please encrypt your emails with PGP">Email</a></li>
+                    <li><a href="/jacadzaca.gpg" title="Pretty good privacy">PGP</a></li>
+                </div>
+            </ul>
+        </nav>
+        <hr>
+        <article role="main">
+            <h2>Inspiration</h2>
+            <p>
+                When you get a maths worksheet, it usually comes with the answers to the
+                problems from each section, so you can check your work - pretty nifty.
+                However, it turns out that's not the way they do it at my university.
+                Passing semester, I had to trudge through <em>a ton</em> of answerless
+                worksheets, which made studying much more time-consuming,
+                since I had to spend extra minute or two <em>per example</em> inputting the
+                equation into <a target="_blank" href="https://www.symbolab.com/">Symbolab</a>,
+                or googling for the solution. Let for minor annoyances, when I couldn't input
+                some problem into Symbolab or when it <a target="_blank" href="https://www.symbolab.com/solver/step-by-step/%5Clim_%7Bx%5Cto0%7D%5Cleft(%5Cfrac%7Bsin%5Cleft(x%5Cright)%7D%7Bx%7D%5Cright)?or=input">spouted out gibberish</a>,
+                I finished the semester less than unharmed - I got inspired. Leaving the question of whether not handing out answer-sheets was just a big <a target="_blank" href="https://www.urbandictionary.com/define.php?term=psyop">psyop</a>
+                by my instructors to to force students into creating study groups for another time, I decided I would generate my own worksheets (without blackjack and hookers... sadly).
+            </p>
+            <h2>How?</i></h2>
+            <p>
+                <a target="_blank" href="https://www.wolframalpha.com/problem-generator/">Wolfram's Problem Generator</a> claims to be using AI to generate the problem sheets,
+                <a target="_blank" href="https://mathsbot.com/generators/textbook">mathsbot</a> probably uses some database of predefined questions. Shouldn't writing a maths worksheet generator be complicated?
+                or at least time consuming? Also, don't you need someone to handout answers? With the right software and mindset - no, no and no. If we think about it, maths worksheets are just permutations of different
+                symbols. We can generate these just fine, for example with python's <a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.product">itertools</a> or <a target="_blank" href="https://docs.python.org/3/library/random.html">random</a> module. Now,
+                since a worksheet usually comes with an answers section, we will also be needing a way of evaluating the generated expressions, luckily there's a
+                <a target="_blank" href="https://en.wikipedia.org/wiki/Computer_algebra_system">whole bunch of software that dose this</a>, for example, <a target="_blank" href="https://www.sympy.org/">sympy</a>.
+                To present the worksheets we can generate a <a target="_blank" href="https://www.latex-project.org/">LaTeX</a> document via <a target="_blank" href="https://jinja.palletsprojects.com/">jinja</a>
+                and then compile it with, for example, <a target="_blank" href="https://man.archlinux.org/man/pdftex.1">pdflatex</a>.
+            </p>
+            <h2>Implementation</h2>
+            <p>
+                For simplicity, we'll write a quadratics worksheet generator.
+                First, we'll need a function that spouts out quadratics,
+                we would like the generator to:
+                <ol>
+                    <li>differentiate quadratics on basis of the number of solutions, because
+                        a worksheet with, for example, only two solutions quadratics would be boring/incomprehensive,</li>
+                    <li>ensure that the quadratic's coefficients are not to crazy - in the end it's humans that
+                        will be solving the equations.</li>
+                </ol>
+                To achieve the first goal, we'll split the function into three.
+                Second one will require making some simple observations:
+                <ol>
+                    <li>it's more difficult to randomize fraction coefficents, so random coefficients will only be integers,</li>
+                    <li>coefficients should be bounded,</li>
+                    <li>it's easier to generate positive integers and then to pick a sign</li>
+                    <li>
+                        we know that a quadratic has two solutions, if and only
+                        if its <a target="_blank" href="https://en.wikipedia.org/wiki/Discriminant#Degree_2">discriminant is positive</a>,
+                        so given a quadratic of the form: <i>ax<sup>2</sup> + bx + c &and; a &ne; 0</i>,
+                        with two different solutions, we can write: <i><sup>b<sup>2</sup></sup>&frasl;<sub>4a</sub> > c</i>.
+                        Since we are looking for an integer upper-bound for <i>a</i> and
+                        <i>c</i>, lets set <i>c > 2</i>, therefore
+                        <i><sup>b<sup>2</sup></sup>&frasl;<sub>8</sub> > a</i>,
+                    </li>
+                    <li>
+                        for a quadratic to have one solution, it's discriminant must
+                        equal zero, so if we pick <i>a</i> and <i>c</i>, <i>b = &radic;<span style="text-decoration: overline">4ac</span></i>,
+                        since this could produe complicated coefficients, let's require <i>a</i> and <i>c</i> to be perfect squares.
+                    </li>
+                </ol>
+                Figuring out bounds for no-solutions quadratics is left as an exercise for the reader.
+                Translating the observations into python code:
+                <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">sympy</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">SIGN</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">generate_quadratic_two_solutions</span><span class="p">(</span><span class="n">max_coefficient</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_coefficient</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">//</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">//</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">*x**2 + </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">*x + </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">generate_quadratic_one_solution</span><span class="p">(</span><span class="n">max_coefficient</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">SIGN</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_coefficient</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_coefficient</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">*x**2 + </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">*x + </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">generate_quadratic_zero_solutions</span><span class="p">(</span><span class="n">max_coefficient</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">SIGN</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_coefficient</span><span class="p">),</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_coefficient</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))))</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">trunc</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">*x**2 + </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">*x + </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></pre></div>
+                Wait a minute, problems in a worksheet are usually ordered by difficulty -
+                the further the problem, the more difficult it is. I couldn't come up
+                with any <b>solid</b> way of evaluating a quadratic's difficulty, based
+                on it's coefficients, so I went with:
+                <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quadratic_difficulty_comperator</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">as_coefficients_dict</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></pre></div>
+        Now onto generating a LaTeX document. Luckily, <a target="_blank" href="https://docs.sympy.org/latest/tutorial/printing.html#mathrm-latex">sympy has a built-in LaTeX converter</a>,
+        so we'll only need to instiate <a target="_blank" href="https://jinja2docs.readthedocs.io/en/stable/api.html#basics">jinja</a> and
+        put toghether a <a target="_blank" href="https://raw.githubusercontent.com/jacadzaca/zadanko/master/zadanko/templates/problem_sheet.jinja.tex">template</a>:
+        <div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="kn">import</span> <span class="nn">sympy</span>
+<span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">FileSystemLoader</span>
+
+<span class="c1">#...quadratic generating code ommited for breviety...#</span>
+
+
+<span class="n">Task</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Task&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;instruction&#39;</span><span class="p">,</span> <span class="s1">&#39;problems&#39;</span><span class="p">,</span> <span class="s1">&#39;awnsers&#39;</span><span class="p">])</span>
+
+<span class="n">ENV</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span>
+    <span class="n">loader</span><span class="o">=</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">),</span>
+    <span class="n">trim_blocks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">lstrip_blocks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># generate diffrent kinds of quadratic equations</span>
+    <span class="n">zero_solutions_quadratics</span> <span class="o">=</span> <span class="p">[</span><span class="n">quadratics</span><span class="o">.</span><span class="n">generate_quadratic_zero_solutions</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+    <span class="n">one_solution_quadratics</span> <span class="o">=</span> <span class="p">[</span><span class="n">quadratics</span><span class="o">.</span><span class="n">generate_quadratic_one_solution</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+    <span class="n">two_solutions_quadratics</span> <span class="o">=</span> <span class="p">[</span><span class="n">quadratics</span><span class="o">.</span><span class="n">generate_quadratic_two_solutions</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+    <span class="c1"># sort them according to &#39;difficulty&#39; - the greater the sum of quadratic&#39;s coefficients, the more difficult it is</span>
+    <span class="n">zero_solutions_quadratics</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">quadratics</span><span class="o">.</span><span class="n">quadratic_difficulty_comperator</span><span class="p">)</span>
+    <span class="n">one_solution_quadratics</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">quadratics</span><span class="o">.</span><span class="n">quadratic_difficulty_comperator</span><span class="p">)</span>
+    <span class="n">two_solutions_quadratics</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">quadratics</span><span class="o">.</span><span class="n">quadratic_difficulty_comperator</span><span class="p">)</span>
+
+    <span class="c1"># arrange the problems in random order, but try to keep the problems&#39; difficulty incremental</span>
+    <span class="n">problem_lists</span> <span class="o">=</span> <span class="p">[</span><span class="n">zero_solutions_quadratics</span><span class="p">,</span> <span class="n">one_solution_quadratics</span><span class="p">,</span> <span class="n">two_solutions_quadratics</span><span class="p">]</span>
+    <span class="n">problems</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">zero_solutions_quadratics</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">one_solution_quadratics</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">two_solutions_quadratics</span><span class="p">)):</span>
+        <span class="n">choice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">problem_lists</span><span class="p">)</span>
+        <span class="n">problems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">choice</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">choice</span><span class="p">:</span>
+            <span class="n">problem_lists</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">choice</span><span class="p">)</span>
+
+    <span class="c1"># generate the awnsers with sympy https://docs.sympy.org/latest/index.html</span>
+    <span class="n">awnsers</span> <span class="o">=</span> <span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">printing</span><span class="o">.</span><span class="n">latex</span><span class="p">((</span><span class="n">sympy</span><span class="o">.</span><span class="n">solvers</span><span class="o">.</span><span class="n">solveset</span><span class="p">(</span><span class="n">quadratic</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">S</span><span class="o">.</span><span class="n">Reals</span><span class="p">)))</span> <span class="k">for</span> <span class="n">quadratic</span> <span class="ow">in</span> <span class="n">problems</span><span class="p">)</span>
+    <span class="c1"># convert into LaTeX</span>
+    <span class="n">problems</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">printing</span><span class="o">.</span><span class="n">latex</span><span class="p">,</span> <span class="n">problems</span><span class="p">)</span>
+
+    <span class="c1">#output latex code</span>
+    <span class="n">latex</span> <span class="o">=</span> <span class="n">ENV</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">&#39;problem_sheet.jinja.tex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">tasks</span><span class="o">=</span><span class="p">[</span><span class="n">Task</span><span class="p">(</span><span class="s1">&#39;Find the roots of function $f$, given by expression:&#39;</span><span class="p">,</span> <span class="n">problems</span><span class="p">,</span> <span class="n">awnsers</span><span class="p">)])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span></pre></div>
+        To compile and view the document, we can use:
+        <div class="highlight"><pre><span></span>./worksheet.py <span class="p">|</span> pdflatex --jobname worksheet --output-directory /tmp <span class="o">&amp;&amp;</span> zathura /tmp/worksheet.pdf</pre></div>
+        </p>
+        <h2>More</h2>
+        <p>
+            Slightly modifed version of this script can be found <a target="_blank" href="https://github.com/jacadzaca/zadanko">here</a>,
+            along with scripts generating worksheets on <a target="_blank" href="https://raw.githubusercontent.com/jacadzaca/zadanko/master/examples/generate_differentiation_worksheet.py" >differentiation</a>,
+            <a target="_blank" href="https://raw.githubusercontent.com/jacadzaca/zadanko/master/examples/generate_integration_worksheet.py">integration</a> and <a target="_blank" href="https://raw.githubusercontent.com/jacadzaca/zadanko/master/examples/generate_limit_worksheet.py">limits</a>.
+            Example worksheet generated with the script can be found <a target="_blank" href="https://file.enum.run/e8d4b8c0bdfa9554/example_worksheet.pdf">here</a>.
+            If you write a simillar script on some other math topic, for exmaple function graphing or trig equations, feel free to issue a <a target="_blank" href="https://github.com/jacadzaca/zadanko/pulls">pull request :)</a>.
+            I will also gladly accept <a href="mailto:vitouejj@gmail.com?subject=Worksheet generator script - [INSERT NAME]">links</a> to simillar repositories and include them in <a target="_blank" href="https://github.com/jacadzaca/zadanko#readme">zadanko's README</a>.
+        </p>
+        </article>
+        <hr>
+        <footer class="nav">
+            <a href="/linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
+            <a target="_blank" href="/rss.xml" title="Stay updated">Feed</a>
+            <a href="/bookmarks.html" title="Browser bookmarks">Bookmarked pages</a>
+        </footer>
+        <hr>
+    </body>
+</html>
