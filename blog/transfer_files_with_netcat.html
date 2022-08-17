@@ -1,91 +1,113 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" vocab="http://schema.org" typeof="Blog">
     <head>
-        <title>transfer files with netcat</title>
+        <title>transfer files with netcat | jaca's safe haven</title>
+        <link rel="stylesheet" href="/files/css/code_highlight.css"></link>
 
-        <link rel="author" href="https://jacadzaca.github.io/">
-        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/rss.xml">
-        <link rel="icon" href="/pix/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
-        <link rel="apple-touch-icon" href="/pix/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
-        <link rel="apple-touch-icon" href="/pix/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
-        <link rel="stylesheet" href="/style.css"></link>
-        <link rel="manifest" href="/manifest.json">
+        <link rel="author" href="/">
+        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/files/rss.xml">
+        <link rel="icon" href="/files/images/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
+        <link rel="apple-touch-icon" href="/files/images/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
+        <link rel="apple-touch-icon" href="/files/images/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
+        <link rel="stylesheet" href="/files/css/main.css"></link>
+        <link rel="manifest" href="/files/manifest.json">
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#171716">
-        <meta name="keywords" content="netcat nc file-syncing">
-        <meta name="description" content="use netcat to easily transfer files">
-        <meta property="og:type" content="article">
-        <meta property="article:published_time" content="2021-07-27T01:25:29">
-        <meta property="article:section" content="technology">
-        <meta property="article:tag" content="netcat">
-        <meta property="article:tag" content="nc">
-        <meta property="article:tag" content="file-syncing">
-        <meta property="og:description" content="use netcat to easily transfer files">
         <meta property="og:site_name" content="jaca's safe haven">
-        <meta property="og:title" content="transfer files with netcat">
-        <meta property="og:image" content="/pix/favicons/1250x1250.jpg">
+        <meta property="og:image" content="/files/images/favicons/1250x1250.jpg">
         <meta property="og:image:width" content="1250">
         <meta property="og:image:height" content="1250">
         <meta property="og:image:alt" content="jaca's blog logo">
+
+        <meta name="description" content="use netcat to easily transfer
+files">
+        <meta property="og:type" content="article">
+        <meta property="article:published_time" content="2021-07-27T01:25:29">
+        <meta property="article:section" content="technology">
+        <meta property="og:title" content="transfer files with netcat">
+        <meta property="og:description" content="use netcat to easily
+transfer files">
+        <meta property="article:tag" content="netcat">
+        <meta property="article:tag" content="nc">
+        <meta property="article:tag" content="file-syncing">
+        
     </head>
     <body>
-        <h1 style="text-align: left">transfer files with netcat</h1>
-        <hr>
-        <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/blog.html">Blog</a>
-            <ul title="Ways we can get in touch">
-                Contact
-                <div class="dropdown-content">
-                    <li><a href="mailto:vitouejj@gmail.com" title="Please encrypt your emails with PGP">Email</a></li>
-                    <li><a href="/jacadzaca.gpg" title="Pretty good privacy">PGP</a></li>
-                </div>
-            </ul>
+        <hr style="grid-column: 1 / 3; grid-row: 1">
+        <nav>
+            <a href="/index.html">🏠Home</a>
+            <a href="/blog.html">📜Blog</a>
+            <a target="_blank" href="/files/rss.xml" title="Stay updated">📡RSS Feed</a>
+            <a href="/git.html">🐙Git</a>
+            <a href="/links.html" title="Sites worth visting">🔗Links</a>
+            <a href="/contact.html">📨Contact</a>
+            <a href="/donate.html" title="Give me money">💰Donate</a>
+            <a href="/linux_tech_tips.html" title="Linux facts">💡Linux Tech Tips</a>
+            <a href="/bookmarks.html" title="My Browser bookmarks">🔖Bookmarks</a>
         </nav>
-        <hr>
-        <article role="main">
-        As I don't use my <a target="_blank" href="/blog/btw_i_use_arch.html">arch laptop</a> that much, I've figured
-        that I can use it as a backup storage for my collections - collections of memes and movies.
-            <p>
-                <h2>Rsync is bloat?</h2>
-                Using some kind of a USB as an intermediary wouldn't do the
-                trick, because my meme collection is 14GB big (pathetic), whereas my movies
-                take 139GB. My first though was to use <a target="_blank" href="https://rsync.samba.org/examples.html">rsync</a>.
-                I've never used rsync before, so I perused its man page and quickly found out that you can use:
-                <div class="highlight"><pre><span></span><span class="n">rsync</span><span class="w"> </span><span class="o">-</span><span class="n">vzP</span><span class="w"> </span><span class="o">/</span><span class="ow">some</span><span class="o">/</span><span class="k">path</span><span class="w"> </span><span class="k">user</span><span class="nv">@remote</span>:<span class="o">/</span><span class="ow">some</span><span class="o">/</span><span class="n">other</span><span class="o">/</span><span class="k">path</span><span class="w"></span></pre></div>
-                to sync the files. Then... I got a ssh error. I couldn't be bothered to install a ssh server on
-                my laptop, because that would only bloat my precious <em><strong>Arch</strong></em> Linux install. I continued the search.
-            </p>
-            <p>
-                <h2>Rsync is bloat, so let's pipe stuff into some program</h2>
-                I've <a target="_blank" href="https://superuser.com/questions/153176/how-to-rsync-a-large-file-with-as-little-cpu-and-bandwidth-expense-as-possible#answer-1020737">stumbled on this</a>
-                StackOverflow answer. Not only does this guy have a method that would allow me to transfer my movies without installing a ssh server, but he also claims that it's faster
-                (rsync shines more when it comes to syncing
-                <a target="_blank" href="https://fedoramagazine.org/copying-large-files-with-rsync-and-some-misconceptions/">files that are 'similar'</a>).
-                It turns out that you can compress the files with tar and then use netcat to send them over the network with:
-                <div class="highlight"><pre><span></span>tar -cpv --atime-preserve<span class="o">=</span>system /path/to/ <span class="p">|</span> nc -q <span class="m">10</span> -l -p <span class="m">45454</span></pre></div>
-                on the source machine, and
-                <div class="highlight"><pre><span></span>nc -w <span class="m">10</span> X.X.X.X <span class="m">45454</span> <span class="p">|</span> tar -xpv</pre></div>
-                on the destination computer. The traffic isn't encrypted at all, but that's not a problem over LAN (e.g sending movies
-                to my laptop). Albeit, <a target="_blank" href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-35">encryption can be provided with ssh</a> or 
-                <a target="_blank" href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-936">with a VPN</a>.
-            </p>
-        I think this method is very linux-like, because it combines two programs in some unusual fashion to create something new. I might consider replacing
-        <a target="_blank" href="https://www.man7.org/linux/man-pages/man1/scp.1.html">scp</a> with the ssh version of this trick.
-        </article>
-        <hr>
-        <footer class="nav">
-            <a href="/linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
-            <a target="_blank" href="/rss.xml" title="Stay updated">Feed</a>
-            <a href="/bookmarks.html" title="Browser bookmarks">Bookmarked pages</a>
-        </footer>
-        <hr>
+        <main>
+            <article>
+                <h1>transfer files with netcat</h1>
+                <p>As I don’t use my <a href="/blog/btw_i_use_arch.html"
+                target="_blank">arch laptop</a> that much, I’ve figured
+                that I can use it as a backup storage for my collections
+                - collections of memes and movies.</p>
+                <h2 id="rsync-is-bloat">Rsync is bloat?</h2>
+                <p>Using some kind of a USB as an intermediary wouldn’t
+                do the trick, because my meme collection is 14GB big
+                (pathetic), whereas my movies take 139GB. My first
+                though was to use <a
+                href="https://rsync.samba.org/examples.html"
+                target="_blank">rsync</a>. I’ve never used rsync before,
+                so I perused its man page and quickly found out that you
+                can use:</p>
+                <pre class="shell"><code>    rsync -vzP /some/path user@remote:/some/other/path</code></pre>
+                <p>to sync the files. Then... I got a ssh error. I
+                couldn’t be bothered to install a ssh server on my
+                laptop, because that would only bloat my precious
+                <strong><em>Arch</em></strong> Linux install. I
+                continued the search.</p>
+                <h2
+                id="rsync-is-bloat-so-lets-pipe-stuff-into-some-program">Rsync
+                is bloat, so let’s pipe stuff into some program</h2>
+                <p>I’ve <a
+                href="https://superuser.com/questions/153176/how-to-rsync-a-large-file-with-as-little-cpu-and-bandwidth-expense-as-possible#answer-1020737"
+                target="_blank">stumbled on this</a> StackOverflow
+                answer. Not only does this guy have a method that would
+                allow me to transfer my movies without installing a ssh
+                server, but he also claims that it’s faster (rsync
+                shines more when it comes to syncing <a
+                href="https://fedoramagazine.org/copying-large-files-with-rsync-and-some-misconceptions/"
+                target="_blank">files that are ‘similar’</a>). It turns
+                out that you can compress the files with tar and then
+                use netcat to send them over the network with:</p>
+                <pre class="shell"><code>    tar -cpv --atime-preserve=system /path/to/ | nc -q 10 -l -p 45454</code></pre>
+                <p>on the source machine, and</p>
+                <pre class="shell"><code>    nc -w 10 X.X.X.X 45454 | tar -xpv</code></pre>
+                <p>on the destination computer. The traffic isn’t
+                encrypted at all, but that’s not a problem over LAN (e.g
+                sending movies to my laptop). Albeit, <a
+                href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-35"
+                target="_blank">encryption can be provided with ssh</a>
+                or <a
+                href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-936"
+                target="_blank">with a VPN</a>.</p>
+                <p>I think this method is very linux-like, because it
+                combines two programs in some unusual fashion to create
+                something new. I might consider replacing <a
+                href="https://www.man7.org/linux/man-pages/man1/scp.1.html"
+                target="_blank">scp</a> with the ssh version of this
+                trick.</p>
+            </article>
+        </main>
+        <hr style="grid-column: 1 / 3; grid-row: 3;">
+        <footer>
+            <p> [This site 2022 by <a href="/">jacadzaca</a>, CC BY-SA 4.0]</p>        </footer>
     </body>
 </html>
- 

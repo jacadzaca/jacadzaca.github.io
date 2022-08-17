@@ -3,66 +3,83 @@
     <head>
         <title>jaca's Homepage</title>
 
-        <link rel="author" href="jacadzaca">
-        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/rss.xml">
-        <link rel="icon" href="/pix/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
-        <link rel="apple-touch-icon" href="/pix/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
-        <link rel="apple-touch-icon" href="/pix/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
-        <link rel="stylesheet" href="/style.css"></link>
-        <link rel="manifest" href="/manifest.json">
+        <link rel="author" href="/">
+        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/files/rss.xml">
+        <link rel="icon" href="/files/images/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
+        <link rel="apple-touch-icon" href="/files/images/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
+        <link rel="apple-touch-icon" href="/files/images/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
+        <link rel="stylesheet" href="/files/css/main.css"></link>
+        <link rel="manifest" href="/files/manifest.json">
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#171716">
-        <meta name="description" content="jaca's safe haven - a blog">
-        <meta property="og:type" content="website">
-        <meta property="og:description" content="jaca's homepage">
         <meta property="og:site_name" content="jaca's safe haven">
-        <meta property="og:title" content="jaca's homepage">
-        <meta property="og:image" content="/pix/favicons/1250x1250.jpg">
+        <meta property="og:image" content="/files/images/favicons/1250x1250.jpg">
         <meta property="og:image:width" content="1250">
         <meta property="og:image:height" content="1250">
         <meta property="og:image:alt" content="jaca's blog logo">
+
+        <meta name="description" content="jaca's safe haven - a blog">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="jaca's homepage">
+        <meta property="og:description" content="jaca's homepage">
     </head>
     <body>
-        <h1 style="text-align: left;">jaca's safe haven</h1>
-        <hr>
-        <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/blog.html">Blog</a>
-            <ul title="My programs">
-                <a target="_blank" href="https://github.com/jacadzaca">Github</a>
-                <div class="dropdown-content">
-                    <li><a target="_blank" href="https://codeberg.org/jacadzaca" title="Github alternative">Codeberg</a></li>
-                </div>
-            </ul>
-            <ul title="Ways we can get in touch">
-                Contact
-                <div class="dropdown-content">
-                    <li><a href="mailto:vitouejj@gmail.com" title="Please encrypt your emails with PGP">Email</a></li>
-                    <li><a href="/jacadzaca.gpg" title="Pretty good privacy">PGP</a></li>
-                </div>
-            </ul>
+        <hr style="grid-column: 1 / 3; grid-row: 1">
+        <nav>
+            <a href="/index.html">🏠Home</a>
+            <a href="/blog.html">📜Blog</a>
+            <a target="_blank" href="/files/rss.xml" title="Stay updated">📡RSS Feed</a>
+            <a href="/git.html">🐙Git</a>
+            <a href="/links.html" title="Sites worth visting">🔗Links</a>
+            <a href="/contact.html">📨Contact</a>
+            <a href="/donate.html" title="Give me money">💰Donate</a>
+            <a href="/linux_tech_tips.html" title="Linux facts">💡Linux Tech Tips</a>
+            <a href="/bookmarks.html" title="My Browser bookmarks">🔖Bookmarks</a>
         </nav>
-        <hr>
         <main>
-            <img loading="lazy" class="avatar" src="pix/avatar.avif"/>
-            <p>
-                I major in applied-maths, keep a diary and a <a href="https://en.wikipedia.org/wiki/Dream_diary">dream diary</a>.
-                On my blog I write about the <a target="_blank" href="https://github.com/jacadzaca/">programs I've written</a> or maths.
-                <p>
-                    If the page looks odd on your device, feel free to
-                    <a href="mailto:vitouejj@gmail.com">email</a> me.
-                </p>
-            </p>
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <p>
+                        <h2>About</h2>
+                        On my blog I mainly write about 'tech' - I showcase the <a target="_blank" href="/git.html">programs I've written</a> etc. -  or do 'math'.
+                        I sometimes write about what one could call 'lifestyle' and I try not to rant. When I'm not tinkering with my computer,
+                        I'm either studying (I major in math), cooking, playing video games, reading, writing in my diary or my <a target="_blank" href="https://en.wikipedia.org/wiki/Dream_diary">dream diary</a>.
+                        Sometimes, I even interact with other human beings, which usually results in both parties' enjoyment - crazy stuff.
+                        <p>
+                        If you would like to contact me, <a href="/contact.html">go here</a>.
+                        </p>
+                        <p>
+                        If you're looking for slides from the presentation, <a href="/files/talks/generowanie_zadan.pdf">they are here</a>
+                        </p>
+                        <p>
+                        You can checkout other cool (or even cooler) websites <a href="/links.html">here</a>
+                        </p>
+                        <p>
+                        If you're hungry for some Linux Tips, <a href="/linux_tech_tips.html">go here</a>
+                        </p>
+                        <p>
+                        I share my browser bookmarks <a href="/bookmarks.html">here</a>
+                        </p>
+                        <p>
+                        Lasty, if for some reason, you'd like to give me money, <a href="/donate.html">you can do so here</a>
+                        </p>
+                    </p>
+                </div>
+                <img loading="lazy" class="avatar" src="/files/images/avatar.avif"/>
+            </div>
             <h2>Recent posts
-                <a title="Newsletters are bloat, rss is 1337" href="rss.xml">(feed)</a>:
+                <a title="Newsletters are bloat, rss is 1337" href="/files/rss.xml">(feed)</a>:
             </h2>
             <ul>
+                    <li>
+                        <a href="blog/website_update_2.html">website update 2</a>
+                    </li>
                     <li>
                         <a href="blog/generating_a_maths_worksheet.html">generating a maths worksheet</a>
                     </li>
@@ -75,27 +92,10 @@
                     <li>
                         <a href="blog/are_landlords_cringe.html">are landlords cringe</a>
                     </li>
-                    <li>
-                        <a href="blog/other_way_to_find_sin_of_18.html">other way to find sin of 18</a>
-                    </li>
             </ul>
         </main>
-        <hr>
-        <footer class="nav">
-            <a href="/linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
-            <a target="_blank" href="/rss.xml" title="Stay updated">Feed</a>
-            <ul title="Websites worth visting">
-                Links
-                <div class="dropdown-content">
-                    <li><a target="_blank" href="https://m-chrzan.xyz/" title="sunday corner is nice">m-chrzan.xyz</a></li>
-                    <li><a target="_blank" href="https://wester.digital/" title="my first reader's blog">wester.digital</a></li>
-                    <li><a target="_blank" href="https://ekskursje.pl/" title="older articles are better">ekskursje.pl/</a></li>
-                    <li><a target="_blank" href="https://based.cooking" title="Straightforward recepie website">🍲based.cooking🍳</a></li>
-                    <li><a target="_blank" href="https://archive.org/details/therockyhorrorpictureshowvosejimsharman1975_20191212" title="classic musical">Rocky Horror</a></li>
-                </div>
-            </ul>
-            <a href="/bookmarks.html" title="Browser bookmarks">Bookmarked pages</a>
-        </footer>
-        <hr>
+        <hr style="grid-column: 1 / 3; grid-row: 3;">
+        <footer>
+            <p> [This site 2022 by <a href="/">jacadzaca</a>, CC BY-SA 4.0]</p>        </footer>
     </body>
 </html>

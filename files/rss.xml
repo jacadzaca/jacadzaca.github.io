@@ -1,73 +1,22 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr" vocab="http://schema.org" typeof="Blog">
-    <head>
-        <title>jaca's blog</title>
-
-        <link rel="stylesheet" href="/files/css/code_highlight.css">
-
-        <link rel="author" href="/">
-        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/files/rss.xml">
-        <link rel="icon" href="/files/images/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/files/images/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/files/images/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
-        <link rel="icon" href="/files/images/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
-        <link rel="icon" href="/files/images/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
-        <link rel="apple-touch-icon" href="/files/images/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
-        <link rel="apple-touch-icon" href="/files/images/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
-        <link rel="stylesheet" href="/files/css/main.css"></link>
-        <link rel="manifest" href="/files/manifest.json">
-
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#171716">
-        <meta property="og:site_name" content="jaca's safe haven">
-        <meta property="og:image" content="/files/images/favicons/1250x1250.jpg">
-        <meta property="og:image:width" content="1250">
-        <meta property="og:image:height" content="1250">
-        <meta property="og:image:alt" content="jaca's blog logo">
-
-        <meta name="description" content="jaca's blog">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="jaca's blog">
-        <meta property="og:description" content="jaca's blog">
-    </head>
-    <body>
-        <hr style="grid-column: 1 / 3; grid-row: 1">
-        <nav>
-            <a href="/index.html">🏠Home</a>
-            <a href="/blog.html">📜Blog</a>
-            <a target="_blank" href="/files/rss.xml" title="Stay updated">📡RSS Feed</a>
-            <a href="/git.html">🐙Git</a>
-            <a href="/links.html" title="Sites worth visting">🔗Links</a>
-            <a href="/contact.html">📨Contact</a>
-            <a href="/donate.html" title="Give me money">💰Donate</a>
-            <a href="/linux_tech_tips.html" title="Linux facts">💡Linux Tech Tips</a>
-            <a href="/bookmarks.html" title="My Browser bookmarks">🔖Bookmarks</a>
-            <hr>
-            <a href="#website_update_2">website update 2</a>
-            <a href="#generating_a_maths_worksheet">generating a maths worksheet</a>
-            <a href="#website_update">website update</a>
-            <a href="#hacking_a_warcraft_3_map">hacking a warcraft 3 map</a>
-            <a href="#are_landlords_cringe">are landlords cringe</a>
-            <a href="#other_way_to_find_sin_of_18">other way to find sin of 18</a>
-            <a href="#how_sin_is_computed">how sin is computed</a>
-            <a href="#transfer_files_with_netcat">transfer files with netcat</a>
-            <a href="#my_calendar_system">my calendar system</a>
-            <a href="#btw_i_use_arch">btw i use arch</a>
-            <a href="#psa_use_vimium">psa use vimium</a>
-            <a href="#browser_dark_mode">browser dark mode</a>
-            <a href="#welcome!">welcome!</a>
-        </nav>
-        <main>
-                <h2 id="website_update_2">website update 2</h2>
-                <small>
-                    [
-                    <a href="#website_update_2">link</a> —
-                    <a href="blog/website_update_2.html">standalone</a>
-                    ] <time datetime="Wed, 17 Aug 2022 16:21:19">Wed, 17 Aug 2022 16:21:19</time>
-                </small>
-                <article class="indent" >
-                    <p>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>jaca's safe haven</title>
+        <description>Updates from jaca's safe haven</description>
+        <language>en</language>
+        <link>https://jacadzaca.github.io/rss.xml</link>
+        <atom:link href="https://jacadzaca.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <image>
+            <title>jaca's safe haven</title>
+            <url>https://jacadzaca.github.io//files/images/avatar.avif</url>
+            <link>https://jacadzaca.github.io/rss.xml</link>
+        </image>
+            <item>
+                <title>website update 2</title>
+                <guid>https://jacadzaca.github.io/blog/website_update_2.html</guid>
+                <link>https://jacadzaca.github.io/blog/website_update_2.html</link>
+                <pubDate>Wed, 17 Aug 2022 16:16:57 +0200</pubDate>
+                <description>
+                    <![CDATA[ 
                 <h1>website update 2</h1>
                 <ol type="1">
                 <li>the site’s layout was completely overhauled, <a
@@ -75,8 +24,8 @@
                 <li>there’s fancy, new, CSS only ‘slider’ on the <a
                 href="/bookmarks.html" target="_blank">bookmarks
                 page</a></li>
-                <li>added a table of contents to the rolling blog
-                page</li>
+                <li>added a table of contents to the rolling <a
+                href="/blog.html" target="_blank">blog page</a></li>
                 <li>added a light and a dark theme throught CSS, <a
                 href="https://wiki.archlinux.org/title/Chromium#Dark_mode"
                 target="_blank">how to enable dark mode in
@@ -106,17 +55,16 @@
                 target="_blank">donation page</a> now</li>
                 </ol>
                 <p>Criticism or ideas are welcome.</p>
-            </p>
-                </article>
-                <h2 id="generating_a_maths_worksheet">generating a maths worksheet</h2>
-                <small>
-                    [
-                    <a href="#generating_a_maths_worksheet">link</a> —
-                    <a href="blog/generating_a_maths_worksheet.html">standalone</a>
-                    ] <time datetime="Sat, 19 Feb 2022 16:53:33">Sat, 19 Feb 2022 16:53:33</time>
-                </small>
-                <article class="indent" >
-                    <p>
+             ]]>
+                </description>
+            </item>
+            <item>
+                <title>generating a maths worksheet</title>
+                <guid>https://jacadzaca.github.io/blog/generating_a_maths_worksheet.html</guid>
+                <link>https://jacadzaca.github.io/blog/generating_a_maths_worksheet.html</link>
+                <pubDate>Sat, 19 Feb 2022 16:53:33 +0200</pubDate>
+                <description>
+                    <![CDATA[ 
                 <h1>generating a maths worksheet</h1>
                 <h2 id="inspiration">Inspiration</h2>
                 <p>When you get a maths worksheet, it usually comes with
@@ -334,17 +282,16 @@
                 include them in <a
                 href="https://github.com/jacadzaca/zadanko#readme"
                 target="_blank">zadanko’s README</a>.</p>
-            </p>
-                </article>
-                <h2 id="website_update">website update</h2>
-                <small>
-                    [
-                    <a href="#website_update">link</a> —
-                    <a href="blog/website_update.html">standalone</a>
-                    ] <time datetime="Fri, 11 Feb 2022 17:38:02">Fri, 11 Feb 2022 17:38:02</time>
-                </small>
-                <article class="indent" >
-                    <p>
+             ]]>
+                </description>
+            </item>
+            <item>
+                <title>website update</title>
+                <guid>https://jacadzaca.github.io/blog/website_update.html</guid>
+                <link>https://jacadzaca.github.io/blog/website_update.html</link>
+                <pubDate>Fri, 11 Feb 2022 17:38:02 +0200</pubDate>
+                <description>
+                    <![CDATA[ 
                 <h1>website update</h1>
                 <ol type="1">
                 <li>there’s a link to my <a href="https://codeberg.org/"
@@ -388,17 +335,16 @@
                 you <em>should</em> be able to add this blog to your
                 smartphone’s home-screen)</li>
                 </ol>
-            </p>
-                </article>
-                <h2 id="hacking_a_warcraft_3_map">hacking a warcraft 3 map</h2>
-                <small>
-                    [
-                    <a href="#hacking_a_warcraft_3_map">link</a> —
-                    <a href="blog/hacking_a_warcraft_3_map.html">standalone</a>
-                    ] <time datetime="Wed, 29 Dec 2021 16:15:35">Wed, 29 Dec 2021 16:15:35</time>
-                </small>
-                <article class="indent" >
-                    <p>
+             ]]>
+                </description>
+            </item>
+            <item>
+                <title>hacking a warcraft 3 map</title>
+                <guid>https://jacadzaca.github.io/blog/hacking_a_warcraft_3_map.html</guid>
+                <link>https://jacadzaca.github.io/blog/hacking_a_warcraft_3_map.html</link>
+                <pubDate>Wed, 29 Dec 2021 16:15:35 +0200</pubDate>
+                <description>
+                    <![CDATA[ 
                 <h1>hacking a Warcraft 3 map</h1>
                 <p>I’m a big Warcraft fan. Actually, I consider Warcraft
                 3 to be the best video game of all time. I like the
@@ -611,17 +557,16 @@
                 including them in the patch fixes [5]</li>
                 </ol>
                 <p><em>warcraft3mapUnit.doo</em> is a header file</p>
-            </p>
-                </article>
-                <h2 id="are_landlords_cringe">are landlords cringe</h2>
-                <small>
-                    [
-                    <a href="#are_landlords_cringe">link</a> —
-                    <a href="blog/are_landlords_cringe.html">standalone</a>
-                    ] <time datetime="Wed, 22 Dec 2021 19:04:05">Wed, 22 Dec 2021 19:04:05</time>
-                </small>
-                <article class="indent" >
-                    <p>
+             ]]>
+                </description>
+            </item>
+            <item>
+                <title>are landlords cringe</title>
+                <guid>https://jacadzaca.github.io/blog/are_landlords_cringe.html</guid>
+                <link>https://jacadzaca.github.io/blog/are_landlords_cringe.html</link>
+                <pubDate>Wed, 22 Dec 2021 19:04:05 +0200</pubDate>
+                <description>
+                    <![CDATA[ 
                 <h1>are landlords cringe?</h1>
                 <p>I’ve noticed that the contempt for <a
                 href="https://www.youtube.com/watch?v=6fBA2CBurVg"
@@ -703,17 +648,16 @@
                 landlords are cringe and useless <em>ex offico</em> -
                 when a landlord grants you affordable accommodation they
                 are not cringe otherwise they probably are.</p>
-            </p>
-                </article>
-                <h2 id="other_way_to_find_sin_of_18">other way to find sin of 18</h2>
-                <small>
-                    [
-                    <a href="#other_way_to_find_sin_of_18">link</a> —
-                    <a href="blog/other_way_to_find_sin_of_18.html">standalone</a>
-                    ] <time datetime="Tue, 28 Sep 2021 13:43:07">Tue, 28 Sep 2021 13:43:07</time>
-                </small>
-                <article class="indent" >
-                    <p>
+             ]]>
+                </description>
+            </item>
+            <item>
+                <title>other way to find sin of 18</title>
+                <guid>https://jacadzaca.github.io/blog/other_way_to_find_sin_of_18.html</guid>
+                <link>https://jacadzaca.github.io/blog/other_way_to_find_sin_of_18.html</link>
+                <pubDate>Tue, 28 Sep 2021 13:43:07 +0200</pubDate>
+                <description>
+                    <![CDATA[ 
                 <h1>other way of finding sin of 18 degrees</h1>
                 <p>It turns out that you can find the value of sin(18°)
                 by the following method:</p>
@@ -760,17 +704,16 @@
                 target="_blank">geometrical</a> way of finding the value
                 of sin(18), because it strikes me as the more obvious
                 way of doing it.</p>
-            </p>
-                </article>
-                <h2 id="how_sin_is_computed">how sin is computed</h2>
-                <small>
-                    [
-                    <a href="#how_sin_is_computed">link</a> —
-                    <a href="blog/how_sin_is_computed.html">standalone</a>
-                    ] <time datetime="Wed, 18 Aug 2021 14:35:08">Wed, 18 Aug 2021 14:35:08</time>
-                </small>
-                <article class="indent" >
-                    <p>
+             ]]>
+                </description>
+            </item>
+            <item>
+                <title>how sin is computed</title>
+                <guid>https://jacadzaca.github.io/blog/how_sin_is_computed.html</guid>
+                <link>https://jacadzaca.github.io/blog/how_sin_is_computed.html</link>
+                <pubDate>Wed, 18 Aug 2021 14:35:08 +0200</pubDate>
+                <description>
+                    <![CDATA[ 
                 <h1>how sin is computed?</h1>
                 <p>I can recall the first time I wrote a program that
                 used a trigonometric function - it was back in secondary
@@ -884,17 +827,16 @@
                 <p><a
                 href="https://gist.github.com/jacadzaca/0b76d75411566d506df3d8897204e00e"
                 target="_blank">Code that generates the graphs</a></p>
-            </p>
-                </article>
-                <h2 id="transfer_files_with_netcat">transfer files with netcat</h2>
-                <small>
-                    [
-                    <a href="#transfer_files_with_netcat">link</a> —
-                    <a href="blog/transfer_files_with_netcat.html">standalone</a>
-                    ] <time datetime="Tue, 27 Jul 2021 01:25:29">Tue, 27 Jul 2021 01:25:29</time>
-                </small>
-                <article class="indent" >
-                    <p>
+             ]]>
+                </description>
+            </item>
+            <item>
+                <title>transfer files with netcat</title>
+                <guid>https://jacadzaca.github.io/blog/transfer_files_with_netcat.html</guid>
+                <link>https://jacadzaca.github.io/blog/transfer_files_with_netcat.html</link>
+                <pubDate>Tue, 27 Jul 2021 01:25:29 +0200</pubDate>
+                <description>
+                    <![CDATA[ 
                 <h1>transfer files with netcat</h1>
                 <p>As I don’t use my <a href="/blog/btw_i_use_arch.html"
                 target="_blank">arch laptop</a> that much, I’ve figured
@@ -946,17 +888,16 @@
                 href="https://www.man7.org/linux/man-pages/man1/scp.1.html"
                 target="_blank">scp</a> with the ssh version of this
                 trick.</p>
-            </p>
-                </article>
-                <h2 id="my_calendar_system">my calendar system</h2>
-                <small>
-                    [
-                    <a href="#my_calendar_system">link</a> —
-                    <a href="blog/my_calendar_system.html">standalone</a>
-                    ] <time datetime="Fri, 18 Jun 2021 23:42:06">Fri, 18 Jun 2021 23:42:06</time>
-                </small>
-                <article class="indent" >
-                    <p>
+             ]]>
+                </description>
+            </item>
+            <item>
+                <title>my calendar system</title>
+                <guid>https://jacadzaca.github.io/blog/my_calendar_system.html</guid>
+                <link>https://jacadzaca.github.io/blog/my_calendar_system.html</link>
+                <pubDate>Fri, 18 Jun 2021 23:42:06 +0200</pubDate>
+                <description>
+                    <![CDATA[ 
                 <h1>my calendar system&lt;</h1>
                 <p><strong>TL;DR</strong>: I spend too much time on the
                 Internet, should find some <a
@@ -1057,251 +998,8 @@
                 target="_blank">13 Virtues</a> [<a
                 href="https://daringtolivefully.com/wp-content/uploads/2013/06/13-virtues-chart.jpg"
                 target="_blank">sample chart</a>]</p>
-            </p>
-                </article>
-                <h2 id="btw_i_use_arch">btw i use arch</h2>
-                <small>
-                    [
-                    <a href="#btw_i_use_arch">link</a> —
-                    <a href="blog/btw_i_use_arch.html">standalone</a>
-                    ] <time datetime="Sun, 23 May 2021 15:29:14">Sun, 23 May 2021 15:29:14</time>
-                </small>
-                <article class="indent" >
-                    <p>
-                <h1>btw i use arch</h1>
-                <p>I’ve finally got around to installing Arch Linux on
-                my laptop. Installing Arch was simple enough, the only
-                problem that I’ve had was understanding the difference
-                between a boot partition and a ‘boot partition’. A BIOS
-                boot partition is a type of a partition, whereas a ‘boot
-                partition’ is a partition you create for your /boot/
-                directory - you don’t actually need a ‘boot partition’,
-                while a boot partition is more or less required -
-                manually telling your boot loader (most likely GRUB)
-                where everything is located is way too tedious.</p>
-                <h2 id="programs-i-run">Programs I run</h2>
-                <p>The first thing that I installed was GNOME3. I run
-                GNOME on my Ubuntu desktop and it works just fine, I
-                especially like the DE; it looks nice out of the box and
-                the Activities tab is amazing. But that’s mutter36
-                (mutter is the GNOME DE). mutter40 is nothing like it.
-                As of now I run <a
-                href="https://wiki.archlinux.org/title/Xfce"
-                target="_blank">xfce4</a> on my laptop and it’s alright,
-                albeit a little retro. Actually, xfce’s so vintage that
-                it might be the best desktop environment for an eldery
-                person, but that’s neither here or there. I’m actually
-                thinking of switching to <a
-                href="https://dwm.suckless.org/" target="_blank">dwm</a>
-                or <a href="https://i3wm.org/" target="_blank">i3</a>,
-                but I’m yet to decide which one is better. For the login
-                manager I’ve chosen LightDM - it just worked.</p>
-                <p>I don’t run <a
-                href="https://developer.gnome.org/NetworkManager/stable/NetworkManager.html"
-                target="_blank">NetworkManager</a>, because I have no
-                need for it - just connecting to wi-fi with <a
-                href="https://wiki.archlinux.org/title/Iwd"
-                target="_blank">iwd</a> and running a dhcpcd daemon in
-                the background works for me. I also installed an <a
-                href="https://github.com/J-Lentz/iwgtk"
-                target="_blank">iwd frontend program</a>, because some
-                normal person might have to input a wi-fi password into
-                my laptop someday.</p>
-                <p>I use <a
-                href="https://wiki.archlinux.org/title/Udisks"
-                target="_blank">udisks</a> with <a
-                href="https://man.archlinux.org/man/community/udiskie/udiskie.8.en"
-                target="_blank">udiskie</a> for automating USB mounting.
-                I also run gvfs, so I can have a Trash bin (which is
-                less useful than I’ve thought). gvfs also seems to
-                provide an alternative to <a
-                href="https://wiki.archlinux.org/title/Insync"
-                target="_blank">insync</a>, but it remains unclear
-                whether you can actually use gvfs effectively without
-                all the GNOME bloat.</p>
-                <p>I use <a href="https://wiki.archlinux.org/title/CUPS"
-                target="_blank">CUPS</a> directly for printer manging. I
-                even have a desktop shortcut to a <a
-                href="https://www.mankier.com/1/chromium-browser#--app"
-                target="_blank">chromium app</a> that starts the CUPS
-                web gui.</p>
-                <p>I also considered installing a cron-like program
-                (most probably <a
-                href="https://en.wikipedia.org/wiki/Anacron"
-                target="_blank">anacron</a>) and running a simple pacman
-                update script, but after a little <a
-                href="https://bbs.archlinux.org/viewtopic.php?id=83118"
-                target="_blank">research</a>, I’ve decided to postpone
-                creating such cron job. If after a while of updating
-                nothing breaks, I will surely consider it.</p>
-                <h2 id="final-thoughts">Final thoughts</h2>
-                <p>As of now, Arch Linux is my favourite distro; it
-                boots faster than Ubuntu, it eats a lot less RAM (which
-                is cool, becouse now I can brag on the internet about
-                how little memory my setup needs) and the package
-                manager seems to be full of useful programs, especially
-                compared to apt. Also, there’s AUR, which looks like a
-                both more managable and faster version of snap,</p>
-            </p>
-                </article>
-                <h2 id="psa_use_vimium">psa use vimium</h2>
-                <small>
-                    [
-                    <a href="#psa_use_vimium">link</a> —
-                    <a href="blog/psa_use_vimium.html">standalone</a>
-                    ] <time datetime="Sun, 25 Apr 2021 00:17:08">Sun, 25 Apr 2021 00:17:08</time>
-                </small>
-                <article class="indent" >
-                    <p>
-                <h1>psa: use vimium</h1>
-                <p>Aren’t you tired of having to use your mouse in order
-                to click a link? Of course you are, but worry no more -
-                there exists a remedy.</p>
-                <p><a href="https://github.com/philc/vimium"
-                target="_blank">Vimium</a> is a browser (<a
-                href="https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb"
-                target="_blank">download for Chrome</a>, <a
-                href="https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/"
-                target="_blank">download for Firefox</a>) extension that
-                binds all the functionality that you would need to some
-                key combination. You can go to the previous/next page,
-                you can look through your bookmarks, you can even copy
-                the URL of the page you are looking at.</p>
-                <hr />
-                <p><a href="/files/images/psa_use_vimium/vimium.avif"
-                target="_blank"><img
-                src="/files/images/psa_use_vimium/vimium.avif"
-                title="full list of vimium&#39;s keybinds"
-                loading="lazy" /></a></p>
-                <hr />
-                <p>What’s also great is the fact that you remap Vimium’s
-                key-binds how you like.</p>
-                <h2 id="link-hints">Link hints</h2>
-                <p>While being able search your bookmarks etc. is all
-                fun and games, all Vimium’s feature pale in comparison
-                to link hints. By default, pressing ctrl-f will make
-                little boxes with letters (called link hints) appear
-                next to all the links on the web-page. You now are only
-                (at most) two key-strokes away from
-                <strong>clicking</strong> that link! You can customize
-                the boxes’ look with CSS, however the feature seems to
-                be a little clunky - CSS sometimes only loads after
-                refreshing a page.</p>
-                <p>By the way, I’ve brought back a <a
-                href="/redpandalore/index.html"
-                target="_blank">ridiculously random site</a> about red
-                pandas. I think it was supposed to be a fan-fiction
-                about <a
-                href="https://www.youtube.com/channel/UCjdQaSJCYS4o2eG93MvIwqg"
-                target="_blank">Killian</a>, but I can’t really
-                remeber.</p>
-            </p>
-                </article>
-                <h2 id="browser_dark_mode">browser dark mode</h2>
-                <small>
-                    [
-                    <a href="#browser_dark_mode">link</a> —
-                    <a href="blog/browser_dark_mode.html">standalone</a>
-                    ] <time datetime="Sat, 24 Apr 2021 22:04:01">Sat, 24 Apr 2021 22:04:01</time>
-                </small>
-                <article class="indent" >
-                    <p>
-                <h1>browser dark mode</h1>
-                <p>It turns out that you don’t need fancy JavaScript to
-                have your webpage change the color theme based on user’s
-                preference.</p>
-                <p>You can access system’s color theme preference with
-                <a
-                href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme"
-                target="_blank">@media (prefers-color-scheme dark)</a>.
-                Now your you only need to write two separate CSS styles
-                and you’re good to go.</p>
-                <p>Sadly, most pages don’t seem to use the feature. It’s
-                good to know about it, but for a dark mode
-                <strong>conesouir</strong> (like myself) would yern for
-                something better.</p>
-                <p>Inside of chrome (and Chromium based browsers, I
-                assume) you can got to the
-                <em>chrome://settings/appearance</em> page, and set the
-                theme there to a some dark one. This only changes the
-                looks of your start page and the window’s border, but
-                it’s a start.</p>
-                <p>We need to dig deeper.</p>
-                <p>A moment of browsing the internet, reveals the
-                <em>chrome://flags/</em> page, where you can the
-                <em>Auto Dark Mode for Web Contents</em> option which,
-                when enabled, forces <em>every</em> page to render in
-                dark theme. It breaks some pages a little (especially
-                the ones making extensive use of fancy CSS
-                animations):</p>
-                <hr />
-                <p><a href="/files/images/browser_dark_mode/clunky.avif"
-                target="_blank"><img
-                src="/files/images/browser_dark_mode/clunky.avif"
-                title="there is some white stuff there, yuck!"
-                loading="lazy" /></a></p>
-                <hr />
-                <p><a
-                href="/files/images/browser_dark_mode/clunky1.avif"
-                target="_blank"><img
-                src="/files/images/browser_dark_mode/clunky1.avif"
-                title="the empty levels are not visible, the puppets arms are barely visible"
-                loading="lazy" /></a></p>
-                <hr />
-                <p>but it surly doesn’t render them unusable. Great
-                stuff.</p>
-                <h2 id="what-if-i-dont-use-chrome">What if I don’t use
-                Chrome?</h2>
-                <p>You’re probably stuck with using <a
-                href="https://darkreader.org/" target="_blank">Dark
-                Reader</a> then. It works with every popular browser,
-                although it in my opinion it produces worse looking
-                webpages than the native Chromium’s feature. If you’re a
-                using an extensible browser like <a
-                href="https://surf.suckless.org/"
-                target="_blank">surf</a> there’s probably a script or
-                even a CSS file that does the same. Although, the kinds
-                of people that use browsers like surf probably have
-                known about since before I was born or something (I’m
-                bad at role-playing a boomer, sry)</p>
-            </p>
-                </article>
-                <h2 id="welcome!">welcome!</h2>
-                <small>
-                    [
-                    <a href="#welcome!">link</a> —
-                    <a href="blog/welcome!.html">standalone</a>
-                    ] <time datetime="Sat, 03 Apr 2021 18:28:15">Sat, 03 Apr 2021 18:28:15</time>
-                </small>
-                <article class="indent" >
-                    <p>
-                <h1>welcome!</h1>
-                <p>I’ve decided to take up blogging. I’m mainly going to
-                write about programming, but from time to time I will
-                write a piece about some cool math fact that I’ve
-                learned or a book review. I plan to keep the site
-                bare-bones (<strong>no js!</strong>), because I believe
-                that the web should be faster.<br />
-                To build this website, I’ve rolled out my own static
-                site generator (e.g. a few python3 scripts and some
-                jinja templates), which you can find <a
-                href="https://github.com/jacadzaca/blog-gen"
-                target="_blank">here</a>.</p>
-                <pre><code>             (•_•)
-            &lt;)  )╯[Always](https://www.alwaysownyourplatform.com/)
-             /  \
-            \(•_•)
-            (  (&gt; [Own](https://www.alwaysownyourplatform.com/)
-            /   \
-             (•_•)
-            &lt;)  )&gt; [Your Platform](https://www.alwaysownyourplatform.com/)
-             /  \
-        </code></pre>
-            </p>
-                </article>
-        </main>
-        <footer>
-            <p> [This site 2022 by <a href="/">jacadzaca</a>, CC BY-SA 4.0]</p>        </footer>
-        <hr style="grid-column: 1 / 3; grid-row: 3;">
-    </body>
-</html>
+             ]]>
+                </description>
+            </item>
+    </channel>
+</rss>

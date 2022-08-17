@@ -1,124 +1,133 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" vocab="http://schema.org" typeof="Blog">
     <head>
-        <title>my arch linux setup</title>
+        <title>btw i use arch | jaca's safe haven</title>
+        <link rel="stylesheet" href="/files/css/code_highlight.css"></link>
 
-        <link rel="author" href="https://jacadzaca.github.io/">
-        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/rss.xml">
-        <link rel="icon" href="/pix/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
-        <link rel="apple-touch-icon" href="/pix/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
-        <link rel="apple-touch-icon" href="/pix/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
-        <link rel="stylesheet" href="/style.css"></link>
-        <link rel="manifest" href="/manifest.json">
+        <link rel="author" href="/">
+        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/files/rss.xml">
+        <link rel="icon" href="/files/images/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
+        <link rel="apple-touch-icon" href="/files/images/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
+        <link rel="apple-touch-icon" href="/files/images/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
+        <link rel="stylesheet" href="/files/css/main.css"></link>
+        <link rel="manifest" href="/files/manifest.json">
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#171716">
-        <meta name="keywords" content="arch setup arch-setup">
+        <meta property="og:site_name" content="jaca's safe haven">
+        <meta property="og:image" content="/files/images/favicons/1250x1250.jpg">
+        <meta property="og:image:width" content="1250">
+        <meta property="og:image:height" content="1250">
+        <meta property="og:image:alt" content="jaca's blog logo">
+
         <meta name="description" content="my arch linux setup">
         <meta property="og:type" content="article">
         <meta property="article:published_time" content="2021-05-23T15:29:14">
         <meta property="article:section" content="technology">
+        <meta property="og:title" content="btw i use arch">
+        <meta property="og:description" content="my arch linux setup">
         <meta property="article:tag" content="arch">
         <meta property="article:tag" content="setup">
-        <meta property="article:tag" content="arch-setup">
-        <meta property="og:description" content="my arch linux setup">
-        <meta property="og:site_name" content="jaca's safe haven">
-        <meta property="og:title" content="btw i use arch">
-        <meta property="og:image" content="/pix/favicons/1250x1250.jpg">
-        <meta property="og:image:width" content="1250">
-        <meta property="og:image:height" content="1250">
-        <meta property="og:image:alt" content="jaca's blog logo">
+        
     </head>
     <body>
-        <h1 style="text-align: left">btw, I use arch</h1>
-        <hr>
-        <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/blog.html">Blog</a>
-            <ul title="Ways we can get in touch">
-                Contact
-                <div class="dropdown-content">
-                    <li><a href="mailto:vitouejj@gmail.com" title="Please encrypt your emails with PGP">Email</a></li>
-                    <li><a href="/jacadzaca.gpg" title="Pretty good privacy">PGP</a></li>
-                </div>
-            </ul>
+        <hr style="grid-column: 1 / 3; grid-row: 1">
+        <nav>
+            <a href="/index.html">🏠Home</a>
+            <a href="/blog.html">📜Blog</a>
+            <a target="_blank" href="/files/rss.xml" title="Stay updated">📡RSS Feed</a>
+            <a href="/git.html">🐙Git</a>
+            <a href="/links.html" title="Sites worth visting">🔗Links</a>
+            <a href="/contact.html">📨Contact</a>
+            <a href="/donate.html" title="Give me money">💰Donate</a>
+            <a href="/linux_tech_tips.html" title="Linux facts">💡Linux Tech Tips</a>
+            <a href="/bookmarks.html" title="My Browser bookmarks">🔖Bookmarks</a>
         </nav>
-        <hr>
-        <article role="main">
-        I've finally got around to installing Arch Linux on my laptop.
-        Installing Arch was simple enough, the only problem that I've had
-        was understanding the difference between a boot partition and a
-        'boot partition'. A BIOS boot partition is a type of a partition, whereas
-        a 'boot partition' is a partition you create for your /boot/ directory -
-        you don't actually need a 'boot partition', while a boot partition
-        is more or less required - manually telling your boot loader
-        (most likely GRUB) where everything is located is way too tedious.
-            <p>
-            <h2>Programs I run</h2>
-            The first thing that I installed was GNOME3. I run GNOME on my
-            Ubuntu desktop and it works just fine, I especially like the DE; it
-            looks nice out of the box and the Activities tab is amazing. But
-            that's mutter36 (mutter is the GNOME DE). mutter40 is nothing like it.
-            As of now I run <a href="https://wiki.archlinux.org/title/Xfce">xfce4</a>
-            on my laptop and it's alright, albeit a little retro. Actually, xfce's so
-            vintage that it might be the best desktop environment for
-            an eldery person, but that's neither here or there.
-            I'm actually thinking of switching to <a href="https://dwm.suckless.org/">
-            dwm</a> or <a href="https://i3wm.org/">i3</a>, but I'm yet
-            to decide which one is better. For the login manager I've chosen
-            LightDM - it just worked.
-            </p>
-            <p>
-            I don't run <a href="https://developer.gnome.org/NetworkManager/stable/NetworkManager.html">NetworkManager</a>, because
-            I have no need for it - just connecting to wi-fi with <a href="https://wiki.archlinux.org/title/Iwd">iwd</a>
-            and running a dhcpcd daemon in the background works for me. I also
-            installed an <a href="https://github.com/J-Lentz/iwgtk">iwd frontend program</a>,
-            because some normal person might have to input a wi-fi password into my
-            laptop someday.
-            </p>
-            <p>
-            I use <a href="https://wiki.archlinux.org/title/Udisks">udisks</a> with
-            <a href="https://man.archlinux.org/man/community/udiskie/udiskie.8.en">udiskie</a>
-            for automating USB mounting. I also run gvfs, so I can have a Trash bin (which
-            is less useful than I've thought). gvfs also seems to provide an
-            alternative to <a href="https://wiki.archlinux.org/title/Insync">insync</a>, but
-            it remains unclear whether you can actually use gvfs effectively without all the
-            GNOME bloat.
-            </p>
-            <p>
-            I use <a href="https://wiki.archlinux.org/title/CUPS">CUPS</a> directly
-            for printer manging. I even have a desktop shortcut to a
-            <a href="https://www.mankier.com/1/chromium-browser#--app">chromium app</a>
-            that starts the CUPS web gui.
-            </p>
-            <p>
-            I also considered installing a cron-like program (most probably <a href="https://en.wikipedia.org/wiki/Anacron">anacron</a>)
-            and running a simple pacman update script, but after a little <a href="https://bbs.archlinux.org/viewtopic.php?id=83118">
-                research</a>, I've decided to postpone creating such cron job.
-            If after a while of updating nothing breaks, I will surely consider it.
-            </p>
-            <p>
-            <h2>Final thoughts</h2>
-            As of now, Arch Linux is my favourite distro; it boots faster than
-            Ubuntu, it eats a lot less RAM (which is cool, becouse now I can
-            brag on the internet about how little memory my setup needs) and the
-            package manager seems to be full of useful programs, especially
-            compared to apt. Also, there's AUR, which looks like a both more
-            managable and faster version of snap,
-            </p>
-        </article>
-        <hr>
-        <footer class="nav">
-            <a href="/linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
-            <a target="_blank" href="/rss.xml" title="Stay updated">Feed</a>
-            <a href="/bookmarks.html" title="Browser bookmarks">Bookmarked pages</a>
-        </footer>
-        <hr>
+        <main>
+            <article>
+                <h1>btw i use arch</h1>
+                <p>I’ve finally got around to installing Arch Linux on
+                my laptop. Installing Arch was simple enough, the only
+                problem that I’ve had was understanding the difference
+                between a boot partition and a ‘boot partition’. A BIOS
+                boot partition is a type of a partition, whereas a ‘boot
+                partition’ is a partition you create for your /boot/
+                directory - you don’t actually need a ‘boot partition’,
+                while a boot partition is more or less required -
+                manually telling your boot loader (most likely GRUB)
+                where everything is located is way too tedious.</p>
+                <h2 id="programs-i-run">Programs I run</h2>
+                <p>The first thing that I installed was GNOME3. I run
+                GNOME on my Ubuntu desktop and it works just fine, I
+                especially like the DE; it looks nice out of the box and
+                the Activities tab is amazing. But that’s mutter36
+                (mutter is the GNOME DE). mutter40 is nothing like it.
+                As of now I run <a
+                href="https://wiki.archlinux.org/title/Xfce"
+                target="_blank">xfce4</a> on my laptop and it’s alright,
+                albeit a little retro. Actually, xfce’s so vintage that
+                it might be the best desktop environment for an eldery
+                person, but that’s neither here or there. I’m actually
+                thinking of switching to <a
+                href="https://dwm.suckless.org/" target="_blank">dwm</a>
+                or <a href="https://i3wm.org/" target="_blank">i3</a>,
+                but I’m yet to decide which one is better. For the login
+                manager I’ve chosen LightDM - it just worked.</p>
+                <p>I don’t run <a
+                href="https://developer.gnome.org/NetworkManager/stable/NetworkManager.html"
+                target="_blank">NetworkManager</a>, because I have no
+                need for it - just connecting to wi-fi with <a
+                href="https://wiki.archlinux.org/title/Iwd"
+                target="_blank">iwd</a> and running a dhcpcd daemon in
+                the background works for me. I also installed an <a
+                href="https://github.com/J-Lentz/iwgtk"
+                target="_blank">iwd frontend program</a>, because some
+                normal person might have to input a wi-fi password into
+                my laptop someday.</p>
+                <p>I use <a
+                href="https://wiki.archlinux.org/title/Udisks"
+                target="_blank">udisks</a> with <a
+                href="https://man.archlinux.org/man/community/udiskie/udiskie.8.en"
+                target="_blank">udiskie</a> for automating USB mounting.
+                I also run gvfs, so I can have a Trash bin (which is
+                less useful than I’ve thought). gvfs also seems to
+                provide an alternative to <a
+                href="https://wiki.archlinux.org/title/Insync"
+                target="_blank">insync</a>, but it remains unclear
+                whether you can actually use gvfs effectively without
+                all the GNOME bloat.</p>
+                <p>I use <a href="https://wiki.archlinux.org/title/CUPS"
+                target="_blank">CUPS</a> directly for printer manging. I
+                even have a desktop shortcut to a <a
+                href="https://www.mankier.com/1/chromium-browser#--app"
+                target="_blank">chromium app</a> that starts the CUPS
+                web gui.</p>
+                <p>I also considered installing a cron-like program
+                (most probably <a
+                href="https://en.wikipedia.org/wiki/Anacron"
+                target="_blank">anacron</a>) and running a simple pacman
+                update script, but after a little <a
+                href="https://bbs.archlinux.org/viewtopic.php?id=83118"
+                target="_blank">research</a>, I’ve decided to postpone
+                creating such cron job. If after a while of updating
+                nothing breaks, I will surely consider it.</p>
+                <h2 id="final-thoughts">Final thoughts</h2>
+                <p>As of now, Arch Linux is my favourite distro; it
+                boots faster than Ubuntu, it eats a lot less RAM (which
+                is cool, becouse now I can brag on the internet about
+                how little memory my setup needs) and the package
+                manager seems to be full of useful programs, especially
+                compared to apt. Also, there’s AUR, which looks like a
+                both more managable and faster version of snap,</p>
+            </article>
+        </main>
+        <hr style="grid-column: 1 / 3; grid-row: 3;">
+        <footer>
+            <p> [This site 2022 by <a href="/">jacadzaca</a>, CC BY-SA 4.0]</p>        </footer>
     </body>
 </html>
- 

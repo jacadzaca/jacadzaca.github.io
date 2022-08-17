@@ -1,130 +1,175 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" vocab="http://schema.org" typeof="Blog">
     <head>
-        <title>how sin is computed?</title>
+        <title>how sin is computed? | jaca's safe haven</title>
+        <link rel="stylesheet" href="/files/css/code_highlight.css"></link>
 
-        <link rel="author" href="https://jacadzaca.github.io/">
-        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/rss.xml">
-        <link rel="icon" href="/pix/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
-        <link rel="apple-touch-icon" href="/pix/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
-        <link rel="apple-touch-icon" href="/pix/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
-        <link rel="stylesheet" href="/style.css"></link>
-        <link rel="manifest" href="/manifest.json">
+        <link rel="author" href="/">
+        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/files/rss.xml">
+        <link rel="icon" href="/files/images/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
+        <link rel="apple-touch-icon" href="/files/images/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
+        <link rel="apple-touch-icon" href="/files/images/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
+        <link rel="stylesheet" href="/files/css/main.css"></link>
+        <link rel="manifest" href="/files/manifest.json">
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#171716">
-        <meta name="keywords" content="taylor-series sin approximate">
-        <meta name="description" content="using Taylor Series to approximate sin">
-        <meta property="og:type" content="article">
-        <meta property="article:published_time" content="2021-08-18T14:35:08">
-        <meta property="article:section" content="maths">
-        <meta property="article:tag" content="taylor-series">
-        <meta property="article:tag" content="sin">
-        <meta property="article:tag" content="approximate">
-        <meta property="og:description" content="using Taylor Series to approximate sin">
         <meta property="og:site_name" content="jaca's safe haven">
-        <meta property="og:title" content="my calendar system">
-        <meta property="og:image" content="/pix/favicons/1250x1250.jpg">
+        <meta property="og:image" content="/files/images/favicons/1250x1250.jpg">
         <meta property="og:image:width" content="1250">
         <meta property="og:image:height" content="1250">
         <meta property="og:image:alt" content="jaca's blog logo">
+
+        <meta name="description" content="using Taylor Series to
+approximate sin">
+        <meta property="og:type" content="article">
+        <meta property="article:published_time" content="2021-08-18T14:35:08">
+        <meta property="article:section" content="maths">
+        <meta property="og:title" content="how sin is computed?">
+        <meta property="og:description" content="using Taylor Series to
+approximate sin">
+        <meta property="article:tag" content="taylor-series">
+        <meta property="article:tag" content="sin">
+        <meta property="article:tag" content="approximate">
+        
     </head>
     <body>
-        <h1 style="text-align: left">how sin is computed?</h1>
-        <hr>
-        <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/blog.html">Blog</a>
-            <ul title="Ways we can get in touch">
-                Contact
-                <div class="dropdown-content">
-                    <li><a href="mailto:vitouejj@gmail.com" title="Please encrypt your emails with PGP">Email</a></li>
-                    <li><a href="/jacadzaca.gpg" title="Pretty good privacy">PGP</a></li>
-                </div>
-            </ul>
+        <hr style="grid-column: 1 / 3; grid-row: 1">
+        <nav>
+            <a href="/index.html">🏠Home</a>
+            <a href="/blog.html">📜Blog</a>
+            <a target="_blank" href="/files/rss.xml" title="Stay updated">📡RSS Feed</a>
+            <a href="/git.html">🐙Git</a>
+            <a href="/links.html" title="Sites worth visting">🔗Links</a>
+            <a href="/contact.html">📨Contact</a>
+            <a href="/donate.html" title="Give me money">💰Donate</a>
+            <a href="/linux_tech_tips.html" title="Linux facts">💡Linux Tech Tips</a>
+            <a href="/bookmarks.html" title="My Browser bookmarks">🔖Bookmarks</a>
         </nav>
-        <hr>
-        <article role="main">
-            I can recall the first time I wrote a program that used a trigonometric function - it
-            was back in secondary school. I was making a game and wanted to make some object float around
-            another. Back then, I didn't know what trig functions were and how they worked, so I copied
-            some code from the web and, to my astonishment, it worked. I got curious how these functions worked, so
-            I pressed F3 in my IDE and tried to look for the source code of Math.sin. I can't remember whether I found
-            the code and didn't understand it or whether I couldn't find the implementation at all. It doesn't really
-            matter. What dose, is that back then I swore to myself that one day I will implement my own sin function.
-            Two days ago, I've learned about <a target="_blank" href="https://www.khanacademy.org/math/ap-calculus-bc/bc-series-new#bc-10-11">Taylor Series</a>.
-            <p>
-            <h2>Taylors, how do they work?</h2>
-            Taylor series is a tool to express some function as a polynomial, using its nth derivative.
-            Since <i>sin(x)</i> and its derivatives are differentiable, we can express <i>f(x) = sin(x)</i> as:
-            <a target="_blank" href="/pix/taylor_equation.svg"><img loading="lazy" src="/pix/taylor_equation.svg"/></a>
-            In this case, we can't add infinitely many terms in a finite amount of time, so we have
-            to approximate. Since this is a toy implementation, we will just compare it with python's
-            math.sin implementation and call it quits when they will converge <i>good enough</i>.
-            </p>
-            <p>
-            <h2>Implementation</h2>
-            First, we need some way of obtaining the nth derivative of sin, evaluated at some center <i>a</i>.
-            By writing down sin's first fifteen derivatives, we can see that the odd derivatives are either <i>1 * cos(x)</i> or
-            <i>(-1) * cos(x)</i>, while the plural ones take the form of 1 * <i>sin(x)</i> or (-1) * <i>sin(x)</i>. What is more difficult
-            to see, is that derivatives with an ordinal that yields a reminder of two or three when divided by four are the
-            derivatives with and minus sign. I don't know how to formally prove it... <em>yet</em>, but you need to trust me on this one.
-            Translating into python code:
-            <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nth_sin_derivative</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">4</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
-        <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">function</span> <span class="o">=</span> <span class="n">sin</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">function</span> <span class="o">=</span> <span class="n">cos</span>
-<span class="k">return</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></pre></div>
-            Second, we need to actually be able to evaluate both <i>cos(x)</i> and <i>sin(x)</i> at our center. Since we are implementing <i>sin(x)</i>,
-            we should deal with <i>cos(x)</i> first. We don't have to implement <i>cos(x)</i> separately -  notice that <i>sin(<sup>&#960</sup>&frasl;<sub>2</sub> - x) = cos(x)</i>:
-            <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cos</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">sin</span><span class="p">((</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span></pre></div>
-            Great. That solves the <i>cos(x)</i> part. Now, we can finally implement <i>sin(x)</i>:
-            <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">term_count</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">values</span> <span class="o">=</span> <span class="p">(((</span><span class="n">x</span> <span class="o">-</span> <span class="n">center</span><span class="p">)</span><span class="o">**</span><span class="n">i</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">*</span> <span class="n">nth_sin_derivative</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">center</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">term_count</span><span class="p">))</span>
-        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span></pre></div>
-            We specify two special cases: <i>x = <sup>&#960</sup>&frasl;<sub>2</sub></i> for evaluating sin derivatives that require to compute <i>sin(x)</i> at center,
-            and <i>x = 0</i> for evaluating sin derivatives that require to compute <i>cos(x)</i> at center. Else, we compute the Taylor series.
-            </p>
-            <p>
-            <h2>Is the implementation any good?</h2>
-            Well, it sure can compute <i>sin(x)</i>! With term_count=19 the approximation is nearly as good as the python's
-            math.sin:
-            <hr>
-            <a target="_blank" href="/pix/sin_taylor_series_barplot.gif"><img loading="lazy" src="/pix/sin_taylor_series_barplot.gif"></img></a>
-            <hr>
-            <a target="_blank" href="/pix/sin_taylor_series.gif"><img loading="lazy" src="/pix/sin_taylor_series.gif"></img></a>
-            <hr>
-            However, assemblies actually provide an <a target="_blank" href="https://cs.fit.edu/~mmahoney/cse3101/nasmdocb.html#section-B.4.100">fsin</a> instruction, so
-            computing <i>sin(x)</i> in software when speed matters is kinda cringe. On the side note, CPUs don't actually use a Taylor series
-            to compute trig functions - they use <a target="_blank" href="https://en.wikipedia.org/wiki/Cordic">CORDIC</a>.
-            </p>
-            <p>
-                <a target="_blank" href="https://gist.github.com/jacadzaca/0b76d75411566d506df3d8897204e00e">Code that generates the graphs</a>
-            </p>
-        </article>
-        <hr>
-        <footer class="nav">
-            <a href="/linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
-            <a target="_blank" href="/rss.xml" title="Stay updated">Feed</a>
-            <a href="/bookmarks.html" title="Browser bookmarks">Bookmarked pages</a>
-        </footer>
-        <hr>
+        <main>
+            <article>
+                <h1>how sin is computed?</h1>
+                <p>I can recall the first time I wrote a program that
+                used a trigonometric function - it was back in secondary
+                school. I was making a game and wanted to make some
+                object float around another. Back then, I didn’t know
+                what trig functions were and how they worked, so I
+                copied some code from the web and, to my astonishment,
+                it worked. I got curious how these functions worked, so
+                I pressed F3 in my IDE and tried to look for the source
+                code of Math.sin. I can’t remember whether I found the
+                code and didn’t understand it or whether I couldn’t find
+                the implementation at all. It doesn’t really matter.
+                What dose, is that back then I swore to myself that one
+                day I will implement my own sin function. Two days ago,
+                I’ve learned about <a
+                href="https://www.khanacademy.org/math/ap-calculus-bc/bc-series-new#bc-10-11"
+                target="_blank">Taylor Series</a>.</p>
+                <h2 id="taylors-how-do-they-work">Taylors, how do they
+                work?</h2>
+                <p>Taylor series is a tool to express some function as a
+                polynomial, using its nth derivative. Since
+                <em>sin(x)</em> and its derivatives are differentiable,
+                we can express <em>f(x) = sin(x)</em> as:</p>
+                <p><a
+                href="/files/images/how_sin_is_computed/taylor_equation.svg"
+                target="_blank"><img
+                src="/files/images/how_sin_is_computed/taylor_equation.svg"
+                loading="lazy" /></a></p>
+                <p>In this case, we can’t add infinitely many terms in a
+                finite amount of time, so we have to approximate. Since
+                this is a toy implementation, we will just compare it
+                with python’s math.sin implementation and call it quits
+                when they will converge <em>good enough</em>.</p>
+                <h2 id="implementation">Implementation</h2>
+                <p>First, we need some way of obtaining the nth
+                derivative of sin, evaluated at some center <em>a</em>.
+                By writing down sin’s first fifteen derivatives, we can
+                see that the odd derivatives are either <em>1 *
+                cos(x)</em> or <em>(-1) * cos(x)</em>, while the plural
+                ones take the form of 1 * <em>sin(x)</em> or (-1) *
+                <em>sin(x)</em>. What is more difficult to see, is that
+                derivatives with an ordinal that yields a reminder of
+                two or three when divided by four are the derivatives
+                with and minus sign. I don’t know how to formally prove
+                it... <em>yet</em>, but you need to trust me on this
+                one. Translating into python code:</p>
+                <div class="sourceCode" id="cb1"><pre
+                class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> nth_sin_derivative(n, a<span class="op">=</span>math.pi<span class="op">/</span><span class="dv">2</span>):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">%</span> <span class="dv">4</span> <span class="kw">in</span> (<span class="dv">2</span>,<span class="dv">3</span>):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            sign <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            sign <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            function <span class="op">=</span> sin</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            function <span class="op">=</span> cos</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sign <span class="op">*</span> function(a)</span></code></pre></div>
+                <p>Second, we need to actually be able to evaluate both
+                <em>cos(x)</em> and <em>sin(x)</em> at our center. Since
+                we are implementing <em>sin(x)</em>, we should deal with
+                <em>cos(x)</em> first. We don’t have to implement
+                <em>cos(x)</em> separately - notice that
+                <em>sin(<sup>π</sup>⁄<sub>2</sub> - x) =
+                cos(x)</em>:</p>
+                <div class="sourceCode" id="cb2"><pre
+                class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> cos(x):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sin((math.pi<span class="op">/</span><span class="dv">2</span>) <span class="op">-</span> x)</span></code></pre></div>
+                <p>Great. That solves the <em>cos(x)</em> part. Now, we
+                can finally implement <em>sin(x)</em>:</p>
+                <div class="sourceCode" id="cb3"><pre
+                class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> sin(x, center<span class="op">=</span>math.pi<span class="op">/</span><span class="dv">2</span>, term_count<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> x <span class="op">==</span> math.pi<span class="op">/</span><span class="dv">2</span>:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            values <span class="op">=</span> (((x <span class="op">-</span> center)<span class="op">**</span>i <span class="op">/</span> math.factorial(i)) <span class="op">*</span> nth_sin_derivative(i, a<span class="op">=</span>center) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(term_count))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">sum</span>(values)</span></code></pre></div>
+                <p>We specify two special cases: <em>x =
+                <sup>π</sup>⁄<sub>2</sub></em> for evaluating sin
+                derivatives that require to compute <em>sin(x)</em> at
+                center, and <em>x = 0</em> for evaluating sin
+                derivatives that require to compute <em>cos(x)</em> at
+                center. Else, we compute the Taylor series.</p>
+                <h2 id="is-the-implementation-any-good">Is the
+                implementation any good?</h2>
+                <p>Well, it sure can compute <em>sin(x)</em>! With
+                term_count=19 the approximation is nearly as good as the
+                python’s math.sin:</p>
+                <hr />
+                <p><a
+                href="/files/images/how_sin_is_computed/sin_taylor_series_barplot.gif"
+                target="_blank"><img
+                src="/files/images/how_sin_is_computed/sin_taylor_series_barplot.gif"
+                loading="lazy" /></a></p>
+                <hr />
+                <p><a
+                href="/files/images/how_sin_is_computed/sin_taylor_series.gif"
+                target="_blank"><img
+                src="/files/images/how_sin_is_computed/sin_taylor_series.gif"
+                loading="lazy" /></a></p>
+                <hr />
+                <p>However, assemblies actually provide an <a
+                href="https://cs.fit.edu/~mmahoney/cse3101/nasmdocb.html#section-B.4.100"
+                target="_blank">fsin</a> instruction, so computing
+                <em>sin(x)</em> in software when speed matters is kinda
+                cringe. On the side note, CPUs don’t actually use a
+                Taylor series to compute trig functions - they use <a
+                href="https://en.wikipedia.org/wiki/Cordic"
+                target="_blank">CORDIC</a>.</p>
+                <p><a
+                href="https://gist.github.com/jacadzaca/0b76d75411566d506df3d8897204e00e"
+                target="_blank">Code that generates the graphs</a></p>
+            </article>
+        </main>
+        <hr style="grid-column: 1 / 3; grid-row: 3;">
+        <footer>
+            <p> [This site 2022 by <a href="/">jacadzaca</a>, CC BY-SA 4.0]</p>        </footer>
     </body>
 </html>
- 

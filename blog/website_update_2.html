@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" vocab="http://schema.org" typeof="Blog">
     <head>
-        <title>website update | jaca's safe haven</title>
+        <title>website update 2 | jaca's safe haven</title>
         <link rel="stylesheet" href="/files/css/code_highlight.css"></link>
 
         <link rel="author" href="/">
@@ -28,9 +28,9 @@
         <meta name="description" content="describing how I improved the
 website">
         <meta property="og:type" content="article">
-        <meta property="article:published_time" content="2022-02-11T17:38:02">
+        <meta property="article:published_time" content="2022-08-17T16:21:19">
         <meta property="article:section" content="maintenance">
-        <meta property="og:title" content="website update">
+        <meta property="og:title" content="website update 2">
         <meta property="og:description" content="describing how I
 improved the website">
         <meta property="article:tag" content="website">
@@ -52,49 +52,44 @@ improved the website">
         </nav>
         <main>
             <article>
-                <h1>website update</h1>
+                <h1>website update 2</h1>
                 <ol type="1">
-                <li>there’s a link to my <a href="https://codeberg.org/"
-                target="_blank">Codeberg</a> account on my <a href="/"
-                target="_blank">homepage</a> now</li>
-                <li>all contact info was moved into the ‘Contact’
-                drop-down menu on the</li>
-                <li>I’ve replaced the ‘webring’ page with a ‘Links’
-                drop-down menu on my homepage</li>
-                <li>images’ backgrounds now fit the blog’s color scheme
-                (e.g. they’re black)</li>
-                <li>nearly all images were converted from PNGs into <a
-                href="https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#avif_image"
-                target="_blank">AVIFs</a></li>
-                <li>images on the blog page are now <a
-                href="https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading"
-                target="_blank">loaded lazily</a></li>
-                <li>I’ve changed my <a href="/images/avatar.avif"
-                target="_blank">avatar</a> (I still have a copy of the
-                silly badger - don’t worry)</li>
-                <li>I’ve added an <a
-                href="/images/favicons/1250x1250.jpg"
-                target="_blank">favicon</a></li>
-                <li>mathematical equations are now rendered with an SVG
-                image</li>
-                <li>code snippets are now syntax-highlighted with <a
-                href="https://pygments.org/"
-                target="_blank">pygments</a></li>
-                <li>‘long’ code line are now wrapped</li>
-                <li>I’ve added <a href="https://ogp.me/"
-                target="_blank">OpenGraph</a>, <a
-                href="https://loqbooq.app/blog/add-favicon-modern-browser-guide"
-                target="_blank">favicon</a> [<a
-                href="https://www.emergeinteractive.com/insights/detail/The-Essentials-of-FavIcons/"
-                target="_blank">1</a>] and <a
-                href="https://tutorials.comandeer.pl/html5-blog.html?fbclid=IwAR11hQRNjYrNUFAlnJ7zmvs7rO2oxnwvXj40dr-NaxcHfJCBVUXv4OkdNNY"
-                target="_blank">some other</a> metadata tags. There’s
-                also a <a
-                href="https://developer.mozilla.org/en-US/docs/Web/Manifest"
-                target="_blank">manifest.json</a> file now (this means
-                you <em>should</em> be able to add this blog to your
-                smartphone’s home-screen)</li>
+                <li>the site’s layout was completely overhauled, <a
+                href="/" target="_blank">see for yourself</a></li>
+                <li>there’s fancy, new, CSS only ‘slider’ on the <a
+                href="/bookmarks.html" target="_blank">bookmarks
+                page</a></li>
+                <li>added a table of contents to the rolling blog
+                page</li>
+                <li>added a light and a dark theme throught CSS, <a
+                href="https://wiki.archlinux.org/title/Chromium#Dark_mode"
+                target="_blank">how to enable dark mode in
+                Chromium</a></li>
+                <li>fixed RSS’ date attribute on posts</li>
+                <li>broke RSS - old posts may appear as new</li>
+                <li>website’s RSS will be moved to <a
+                href="/files/rss.xml" target="_blank">here</a></li>
+                <li>the ‘link’ buttons on the blog page now takes you to
+                the article’s title</li>
+                <li>the posts are now written in markdown and then
+                converted with pandoc to HTML so you can read them in
+                plain markdown under /files/markdown/posts/POST-NAME, <a
+                href="/files/markdown/posts/website_update_2.md"
+                target="_blank">here’s this post</a> If you really want,
+                you can even read them in PDF, assuming <a
+                href="https://pandoc.org/" target="_blank">pandoc</a>
+                and <a href="https://pwmt.org/projects/zathura/"
+                target="_blank">zathura</a> are installed:</li>
                 </ol>
+                <div class="sourceCode" id="cb1"><pre
+                class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">pandoc</span> <span class="at">-o</span> <span class="at">-</span> <span class="at">--to</span> pdf <span class="at">--from</span> markdown https://jacadzaca.github.io/files/markdown/posts/website_update_2.md <span class="kw">|</span> <span class="ex">zathura</span> <span class="at">-</span></span></code></pre></div>
+                <ol start="10" type="1">
+                <li>reworded the <a href="/blog/browser_dark_mode.html"
+                target="_blank">dark mode article</a></li>
+                <li>there’s a <a href="/donate.html"
+                target="_blank">donation page</a> now</li>
+                </ol>
+                <p>Criticism or ideas are welcome.</p>
             </article>
         </main>
         <hr style="grid-column: 1 / 3; grid-row: 3;">

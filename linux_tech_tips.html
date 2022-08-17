@@ -1,119 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" vocab="http://schema.org" typeof="Blog">
     <head>
-        <title>Linux Tech Tips</title>
+        <title>Linux Tech Tips | jaca's safe haven</title>
+        <link rel="stylesheet" href="/files/css/code_highlight.css"></link>
 
-        <link rel="author" href="https://jacadzaca.github.io/">
-        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/rss.xml">
-        <link rel="icon" href="/pix/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
-        <link rel="icon" href="/pix/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
-        <link rel="apple-touch-icon" href="/pix/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
-        <link rel="apple-touch-icon" href="/pix/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
-        <link rel="stylesheet" href="/style.css"></link>
+        <link rel="author" href="/">
+        <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/files/rss.xml">
+        <link rel="icon" href="/files/images/favicons/16x16.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/32x32.jpg" sizes="32x32" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/48x48.jpg" sizes="48x48" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/128x128.jpg" sizes="128x128" type="image/jpg">
+        <link rel="icon" href="/files/images/favicons/192x192.jpg" sizes="192x192" type="image/jpg">
+        <link rel="apple-touch-icon" href="/files/images/favicons/167x167.jpg" sizes="167x167" type="image/jpg">
+        <link rel="apple-touch-icon" href="/files/images/favicons/180x180.jpg" sizes="180x180" type="image/jpg">
+        <link rel="stylesheet" href="/files/css/main.css"></link>
+        <link rel="manifest" href="/files/manifest.json">
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#171716">
-        <meta name="description" content="useful linux facts">
-        <meta property="og:site_name" content="jaca's website - computer stuff and maths">
-        <meta property="og:title" content="jaca's website">
-        <meta property="og:image" content="/pix/favicons/1250x1250.jpg">
+        <meta property="og:site_name" content="jaca's safe haven">
+        <meta property="og:image" content="/files/images/favicons/1250x1250.jpg">
+        <meta property="og:image:width" content="1250">
+        <meta property="og:image:height" content="1250">
+        <meta property="og:image:alt" content="jaca's blog logo">
+
+        <meta name="description" content="">
+        <meta property="og:type" content="article">
+        <meta property="article:published_time" content="2022-08-17T16:21:17">
+        <meta property="article:section" content="technology">
+        <meta property="og:title" content="Linux Tech Tips">
+        <meta property="og:description" content="">
+        <meta property="article:tag" content="linux">
+        <meta property="article:tag" content="tips">
+        <meta property="article:tag" content="commands">
+        <meta property="article:tag" content="unix">
+        
     </head>
     <body>
-        <hr>
-        <nav class="nav">
-            <a href="/index.html">Home</a>
-            <a href="/blog.html">Blog</a>
-            <ul title="Ways we can get in touch">
-                Contact
-                <div class="dropdown-content">
-                    <li><a href="mailto:vitouejj@gmail.com" title="Please encrypt your emails with PGP">Email</a></li>
-                    <li><a href="/jacadzaca.gpg" title="Pretty good privacy">PGP</a></li>
-                </div>
-            </ul>
+        <hr style="grid-column: 1 / 3; grid-row: 1">
+        <nav>
+            <a href="/index.html">🏠Home</a>
+            <a href="/blog.html">📜Blog</a>
+            <a target="_blank" href="/files/rss.xml" title="Stay updated">📡RSS Feed</a>
+            <a href="/git.html">🐙Git</a>
+            <a href="/links.html" title="Sites worth visting">🔗Links</a>
+            <a href="/contact.html">📨Contact</a>
+            <a href="/donate.html" title="Give me money">💰Donate</a>
+            <a href="/linux_tech_tips.html" title="Linux facts">💡Linux Tech Tips</a>
+            <a href="/bookmarks.html" title="My Browser bookmarks">🔖Bookmarks</a>
         </nav>
-        <hr>
-        <h1>Linux Tech Tips</h1>
-        <p>This is a list of useful facts about Linux that I've discovered by either
-        reading the man pages or browsing the Internet.</p>
-        <ul>
-            <li id"atexit">
-                With <a
-                    href="https://www.man7.org/linux/man-pages/man3/atexit.3.html"
-                    target="_blank">atexit</a>
-                it is possible to call a function when the process terminates.
-            </li>
-            <li id="jobs">
-                You can list background processes in your current shell with
-                <a href="https://www.man7.org/linux/man-pages/man1/jobs.1p.html"
-                    target="_blank">jobs</a>.
-            </li>
-            <li id="fg">
-                You can place a process into the foreground with
-                <a href="https://www.man7.org/linux/man-pages/man1/fg.1p.html"
-                   target="_blank">fg</a>.
-            </li>
-            <li id="proc">
-                /proc/ directory can turn out to be useful; especially if you are
-                interested in process file descriptors.
-            </li>
-            <li id="pidof">
-                In order to find a process ID (a PID) of a running program, use
-                <a href="https://www.man7.org/linux/man-pages/man1/pidof.1.html"
-                    target="_blank">pidof</a>.
-            </li>
-            <li id="file">
-                You can determine file type of an file with the
-                <a href="https://www.man7.org/linux/man-pages/man1/file.1.html"
-                   target="_blank">file</a> command.
-            </li>
-            <li id="htop">
-                There is a more <i>sophisticated</i> version of the
-                <a href="https://www.man7.org/linux/man-pages/man1/top.1.html"
-                   target="_blank">top</a> command, it is called
-               <a href="https://linux.die.net/man/1/htop"
-                  target="_blank">htop</a>.
-            </li>
-            <li id="locate">
-                Have no clue where a file is? Using
-                <a href="https://linux.die.net/man/1/find" target="_blank">find</a>
-                gives no results? Try <a href="https://linux.die.net/man/1/locate"
-                                         target="_blank">locate</a>, it searches
-                the <i>whole</i> system!
-            </li>
-            <li id="notify-servers">
-                You can programmatically send desktop notifications with a
-                <a href ="https://wiki.archlinux.org/index.php/Desktop_Notifications"
-                   target="_blank">notify server</a>.
-            </li>
-            <li id="anacron">
-                If you don not have you computer running 24/7, to schedule a job use
-                <a href="https://www.man7.org/linux/man-pages/man8/anacron.8.html"
-                   target="_blank">anacron</a>.
-            </li>
-            <li id="strace">
-                You can attach to a process in order to see what system calls it makes with
-                <a href="https://www.man7.org/linux/man-pages/man1/strace.1.html"
-                   target="_blank">strace</a>.
-            </li>
-            <li id="w">
-                With <a href="https://www.man7.org/linux/man-pages/man1/w.1.html">w</a>
-                you can see which users are logged in and what they are doing
-            </li>
-            <li id="watch">
-                With <a href="https://www.man7.org/linux/man-pages/man1/watch.1.html">watch</a>
-                you can execute a program perodicly and see its output
-            </li>
-        </ul>
-        <hr>
-        <footer class="nav">
-            <a href="/linux_tech_tips.html" title="Linux facts">Linux Tech Tips</a>
-            <a target="_blank" href="/rss.xml" title="Stay updated">Feed</a>
-            <a href="/bookmarks.html" title="Browser bookmarks">Bookmarked pages</a>
-        </footer>
-        <hr>
+        <main>
+            <article>
+                <h1>Linux Tech Tips</h1>
+                <p>This is a list of useful facts about Linux that I've
+                discovered by either reading the man pages or browsing
+                the Internet.</p>
+                <ul>
+                <li>With <a
+                href="https://www.man7.org/linux/man-pages/man3/atexit.3.html"
+                target="_blank">atexit</a> it is possible to call a
+                function when the process terminates.</li>
+                <li><span id="jobs">You can list background processes in
+                your current shell with <a
+                href="https://www.man7.org/linux/man-pages/man1/jobs.1p.html"
+                target="_blank">jobs</a>.</span></li>
+                <li><span id="fg">You can place a process into the
+                foreground with <a
+                href="https://www.man7.org/linux/man-pages/man1/fg.1p.html"
+                target="_blank">fg</a>.</span></li>
+                <li><span id="proc">/proc/ directory can turn out to be
+                useful; especially if you are interested in process file
+                descriptors.</span></li>
+                <li><span id="pidof">In order to find a process ID (a
+                PID) of a running program, use <a
+                href="https://www.man7.org/linux/man-pages/man1/pidof.1.html"
+                target="_blank">pidof</a>.</span></li>
+                <li><span id="file">You can determine file type of an
+                file with the <a
+                href="https://www.man7.org/linux/man-pages/man1/file.1.html"
+                target="_blank">file</a> command.</span></li>
+                <li><span id="htop">There is a more
+                <em>sophisticated</em> version of the <a
+                href="https://www.man7.org/linux/man-pages/man1/top.1.html"
+                target="_blank">top</a> command, it is called <a
+                href="https://linux.die.net/man/1/htop"
+                target="_blank">htop</a>.</span></li>
+                <li><span id="locate">Have no clue where a file is?
+                Using <a href="https://linux.die.net/man/1/find"
+                target="_blank">find</a> gives no results? Try <a
+                href="https://linux.die.net/man/1/locate"
+                target="_blank">locate</a>, it searches the
+                <em>whole</em> system!</span></li>
+                <li><span id="notify-servers">You can programmatically
+                send desktop notifications with a <a
+                href="https://wiki.archlinux.org/index.php/Desktop_Notifications"
+                target="_blank">notify server</a>.</span></li>
+                <li><span id="anacron">If you don not have you computer
+                running 24/7, to schedule a job use <a
+                href="https://www.man7.org/linux/man-pages/man8/anacron.8.html"
+                target="_blank">anacron</a>.</span></li>
+                <li><span id="strace">You can attach to a process in
+                order to see what system calls it makes with <a
+                href="https://www.man7.org/linux/man-pages/man1/strace.1.html"
+                target="_blank">strace</a>.</span></li>
+                <li><span id="w">With <a
+                href="https://www.man7.org/linux/man-pages/man1/w.1.html"
+                target="_blank">w</a> you can see which users are logged
+                in and what they are doing</span></li>
+                <li><span id="watch">With <a
+                href="https://www.man7.org/linux/man-pages/man1/watch.1.html"
+                target="_blank">watch</a> you can execute a program
+                perodicly and see its output</span></li>
+                <li><span id="envsubst">Need a dead simple templating
+                mechanism? Try <a
+                href="https://www.tutorialspoint.com/unix_commands/envsubst.htm"
+                target="_blank">envstub</a></span></li>
+                </ul>
+            </article>
+        </main>
+        <hr style="grid-column: 1 / 3; grid-row: 3;">
+        <footer>
+            <p> [This site 2022 by <a href="/">jacadzaca</a>, CC BY-SA 4.0]</p>        </footer>
     </body>
 </html>

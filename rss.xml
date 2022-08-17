@@ -7,635 +7,998 @@
         <atom:link href="https://jacadzaca.github.io/rss.xml" rel="self" type="application/rss+xml"/>
         <image>
             <title>jaca's safe haven</title>
-            <url>https://jacadzaca.github.io//pix/avatar.jpg</url>
+            <url>https://jacadzaca.github.io//files/images/avatar.avif</url>
             <link>https://jacadzaca.github.io/rss.xml</link>
         </image>
+            <item>
+                <title>website update 2</title>
+                <guid>https://jacadzaca.github.io/blog/website_update_2.html</guid>
+                <link>https://jacadzaca.github.io/blog/website_update_2.html</link>
+                <pubDate>Wed, 17 Aug 2022 16:21:19 +0200</pubDate>
+                <description>
+                    <![CDATA[ 
+                <h1>website update 2</h1>
+                <ol type="1">
+                <li>the site’s layout was completely overhauled, <a
+                href="/" target="_blank">see for yourself</a></li>
+                <li>there’s fancy, new, CSS only ‘slider’ on the <a
+                href="/bookmarks.html" target="_blank">bookmarks
+                page</a></li>
+                <li>added a table of contents to the rolling blog
+                page</li>
+                <li>added a light and a dark theme throught CSS, <a
+                href="https://wiki.archlinux.org/title/Chromium#Dark_mode"
+                target="_blank">how to enable dark mode in
+                Chromium</a></li>
+                <li>fixed RSS’ date attribute on posts</li>
+                <li>broke RSS - old posts may appear as new</li>
+                <li>website’s RSS will be moved to <a
+                href="/files/rss.xml" target="_blank">here</a></li>
+                <li>the ‘link’ buttons on the blog page now takes you to
+                the article’s title</li>
+                <li>the posts are now written in markdown and then
+                converted with pandoc to HTML so you can read them in
+                plain markdown under /files/markdown/posts/POST-NAME, <a
+                href="/files/markdown/posts/website_update_2.md"
+                target="_blank">here’s this post</a> If you really want,
+                you can even read them in PDF, assuming <a
+                href="https://pandoc.org/" target="_blank">pandoc</a>
+                and <a href="https://pwmt.org/projects/zathura/"
+                target="_blank">zathura</a> are installed:</li>
+                </ol>
+                <div class="sourceCode" id="cb1"><pre
+                class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">pandoc</span> <span class="at">-o</span> <span class="at">-</span> <span class="at">--to</span> pdf <span class="at">--from</span> markdown https://jacadzaca.github.io/files/markdown/posts/website_update_2.md <span class="kw">|</span> <span class="ex">zathura</span> <span class="at">-</span></span></code></pre></div>
+                <ol start="10" type="1">
+                <li>reworded the <a href="/blog/browser_dark_mode.html"
+                target="_blank">dark mode article</a></li>
+                <li>there’s a <a href="/donate.html"
+                target="_blank">donation page</a> now</li>
+                </ol>
+                <p>Criticism or ideas are welcome.</p>
+             ]]>
+                </description>
+            </item>
             <item>
                 <title>generating a maths worksheet</title>
                 <guid>https://jacadzaca.github.io/blog/generating_a_maths_worksheet.html</guid>
                 <link>https://jacadzaca.github.io/blog/generating_a_maths_worksheet.html</link>
-                <pubDate>Sat, 19 Feb 2022 16:53:33 0200</pubDate>
+                <pubDate>Sat, 19 Feb 2022 16:53:33 +0200</pubDate>
                 <description>
                     <![CDATA[ 
-            <h2>Inspiration</h2>
-            <p>
-                When you get a maths worksheet, it usually comes with the answers to the
-                problems from each section, so you can check your work - pretty nifty.
-                However, it turns out that's not the way they do it at my university.
-                Passing semester, I had to trudge through <em>a ton</em> of answerless
-                worksheets, which made studying much more time-consuming,
-                since I had to spend extra minute or two <em>per example</em> inputting the
-                equation into <a target="_blank" href="https://www.symbolab.com/">Symbolab</a>,
-                or googling for the solution. Let for minor annoyances, when I couldn't input
-                some problem into Symbolab or when it <a target="_blank" href="https://www.symbolab.com/solver/step-by-step/%5Clim_%7Bx%5Cto0%7D%5Cleft(%5Cfrac%7Bsin%5Cleft(x%5Cright)%7D%7Bx%7D%5Cright)?or=input">spouted out gibberish</a>,
-                I finished the semester less than unharmed - I got inspired. Leaving the question of whether not handing out answer-sheets was just a big <a target="_blank" href="https://www.urbandictionary.com/define.php?term=psyop">psyop</a>
-                by my instructors to to force students into creating study groups for another time, I decided I would generate my own worksheets (without blackjack and hookers... sadly).
-            </p>
-            <h2>How?</i></h2>
-            <p>
-                <a target="_blank" href="https://www.wolframalpha.com/problem-generator/">Wolfram's Problem Generator</a> claims to be using AI to generate the problem sheets,
-                <a target="_blank" href="https://mathsbot.com/generators/textbook">mathsbot</a> probably uses some database of predefined questions. Shouldn't writing a maths worksheet generator be complicated?
-                or at least time consuming? Also, don't you need someone to handout answers? With the right software and mindset - no, no and no. If we think about it, maths worksheets are just permutations of different
-                symbols. We can generate these just fine, for example with python's <a target="_blank" href="https://docs.python.org/3/library/itertools.html#itertools.product">itertools</a> or <a target="_blank" href="https://docs.python.org/3/library/random.html">random</a> module. Now,
-                since a worksheet usually comes with an answers section, we will also be needing a way of evaluating the generated expressions, luckily there's a
-                <a target="_blank" href="https://en.wikipedia.org/wiki/Computer_algebra_system">whole bunch of software that dose this</a>, for example, <a target="_blank" href="https://www.sympy.org/">sympy</a>.
-                To present the worksheets we can generate a <a target="_blank" href="https://www.latex-project.org/">LaTeX</a> document via <a target="_blank" href="https://jinja.palletsprojects.com/">jinja</a>
-                and then compile it with, for example, <a target="_blank" href="https://man.archlinux.org/man/pdftex.1">pdflatex</a>.
-            </p>
-            <h2>Implementation</h2>
-            <p>
-                For simplicity, we'll write a quadratics worksheet generator.
-                First, we'll need a function that spouts out quadratics,
-                we would like the generator to:
-                <ol>
-                    <li>differentiate quadratics on basis of the number of solutions, because
-                        a worksheet with, for example, only two solutions quadratics would be boring/incomprehensive,</li>
-                    <li>ensure that the quadratic's coefficients are not to crazy - in the end it's humans that
-                        will be solving the equations.</li>
+                <h1>generating a maths worksheet</h1>
+                <h2 id="inspiration">Inspiration</h2>
+                <p>When you get a maths worksheet, it usually comes with
+                the answers to the problems from each section, so you
+                can check your work - pretty nifty. However, it turns
+                out that’s not the way they do it at my university.
+                Passing semester, I had to trudge through <em>a ton</em>
+                of answerless worksheets, which made studying much more
+                time-consuming, since I had to spend extra minute or two
+                <em>per example</em> inputting the equation into <a
+                href="https://www.symbolab.com/"
+                target="_blank">Symbolab</a>, or googling for the
+                solution. Let for minor annoyances, when I couldn’t
+                input some problem into Symbolab or when it <a
+                href="https://www.symbolab.com/solver/step-by-step/%5Clim_%7Bx%5Cto0%7D%5Cleft(%5Cfrac%7Bsin%5Cleft(x%5Cright)%7D%7Bx%7D%5Cright)?or=input"
+                target="_blank">spouted out gibberish</a>, I finished
+                the semester less than unharmed - I got inspired.
+                Leaving the question of whether not handing out
+                answer-sheets was just a big <a
+                href="https://www.urbandictionary.com/define.php?term=psyop"
+                target="_blank">psyop</a> by my instructors to to force
+                students into creating study groups for another time, I
+                decided I would generate my own worksheets (without
+                blackjack and hookers... sadly).</p>
+                <h2 id="how">How?</h2>
+                <p><a
+                href="https://www.wolframalpha.com/problem-generator/"
+                target="_blank">Wolfram’s Problem Generator</a> claims
+                to be using AI to generate the problem sheets, <a
+                href="https://mathsbot.com/generators/textbook"
+                target="_blank">mathsbot</a> probably uses some database
+                of predefined questions. Shouldn’t writing a maths
+                worksheet generator be complicated? or at least time
+                consuming? Also, don’t you need someone to handout
+                answers? With the right software and mindset - no, no
+                and no. If we think about it, maths worksheets are just
+                permutations of different symbols. We can generate these
+                just fine, for example with python’s <a
+                href="https://docs.python.org/3/library/itertools.html#itertools.product"
+                target="_blank">itertools</a> or <a
+                href="https://docs.python.org/3/library/random.html"
+                target="_blank">random</a> module. Now, since a
+                worksheet usually comes with an answers section, we will
+                also be needing a way of evaluating the generated
+                expressions, luckily there’s a <a
+                href="https://en.wikipedia.org/wiki/Computer_algebra_system"
+                target="_blank">whole bunch of software that dose
+                this</a>, for example, <a href="https://www.sympy.org/"
+                target="_blank">sympy</a>. To present the worksheets we
+                can generate a <a href="https://www.latex-project.org/"
+                target="_blank">LaTeX</a> document via <a
+                href="https://jinja.palletsprojects.com/"
+                target="_blank">jinja</a> and then compile it with, for
+                example, <a
+                href="https://man.archlinux.org/man/pdftex.1"
+                target="_blank">pdflatex</a>.</p>
+                <h2 id="implementation">Implementation</h2>
+                <p>For simplicity, we’ll write a quadratics worksheet
+                generator. First, we’ll need a function that spouts out
+                quadratics, we would like the generator to:</p>
+                <ol type="1">
+                <li>differentiate quadratics on basis of the number of
+                solutions, because a worksheet with, for example, only
+                two solutions quadratics would be
+                boring/incomprehensive,</li>
+                <li>ensure that the quadratic’s coefficients are not to
+                crazy - in the end it’s humans that will be solving the
+                equations.</li>
                 </ol>
-                To achieve the first goal, we'll split the function into three.
-                Second one will require making some simple observations:
-                <ol>
-                    <li>it's more difficult to randomize fraction coefficents, so random coefficients will only be integers,</li>
-                    <li>coefficients should be bounded,</li>
-                    <li>it's easier to generate positive integers and then to pick a sign</li>
-                    <li>
-                        we know that a quadratic has two solutions, if and only
-                        if its <a target="_blank" href="https://en.wikipedia.org/wiki/Discriminant#Degree_2">discriminant is positive</a>,
-                        so given a quadratic of the form: <i>ax<sup>2</sup> + bx + c &and; a &ne; 0</i>,
-                        with two different solutions, we can write: <i><sup>b<sup>2</sup></sup>&frasl;<sub>4a</sub> > c</i>.
-                        Since we are looking for an integer upper-bound for <i>a</i> and
-                        <i>c</i>, lets set <i>c > 2</i>, therefore
-                        <i><sup>b<sup>2</sup></sup>&frasl;<sub>8</sub> > a</i>,
-                    </li>
-                    <li>
-                        for a quadratic to have one solution, it's discriminant must
-                        equal zero, so if we pick <i>a</i> and <i>c</i>, <i>b = &radic;<span style="text-decoration: overline">4ac</span></i>,
-                        since this could produe complicated coefficients, let's require <i>a</i> and <i>c</i> to be perfect squares.
-                    </li>
+                <p>To achieve the first goal, we’ll split the function
+                into three. Second one will require making some simple
+                observations:</p>
+                <ol type="1">
+                <li>it’s more difficult to randomize fraction
+                coefficents, so random coefficients will only be
+                integers,</li>
+                <li>coefficients should be bounded,</li>
+                <li>it’s easier to generate positive integers and then
+                to pick a sign</li>
+                <li>we know that a quadratic has two solutions, if and
+                only if its <a
+                href="https://en.wikipedia.org/wiki/Discriminant#Degree_2"
+                target="_blank">discriminant is positive</a>, so given a
+                quadratic of the form: <em>ax<sup>2</sup> + bx + c ∧ a ≠
+                0</em>, with two different solutions, we can write:
+                <em>b<sup>2</sup>⁄<sub>4a</sub> &gt; c</em>. Since we
+                are looking for an integer upper-bound for <em>a</em>
+                and <em>c</em>, lets set <em>c &gt; 2</em>, therefore
+                <em>b<sup>2</sup>⁄<sub>8</sub> &gt; a</em>,</li>
+                <li>for a quadratic to have one solution, it’s
+                discriminant must equal zero, so if we pick <em>a</em>
+                and <em>c</em>, <em>b = √<span
+                style="text-decoration: overline">4ac</span></em>, since
+                this could produe complicated coefficients, let’s
+                require <em>a</em> and <em>c</em> to be perfect
+                squares.</li>
                 </ol>
-                Figuring out bounds for no-solutions quadratics is left as an exercise for the reader.
-                Translating the observations into python code:
-                <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">sympy</span>
-<span class="kn">import</span> <span class="nn">random</span>
-
-<span class="n">SIGN</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">generate_quadratic_two_solutions</span><span class="p">(</span><span class="n">max_coefficient</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_coefficient</span><span class="p">)</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">//</span><span class="mi">8</span><span class="p">)</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">//</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">*x**2 + </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">*x + </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">generate_quadratic_one_solution</span><span class="p">(</span><span class="n">max_coefficient</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
-    <span class="n">sign</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">SIGN</span><span class="p">)</span>
-    <span class="n">a</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_coefficient</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_coefficient</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">*x**2 + </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">*x + </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">generate_quadratic_zero_solutions</span><span class="p">(</span><span class="n">max_coefficient</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
-    <span class="n">sign</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">SIGN</span><span class="p">)</span>
-    <span class="n">a</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_coefficient</span><span class="p">),</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_coefficient</span><span class="p">)</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))))</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">trunc</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">*x**2 + </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">*x + </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></pre></div>
-                Wait a minute, problems in a worksheet are usually ordered by difficulty -
-                the further the problem, the more difficult it is. I couldn't come up
-                with any <b>solid</b> way of evaluating a quadratic's difficulty, based
-                on it's coefficients, so I went with:
-                <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quadratic_difficulty_comperator</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">as_coefficients_dict</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></pre></div>
-        Now onto generating a LaTeX document. Luckily, <a target="_blank" href="https://docs.sympy.org/latest/tutorial/printing.html#mathrm-latex">sympy has a built-in LaTeX converter</a>,
-        so we'll only need to instiate <a target="_blank" href="https://jinja2docs.readthedocs.io/en/stable/api.html#basics">jinja</a> and
-        put toghether a <a target="_blank" href="https://raw.githubusercontent.com/jacadzaca/zadanko/master/zadanko/templates/problem_sheet.jinja.tex">template</a>:
-        <div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">collections</span>
-
-<span class="kn">import</span> <span class="nn">sympy</span>
-<span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">FileSystemLoader</span>
-
-<span class="c1">#...quadratic generating code ommited for breviety...#</span>
-
-
-<span class="n">Task</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Task&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;instruction&#39;</span><span class="p">,</span> <span class="s1">&#39;problems&#39;</span><span class="p">,</span> <span class="s1">&#39;awnsers&#39;</span><span class="p">])</span>
-
-<span class="n">ENV</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span>
-    <span class="n">loader</span><span class="o">=</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">),</span>
-    <span class="n">trim_blocks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">lstrip_blocks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="c1"># generate diffrent kinds of quadratic equations</span>
-    <span class="n">zero_solutions_quadratics</span> <span class="o">=</span> <span class="p">[</span><span class="n">quadratics</span><span class="o">.</span><span class="n">generate_quadratic_zero_solutions</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
-    <span class="n">one_solution_quadratics</span> <span class="o">=</span> <span class="p">[</span><span class="n">quadratics</span><span class="o">.</span><span class="n">generate_quadratic_one_solution</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
-    <span class="n">two_solutions_quadratics</span> <span class="o">=</span> <span class="p">[</span><span class="n">quadratics</span><span class="o">.</span><span class="n">generate_quadratic_two_solutions</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
-    <span class="c1"># sort them according to &#39;difficulty&#39; - the greater the sum of quadratic&#39;s coefficients, the more difficult it is</span>
-    <span class="n">zero_solutions_quadratics</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">quadratics</span><span class="o">.</span><span class="n">quadratic_difficulty_comperator</span><span class="p">)</span>
-    <span class="n">one_solution_quadratics</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">quadratics</span><span class="o">.</span><span class="n">quadratic_difficulty_comperator</span><span class="p">)</span>
-    <span class="n">two_solutions_quadratics</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">quadratics</span><span class="o">.</span><span class="n">quadratic_difficulty_comperator</span><span class="p">)</span>
-
-    <span class="c1"># arrange the problems in random order, but try to keep the problems&#39; difficulty incremental</span>
-    <span class="n">problem_lists</span> <span class="o">=</span> <span class="p">[</span><span class="n">zero_solutions_quadratics</span><span class="p">,</span> <span class="n">one_solution_quadratics</span><span class="p">,</span> <span class="n">two_solutions_quadratics</span><span class="p">]</span>
-    <span class="n">problems</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">zero_solutions_quadratics</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">one_solution_quadratics</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">two_solutions_quadratics</span><span class="p">)):</span>
-        <span class="n">choice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">problem_lists</span><span class="p">)</span>
-        <span class="n">problems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">choice</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">choice</span><span class="p">:</span>
-            <span class="n">problem_lists</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">choice</span><span class="p">)</span>
-
-    <span class="c1"># generate the awnsers with sympy https://docs.sympy.org/latest/index.html</span>
-    <span class="n">awnsers</span> <span class="o">=</span> <span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">printing</span><span class="o">.</span><span class="n">latex</span><span class="p">((</span><span class="n">sympy</span><span class="o">.</span><span class="n">solvers</span><span class="o">.</span><span class="n">solveset</span><span class="p">(</span><span class="n">quadratic</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">S</span><span class="o">.</span><span class="n">Reals</span><span class="p">)))</span> <span class="k">for</span> <span class="n">quadratic</span> <span class="ow">in</span> <span class="n">problems</span><span class="p">)</span>
-    <span class="c1"># convert into LaTeX</span>
-    <span class="n">problems</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">printing</span><span class="o">.</span><span class="n">latex</span><span class="p">,</span> <span class="n">problems</span><span class="p">)</span>
-
-    <span class="c1">#output latex code</span>
-    <span class="n">latex</span> <span class="o">=</span> <span class="n">ENV</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">&#39;problem_sheet.jinja.tex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">tasks</span><span class="o">=</span><span class="p">[</span><span class="n">Task</span><span class="p">(</span><span class="s1">&#39;Find the roots of function $f$, given by expression:&#39;</span><span class="p">,</span> <span class="n">problems</span><span class="p">,</span> <span class="n">awnsers</span><span class="p">)])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span></pre></div>
-        To compile and view the document, we can use:
-        <div class="highlight"><pre><span></span>./worksheet.py <span class="p">|</span> pdflatex --jobname worksheet --output-directory /tmp <span class="o">&amp;&amp;</span> zathura /tmp/worksheet.pdf</pre></div>
-        </p>
-        <h2>More</h2>
-        <p>
-            Slightly modifed version of this script can be found <a target="_blank" href="https://github.com/jacadzaca/zadanko">here</a>,
-            along with scripts generating worksheets on <a target="_blank" href="https://raw.githubusercontent.com/jacadzaca/zadanko/master/examples/generate_differentiation_worksheet.py" >differentiation</a>,
-            <a target="_blank" href="https://raw.githubusercontent.com/jacadzaca/zadanko/master/examples/generate_integration_worksheet.py">integration</a> and <a target="_blank" href="https://raw.githubusercontent.com/jacadzaca/zadanko/master/examples/generate_limit_worksheet.py">limits</a>.
-            Example worksheet generated with the script can be found <a target="_blank" href="https://file.enum.run/e8d4b8c0bdfa9554/example_worksheet.pdf">here</a>.
-            If you write a simillar script on some other math topic, for exmaple function graphing or trig equations, feel free to issue a <a target="_blank" href="https://github.com/jacadzaca/zadanko/pulls">pull request :)</a>.
-            I will also gladly accept <a href="mailto:vitouejj@gmail.com?subject=Worksheet generator script - [INSERT NAME]">links</a> to simillar repositories and include them in <a target="_blank" href="https://github.com/jacadzaca/zadanko#readme">zadanko's README</a>.
-        </p>
-         ]]>
+                <p>Figuring out bounds for no-solutions quadratics is
+                left as an exercise for the reader. Translating the
+                observations into python code:</p>
+                <div class="sourceCode" id="cb1"><pre
+                class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> math</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> sympy</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> random</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    SIGN <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> generate_quadratic_two_solutions(max_coefficient<span class="op">=</span><span class="dv">20</span>):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> random.randint(<span class="dv">3</span>, max_coefficient)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> random.randint(<span class="dv">1</span>, (b<span class="op">**</span><span class="dv">2</span>)<span class="op">//</span><span class="dv">8</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> random.randint(<span class="dv">1</span>, (b<span class="op">**</span><span class="dv">2</span>)<span class="op">//</span>(<span class="dv">4</span><span class="op">*</span>a))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sympy.sympify(<span class="ss">f&#39;</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">*x**2 + </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">*x + </span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> generate_quadratic_one_solution(max_coefficient<span class="op">=</span><span class="dv">20</span>):</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        sign <span class="op">=</span> random.choice(SIGN)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        a, c <span class="op">=</span> sign <span class="op">*</span> random.randint(<span class="dv">1</span>, max_coefficient)<span class="op">**</span><span class="dv">2</span>, sign <span class="op">*</span> random.randint(<span class="dv">1</span>, max_coefficient)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> <span class="bu">int</span>(math.sqrt(<span class="dv">4</span><span class="op">*</span>a<span class="op">*</span>c))</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sympy.sympify(<span class="ss">f&#39;</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">*x**2 + </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">*x + </span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> generate_quadratic_zero_solutions(max_coefficient<span class="op">=</span><span class="dv">20</span>):</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        sign <span class="op">=</span> random.choice(SIGN)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        a, c <span class="op">=</span> sign <span class="op">*</span> random.randint(<span class="dv">1</span>, max_coefficient), sign <span class="op">*</span> random.randint(<span class="dv">1</span>, max_coefficient)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> math.sqrt(random.randint(<span class="dv">1</span>, math.floor(math.sqrt(<span class="dv">4</span><span class="op">*</span>a<span class="op">*</span>c))))</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> sympy.Rational(<span class="bu">str</span>(math.trunc(b <span class="op">*</span> <span class="dv">10</span>)<span class="op">/</span><span class="dv">10</span>))</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sympy.sympify(<span class="ss">f&#39;</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">*x**2 + </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">*x + </span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+                <p>Wait a minute, problems in a worksheet are usually
+                ordered by difficulty - the further the problem, the
+                more difficult it is. I couldn’t come up with any
+                <strong>solid</strong> way of evaluating a quadratic’s
+                difficulty, based on it’s coefficients, so I went
+                with:</p>
+                <div class="sourceCode" id="cb2"><pre
+                class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> quadratic_difficulty_comperator(x):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">sum</span>(x.as_coefficients_dict().values())</span></code></pre></div>
+                <p>Now onto generating a LaTeX document. Luckily, <a
+                href="https://docs.sympy.org/latest/tutorial/printing.html#mathrm-latex"
+                target="_blank">sympy has a built-in LaTeX
+                converter</a>, so we’ll only need to instiate <a
+                href="https://jinja2docs.readthedocs.io/en/stable/api.html#basics"
+                target="_blank">jinja</a> and put toghether a <a
+                href="https://raw.githubusercontent.com/jacadzaca/zadanko/master/zadanko/templates/problem_sheet.jinja.tex"
+                target="_blank">template</a>:</p>
+                <div class="sourceCode" id="cb3"><pre
+                class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> math</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> random</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> collections</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> sympy</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> jinja2 <span class="im">import</span> Environment, FileSystemLoader</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#...quadratic generating code ommited for breviety...#</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    Task <span class="op">=</span> collections.namedtuple(<span class="st">&#39;Task&#39;</span>, [<span class="st">&#39;instruction&#39;</span>, <span class="st">&#39;problems&#39;</span>, <span class="st">&#39;awnsers&#39;</span>])</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    ENV <span class="op">=</span> Environment(</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        loader<span class="op">=</span>FileSystemLoader(<span class="st">&#39;.&#39;</span>),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        trim_blocks<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        lstrip_blocks<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> main():</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># generate diffrent kinds of quadratic equations</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        zero_solutions_quadratics <span class="op">=</span> [quadratics.generate_quadratic_zero_solutions() <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        one_solution_quadratics <span class="op">=</span> [quadratics.generate_quadratic_one_solution() <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        two_solutions_quadratics <span class="op">=</span> [quadratics.generate_quadratic_two_solutions() <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>)]</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># sort them according to &#39;difficulty&#39; - the greater the sum of quadratic&#39;s coefficients, the more difficult it is</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        zero_solutions_quadratics.sort(key<span class="op">=</span>quadratics.quadratic_difficulty_comperator)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        one_solution_quadratics.sort(key<span class="op">=</span>quadratics.quadratic_difficulty_comperator)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        two_solutions_quadratics.sort(key<span class="op">=</span>quadratics.quadratic_difficulty_comperator)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        <span class="co"># arrange the problems in random order, but try to keep the problems&#39; difficulty incremental</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        problem_lists <span class="op">=</span> [zero_solutions_quadratics, one_solution_quadratics, two_solutions_quadratics]</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        problems <span class="op">=</span> []</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(zero_solutions_quadratics) <span class="op">+</span> <span class="bu">len</span>(one_solution_quadratics) <span class="op">+</span> <span class="bu">len</span>(two_solutions_quadratics)):</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>            choice <span class="op">=</span> random.choice(problem_lists)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>            problems.append(choice.pop())</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> choice:</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                problem_lists.remove(choice)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># generate the awnsers with sympy https://docs.sympy.org/latest/index.html</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        awnsers <span class="op">=</span> (sympy.printing.latex((sympy.solvers.solveset(quadratic, domain<span class="op">=</span>sympy.S.Reals))) <span class="cf">for</span> quadratic <span class="kw">in</span> problems)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="co"># convert into LaTeX</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        problems <span class="op">=</span> <span class="bu">map</span>(sympy.printing.latex, problems)</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>        <span class="co">#output latex code</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>        latex <span class="op">=</span> ENV.get_template(<span class="st">&#39;problem_sheet.jinja.tex&#39;</span>).render(tasks<span class="op">=</span>[Task(<span class="st">&#39;Find the roots of function $f$, given by expression:&#39;</span>, problems, awnsers)])</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(latex)</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>        main()</span></code></pre></div>
+                <p>To compile and view the document, we can use:</p>
+                <pre class="shell"><code>    ./worksheet.py | pdflatex --jobname worksheet --output-directory /tmp &amp;&amp; zathura /tmp/worksheet.pdf</code></pre>
+                <h2 id="more">More</h2>
+                <p>Slightly modifed version of this script can be found
+                <a href="https://github.com/jacadzaca/zadanko"
+                target="_blank">here</a>, along with scripts generating
+                worksheets on <a
+                href="https://raw.githubusercontent.com/jacadzaca/zadanko/master/examples/generate_differentiation_worksheet.py"
+                target="_blank">differentiation</a>, <a
+                href="https://raw.githubusercontent.com/jacadzaca/zadanko/master/examples/generate_integration_worksheet.py"
+                target="_blank">integration</a> and <a
+                href="https://raw.githubusercontent.com/jacadzaca/zadanko/master/examples/generate_limit_worksheet.py"
+                target="_blank">limits</a>. Example worksheet generated
+                with the script can be found <a
+                href="https://file.enum.run/e8d4b8c0bdfa9554/example_worksheet.pdf"
+                target="_blank">here</a>. If you write a simillar script
+                on some other math topic, for exmaple function graphing
+                or trig equations, feel free to issue a <a
+                href="https://github.com/jacadzaca/zadanko/pulls"
+                target="_blank">pull request :)</a>. I will also gladly
+                accept <a
+                href="mailto:vitouejj@gmail.com?subject=Worksheet%20generator%20script%20-%20%5BINSERT%20NAME%5D"
+                target="_blank">links</a> to simillar repositories and
+                include them in <a
+                href="https://github.com/jacadzaca/zadanko#readme"
+                target="_blank">zadanko’s README</a>.</p>
+             ]]>
                 </description>
             </item>
             <item>
                 <title>website update</title>
                 <guid>https://jacadzaca.github.io/blog/website_update.html</guid>
                 <link>https://jacadzaca.github.io/blog/website_update.html</link>
-                <pubDate>Fri, 11 Feb 2022 17:38:02 0200</pubDate>
+                <pubDate>Fri, 11 Feb 2022 17:38:02 +0200</pubDate>
                 <description>
                     <![CDATA[ 
-            <ol>
-                <li>there's a link to my <a target="_blank" href="https://codeberg.org/">Codeberg</a> account on my <a href="/">homepage</a> now</li>
-                <li>all contact info was moved into the 'Contact' drop-down menu on the</li>
-                <li>I've replaced the 'webring' page with a 'Links' drop-down menu on my homepage</li>
-                <li>images' backgrounds now fit the blog's color scheme (e.g. they're black)</li>
-                <li>nearly all images were converted from PNGs into <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#avif_image">AVIFs</a></li>
-                <li>images on the blog page are now <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading">loaded lazily</a></li>
-                <li>I've changed my <a target="_blank" href="/pix/avatar.avif">avatar</a> (I still have a copy of the silly badger - don't worry)</li>
-                <li>I've added an <a target="_blank" href="/pix/favicons/1250x1250.jpg">favicon</a></li>
-                <li>mathematical equations are now rendered with an SVG image</li>
-                <li>code snippets are now syntax-highlighted with <a target="_blank" href="https://pygments.org/">pygments</a></li>
-                <li>'long' code line are now wrapped</li>
-                <li>
-                    I've added <a target="_blank" href="https://ogp.me/">OpenGraph</a>, <a target="_blank" href="https://loqbooq.app/blog/add-favicon-modern-browser-guide">favicon</a> [<a target="_blank" href="https://www.emergeinteractive.com/insights/detail/The-Essentials-of-FavIcons/">1</a>] and <a href="https://tutorials.comandeer.pl/html5-blog.html?fbclid=IwAR11hQRNjYrNUFAlnJ7zmvs7rO2oxnwvXj40dr-NaxcHfJCBVUXv4OkdNNY">some other</a> metadata tags.
-                    There's also a <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Manifest">manifest.json</a> file now (this means you <em>should</em> be able to add this blog to your smartphone's home-screen)
-                </li>
-            </ol>
-         ]]>
+                <h1>website update</h1>
+                <ol type="1">
+                <li>there’s a link to my <a href="https://codeberg.org/"
+                target="_blank">Codeberg</a> account on my <a href="/"
+                target="_blank">homepage</a> now</li>
+                <li>all contact info was moved into the ‘Contact’
+                drop-down menu on the</li>
+                <li>I’ve replaced the ‘webring’ page with a ‘Links’
+                drop-down menu on my homepage</li>
+                <li>images’ backgrounds now fit the blog’s color scheme
+                (e.g. they’re black)</li>
+                <li>nearly all images were converted from PNGs into <a
+                href="https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#avif_image"
+                target="_blank">AVIFs</a></li>
+                <li>images on the blog page are now <a
+                href="https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading"
+                target="_blank">loaded lazily</a></li>
+                <li>I’ve changed my <a href="/images/avatar.avif"
+                target="_blank">avatar</a> (I still have a copy of the
+                silly badger - don’t worry)</li>
+                <li>I’ve added an <a
+                href="/images/favicons/1250x1250.jpg"
+                target="_blank">favicon</a></li>
+                <li>mathematical equations are now rendered with an SVG
+                image</li>
+                <li>code snippets are now syntax-highlighted with <a
+                href="https://pygments.org/"
+                target="_blank">pygments</a></li>
+                <li>‘long’ code line are now wrapped</li>
+                <li>I’ve added <a href="https://ogp.me/"
+                target="_blank">OpenGraph</a>, <a
+                href="https://loqbooq.app/blog/add-favicon-modern-browser-guide"
+                target="_blank">favicon</a> [<a
+                href="https://www.emergeinteractive.com/insights/detail/The-Essentials-of-FavIcons/"
+                target="_blank">1</a>] and <a
+                href="https://tutorials.comandeer.pl/html5-blog.html?fbclid=IwAR11hQRNjYrNUFAlnJ7zmvs7rO2oxnwvXj40dr-NaxcHfJCBVUXv4OkdNNY"
+                target="_blank">some other</a> metadata tags. There’s
+                also a <a
+                href="https://developer.mozilla.org/en-US/docs/Web/Manifest"
+                target="_blank">manifest.json</a> file now (this means
+                you <em>should</em> be able to add this blog to your
+                smartphone’s home-screen)</li>
+                </ol>
+             ]]>
                 </description>
             </item>
             <item>
                 <title>hacking a warcraft 3 map</title>
                 <guid>https://jacadzaca.github.io/blog/hacking_a_warcraft_3_map.html</guid>
                 <link>https://jacadzaca.github.io/blog/hacking_a_warcraft_3_map.html</link>
-                <pubDate>Wed, 29 Dec 2021 16:15:35 0200</pubDate>
+                <pubDate>Wed, 29 Dec 2021 16:15:35 +0200</pubDate>
                 <description>
                     <![CDATA[ 
-        <p>
-            I'm a big Warcraft fan. Actually, I consider Warcraft 3 to be the best video game of all time. I like the story, the voice-acting (polish voice-over was great until Reforged), and
-            the music fits game-play. But what's best about Warcraft 3 is its universal game engine that combined with the powerful game editor would lead to creation of many unique mods. Of course, I have my favorite:
-            a polish modification called <i>Alchemicy</i> - a combination of a hero defense and a crafting game. Although the mod is loads of fun, one aspect of it always bugged me: there are characters that you can only play as after
-            either making a donation to the author or if you know him in-game. What's more, the donation service was <a target="_blank" href="https://warrttssgames.blogspot.com/p/premium-alchemicy.html">shut-down in 2012</a> with the guy quting the game. Since the map is protected,
-            meaning nobody can open the mod file in the editor, the characters seemed to have been lost to the sands of time... Until I figured out a way to produce a patch that removes the paywall.
-        </p>
-        <h2>Protections, how do they work?</h2>
-        <p>
-            First, a brief introduction to the Warcraft map file format (w3x). For my purposes, every Warcraft 3 mod is basically an archive (<a target="_blank" href="https://world-editor-tutorials.thehelper.net/cat_usersubmit.php?view=42787">see here for proper docs</a>) that contains
-            <a target="_blank" href="https://github.com/ChiefOfGxBxL/WC3MapTranslator#file-support">a few files</a>, each relating to different aspects of the mod. <a target="_blank" href="http://www.3ice.hu/blog/protect-warcraft-maps/#delete">Certain files</a> (from now on - <em>header files</em>)
-            only carry data that's required by the game editor to open up the map, other files are mandatory (for example, the map file), there also might be some auxiliary files; most probably custom models, icons or sounds. What's crucial is that each file contains information that
-            allows a human to identify it (e.g, the file defining custom units contains units' names, hitpoints etc.)
-            <p>
-                All map protection software dose is remove the header files, therefore making the editor crush each time you try to open a protected map with it.
-                It also removes the MPQ's (name of the archiving format) listfile, therefore obfuscating files' names.
-            </p>
-        </p>
-        <h2>The plan</h2>
-        <p>
-            Since I'm familiar with the Warcraft ecosystem, a glance at the map in-game revealed that there must be a certain upgrade that
-            is granted to all 'premium' users. Since all of the custom upgrades are in the <i>war3map.w3q</i> file, I figured that all I need to do
-            is:
-            <ol>
-                <li>identify the .w3q file</li>
-                <li>byte patch the mod-file directly or:</li>
-                    <ol type="i">
-                        <li>convert the file into editable form</li>
-                        <li>make applicable changes</li>
-                        <li>convert the file back and patch the mod-file using an editor</li>
-                    </ol>
-            </ol>
-            Sadly, this approach doesn't work, because:
-            <ol>
-                <li>files in the MPQ are somehow compressed, so you cannot byte-patch them directly</li>
-                <li>the MPQ's listfile is gone, so you cannot add new files. You cannot replace a file without adding a file</li>
-                <li>the .w3q files only cotains the upgrade's definition (ID, description etc). The correct place to apply the patch is in the <i>war3map.w3u</i> file</li>
-            </ol>
-            Luckily, the new insight allowed me to conjure an approach that works:
-            <ol>
-                <li>acquire a Warcraft map with a listfile - a template</li>
-                <li>extract and identify the files inside the <i>Alchemicy</i> mod file</li>
-                <li>make applicable changes to the <i>war3map.w3u</i> file</li>
-                <li>replace the files inside the template with the ones extracted</li>
-            </ol>
-            We are going to need:
-            <ol>
-                <li>the <a target="_blank" href="http://www.zezula.net/en/mpq/download.html">MPQ editor</a> (it runs under Wine) to both extract, and overwrite files found in a .w3x file</li>
-                <li><a target="_blank" href="https://github.com/ChiefOfGxBxL/WC3MapTranslator/tree/v1.1.0">this w3x parser</a> to identify the files</li>
-                <li><a download href="https://www.epicwar.com/maps/download/231379/688fa38f47c622d9e3e3afddb95520c5a2a4707c64c5ec23c5ee994b1e3826f461c63b9f/Alchemicy%203.22v.w3x"><i>Alchemicy</i> map file</a></li>
-                <li>a 128 by 128, <i>Cityscape</i> tileset, Warcraft map to use as a template</li>
-            </ol>
-        </p>
-        <h2>The implementation</h2>
-        <p>
-            First, I downloaded one of my old, unfinished maps for a template. Then, I created two directories:
-            <i>identified-files</i> and <i>unidentified-files</i> and extracted all files from the map (save for .blp and .mdx files) into the second one. Second, I noticed that it's possible to
-            identify few of the files just by either looking at them or by opening them in your <a target="_blank" href="https://neovim.io/">favorite text editor</a>:
-            <ol>
-                <li>since File00000000.w3e has an extension, it's probably the war3map.w3e file</li>
-                <li>by comparsion with your template map, File00000001.xxx is the war3map.w3i file</li>
-                <li>since File00000002.xxx is fillied with strings, it must be the war3map.wts file</li>
-                <li>since File00000003.xxx looks like computer code, it must be the war3map.j file</li>
-                <li>since File00000007.wpm has an extension, it's probably the war3map.wpm file</li>
-                <li>the File0000000008.doo is either the the war3map.doo or the war3mapUnits.doo</li>
-                <li>by comparsion with your template map, File00000015.xxx is the war3mapMisc.txt file</li>
-                <li>by comparsion with your template map, File00000016.xxx is the war3mapExtra.txt file</li>
-            </ol>
-            I renamed the identified files and moved them into the other directory. I also ran <a target="_blank" href="https://raw.githubusercontent.com/ChiefOfGxBxL/WC3MapTranslator/v1.1.0/examples/jsonToWar/entity/doodads.js">this example script</a>
-            that is provided by the parser to figure out that the .doo file is the war3Map.doo file. Nearly all other files can be identified using <a target="_blank" href="https://gist.githubusercontent.com/jacadzaca/9f094f8aa8131278a375f5d96caeb748/raw/4be413027c1444b3e9ebf27d6306258371e05cd5/check.sh">this script</a>,
-            after applying this 'patch' inside the <i>WC3MapTranslator/examples/warToJson</i> directory:
-            <p>
-                <code>
-                    find . -name '*js' -exec sed -i -e 's|fs.writeFileSync(jsonPath, |console.log(|g' {} \;
-                </code>
-            </p>
-             File00000004, File00000006 and File00000012 couldn't be parsed into anything sensible. I would later figure out that
-             (using a method of trail and error) File00000004 is the .shd file and that File00000006 is the .mmp file. I couldn't figure what File00000012 is.
-            <p>
-                Thirdly, I would convert both the <a target="_blank" href="">.w3q</a> and the <a target="_blank" href="">.w3u file</a> into JSON and compare them:
-            </p>
-            <hr>
-            <a target="_blank" href="/pix/json_comparison.png"><img loading="lazy" alt="a side-by-side comparision of JSON representation of the .w3q and .w3u" title="a side-by-side comparision of JSON representation of the .w3q and .w3u" src="/pix/json_comparison.png"></a>
-            <hr>
-            I figured that the simplest solution would be to blank-out the <i>value</i> record with:
-            <p>
-                <code>
-                    sed -i -e 's|R000||g' units.json
-                </code>
-            </p>
-            Then, I would convert the edited <a target="_blank" href="https://raw.githubusercontent.com/ChiefOfGxBxL/WC3MapTranslator/v1.1.0/examples/jsonToWar/object/units.js">JSON back into a .w3u file</a>
-            and continue as planned.
-        </p>
-        <h2>Conclusions</h2>
-        <p>
-            Although the patch works (see [1]), it's somehow rough around (points [2-5]) the edges:
-            <hr>
-            <a target="_blank" href="/pix/hero_selection_comparison.avif"><img loading="lazy" alt="a side-by-side comparison of original Alchemicy map and its 'hacked' version" title="a side-by-side comparison of original Alchemicy map and its 'hacked' version" src="/pix/hero_selection_comparison.avif"></a>
-            <hr>
-            I also think it's also worth mentioning that:
-            <ol>
-                <li>although my way of identifying the files works, it turns out that <a target="_blank" href="http://www.zezula.net/en/mpq/war3maps.html">MPQ Editor</a> automates this process.</li>
-                <li>although the patched map can be opened in the editor, the game crushes when I try to launch the map</li>
-                <li>there exist <a target="_blank" href="https://www.youtube.com/watch?v=98nXuBiKVig">a program</a> that can automate the whole process, but:</li>
+                <h1>hacking a Warcraft 3 map</h1>
+                <p>I’m a big Warcraft fan. Actually, I consider Warcraft
+                3 to be the best video game of all time. I like the
+                story, the voice-acting (polish voice-over was great
+                until Reforged), and the music fits game-play. But
+                what’s best about Warcraft 3 is its universal game
+                engine that combined with the powerful game editor would
+                lead to creation of many unique mods. Of course, I have
+                my favorite: a polish modification called
+                <em>Alchemicy</em> - a combination of a hero defense and
+                a crafting game. Although the mod is loads of fun, one
+                aspect of it always bugged me: there are characters that
+                you can only play as after either making a donation to
+                the author or if you know him in-game. What’s more, the
+                donation service was <a
+                href="https://warrttssgames.blogspot.com/p/premium-alchemicy.html"
+                target="_blank">shut-down in 2012</a> with the guy
+                quting the game. Since the map is protected, meaning
+                nobody can open the mod file in the editor, the
+                characters seemed to have been lost to the sands of
+                time... Until I figured out a way to produce a patch
+                that removes the paywall.</p>
+                <h2 id="protections-how-do-they-work">Protections, how
+                do they work?</h2>
+                <p>First, a brief introduction to the Warcraft map file
+                format (w3x). For my purposes, every Warcraft 3 mod is
+                basically an archive (<a
+                href="https://world-editor-tutorials.thehelper.net/cat_usersubmit.php?view=42787"
+                target="_blank">see here for proper docs</a>) that
+                contains <a
+                href="https://github.com/ChiefOfGxBxL/WC3MapTranslator#file-support"
+                target="_blank">a few files</a>, each relating to
+                different aspects of the mod. <a
+                href="http://www.3ice.hu/blog/protect-warcraft-maps/#delete"
+                target="_blank">Certain files</a> (from now on -
+                <em>header files</em>) only carry data that’s required
+                by the game editor to open up the map, other files are
+                mandatory (for example, the map file), there also might
+                be some auxiliary files; most probably custom models,
+                icons or sounds. What’s crucial is that each file
+                contains information that allows a human to identify it
+                (e.g, the file defining custom units contains units’
+                names, hitpoints etc.)</p>
+                <p>All map protection software dose is remove the header
+                files, therefore making the editor crush each time you
+                try to open a protected map with it. It also removes the
+                MPQ’s (name of the archiving format) listfile, therefore
+                obfuscating files’ names.</p>
+                <h2 id="the-plan">The plan</h2>
+                <p>Since I’m familiar with the Warcraft ecosystem, a
+                glance at the map in-game revealed that there must be a
+                certain upgrade that is granted to all ‘premium’ users.
+                Since all of the custom upgrades are in the
+                <em>war3map.w3q</em> file, I figured that all I need to
+                do is:</p>
+                <p>identify the .w3q file</p>
+                <p>byte patch the mod-file directly or:</p>
                 <ol type="i">
-                    <li>it's literally a sketchy, Russian program from the internet</li>
-                    <li>I've never seen any explanation of it's inner workings</li>
+                <li>convert the file into editable form</li>
+                <li>make applicable changes</li>
+                <li>convert the file back and patch the mod-file using
+                an editor</li>
                 </ol>
-                <li>I later used the MPQ Editor's <i>Name Scanner</i> feature to fix issues [2-5], it turns out that:</li>
+                <p>Sadly, this approach doesn’t work, because:</p>
+                <ol type="1">
+                <li>files in the MPQ are somehow compressed, so you
+                cannot byte-patch them directly</li>
+                <li>the MPQ’s listfile is gone, so you cannot add new
+                files. You cannot replace a file without adding a
+                file</li>
+                <li>the .w3q files only cotains the upgrade’s definition
+                (ID, description etc). The correct place to apply the
+                patch is in the <em>war3map.w3u</em> file</li>
+                </ol>
+                <p>Luckily, the new insight allowed me to conjure an
+                approach that works:</p>
+                <ol type="1">
+                <li>acquire a Warcraft map with a listfile - a
+                template</li>
+                <li>extract and identify the files inside the
+                <em>Alchemicy</em> mod file</li>
+                <li>make applicable changes to the <em>war3map.w3u</em>
+                file</li>
+                <li>replace the files inside the template with the ones
+                extracted</li>
+                </ol>
+                <p>We are going to need:</p>
+                <ol type="1">
+                <li>the <a
+                href="http://www.zezula.net/en/mpq/download.html"
+                target="_blank">MPQ editor</a> (it runs under Wine) to
+                both extract, and overwrite files found in a .w3x
+                file</li>
+                <li><a
+                href="https://github.com/ChiefOfGxBxL/WC3MapTranslator/tree/v1.1.0"
+                target="_blank">this w3x parser</a> to identify the
+                files</li>
+                <li><a
+                href="https://www.epicwar.com/maps/download/231379/688fa38f47c622d9e3e3afddb95520c5a2a4707c64c5ec23c5ee994b1e3826f461c63b9f/Alchemicy%203.22v.w3x"
+                download="" target="_blank"><em>Alchemicy</em> map
+                file</a></li>
+                <li>a 128 by 128, <em>Cityscape</em> tileset, Warcraft
+                map to use as a template</li>
+                </ol>
+                <h2 id="the-implementation">The implementation</h2>
+                <p>First, I downloaded one of my old, unfinished maps
+                for a template. Then, I created two directories:
+                <em>identified-files</em> and
+                <em>unidentified-files</em> and extracted all files from
+                the map (save for .blp and .mdx files) into the second
+                one. Second, I noticed that it’s possible to identify
+                few of the files just by either looking at them or by
+                opening them in your <a href="https://neovim.io/"
+                target="_blank">favorite text editor</a>:</p>
+                <ol type="1">
+                <li>since File00000000.w3e has an extension, it’s
+                probably the war3map.w3e file</li>
+                <li>by comparsion with your template map,
+                File00000001.xxx is the war3map.w3i file</li>
+                <li>since File00000002.xxx is fillied with strings, it
+                must be the war3map.wts file</li>
+                <li>since File00000003.xxx looks like computer code, it
+                must be the war3map.j file</li>
+                <li>since File00000007.wpm has an extension, it’s
+                probably the war3map.wpm file</li>
+                <li>the File0000000008.doo is either the the war3map.doo
+                or the war3mapUnits.doo</li>
+                <li>by comparsion with your template map,
+                File00000015.xxx is the war3mapMisc.txt file</li>
+                <li>by comparsion with your template map,
+                File00000016.xxx is the war3mapExtra.txt file</li>
+                </ol>
+                <p>I renamed the identified files and moved them into
+                the other directory. I also ran <a
+                href="https://raw.githubusercontent.com/ChiefOfGxBxL/WC3MapTranslator/v1.1.0/examples/jsonToWar/entity/doodads.js"
+                target="_blank">this example script</a> that is provided
+                by the parser to figure out that the .doo file is the
+                war3Map.doo file. Nearly all other files can be
+                identified using <a
+                href="https://gist.githubusercontent.com/jacadzaca/9f094f8aa8131278a375f5d96caeb748/raw/4be413027c1444b3e9ebf27d6306258371e05cd5/check.sh"
+                target="_blank">this script</a>, after applying this
+                ‘patch’ inside the
+                <em>WC3MapTranslator/examples/warToJson</em>
+                directory:</p>
+                <p><code>find . -name '*js' -exec sed -i -e 's|fs.writeFileSync(jsonPath, |console.log(|g' {} \;</code></p>
+                <p>File00000004, File00000006 and File00000012 couldn’t
+                be parsed into anything sensible. I would later figure
+                out that (using a method of trail and error)
+                File00000004 is the .shd file and that File00000006 is
+                the .mmp file. I couldn’t figure what File00000012
+                is.</p>
+                <p>Thirdly, I would convert both the <a href=""
+                target="_blank">.w3q</a> and the <a href=""
+                target="_blank">.w3u file</a> into JSON and compare
+                them:</p>
+                <hr />
+                <p><a
+                href="/files/images/hacking_a_warcraft_3_map/json_comparison.png"
+                target="_blank"><img
+                src="/files/images/hacking_a_warcraft_3_map/json_comparison.png"
+                title="a side-by-side comparision of JSON representation of the .w3q and .w3u"
+                loading="lazy"
+                alt="a side-by-side comparision of JSON representation of the .w3q and .w3u" /></a></p>
+                <hr />
+                <p>I figured that the simplest solution would be to
+                blank-out the <em>value</em> record with:</p>
+                <p><code>sed -i -e 's|R000||g' units.json</code></p>
+                <p>Then, I would convert the edited <a
+                href="https://raw.githubusercontent.com/ChiefOfGxBxL/WC3MapTranslator/v1.1.0/examples/jsonToWar/object/units.js"
+                target="_blank">JSON back into a .w3u file</a> and
+                continue as planned.</p>
+                <h2 id="conclusions">Conclusions</h2>
+                <p>Although the patch works (see [1]), it’s somehow
+                rough around (points [2-5]) the edges:</p>
+                <hr />
+                <p><a
+                href="/files/images/hacking_a_warcraft_3_map/hero_selection_comparison.avif"
+                target="_blank"><img
+                src="/files/images/hacking_a_warcraft_3_map/hero_selection_comparison.avif"
+                title="a side-by-side comparison of original Alchemicy map and its &#39;hacked&#39; version"
+                loading="lazy"
+                alt="a side-by-side comparison of original Alchemicy map and its ‘hacked’ version" /></a></p>
+                <hr />
+                <p>I also think it’s also worth mentioning that:</p>
+                <p>although my way of identifying the files works, it
+                turns out that <a
+                href="http://www.zezula.net/en/mpq/war3maps.html"
+                target="_blank">MPQ Editor</a> automates this
+                process.</p>
+                <p>although the patched map can be opened in the editor,
+                the game crushes when I try to launch the map</p>
+                <p>there exist <a
+                href="https://www.youtube.com/watch?v=98nXuBiKVig"
+                target="_blank">a program</a> that can automate the
+                whole process, but:</p>
                 <ol type="i">
-                    <li>File00000016 is actually war3mapSkin.txt - renaming the file fixes [2] and [4]</li>
-                    <li>one of the .blp files was the wa3mapMap.blp - including this file in the patch fixes [3]</li>
-                    <li>other .blp and .mdx files were custom models/icons - including them in the patch fixes [5]</li>
+                <li>it’s literally a sketchy, Russian program from the
+                internet</li>
+                <li>I’ve never seen any explanation of it’s inner
+                workings</li>
                 </ol>
-                <li><i>warcraft3mapUnit.doo</i> is a header file</li>
-            </ol>
-        </p>
-         ]]>
+                <p>I later used the MPQ Editor’s <em>Name Scanner</em>
+                feature to fix issues [2-5], it turns out that:</p>
+                <ol type="i">
+                <li>File00000016 is actually war3mapSkin.txt - renaming
+                the file fixes [2] and [4]</li>
+                <li>one of the .blp files was the wa3mapMap.blp -
+                including this file in the patch fixes [3]</li>
+                <li>other .blp and .mdx files were custom models/icons -
+                including them in the patch fixes [5]</li>
+                </ol>
+                <p><em>warcraft3mapUnit.doo</em> is a header file</p>
+             ]]>
                 </description>
             </item>
             <item>
                 <title>are landlords cringe</title>
                 <guid>https://jacadzaca.github.io/blog/are_landlords_cringe.html</guid>
                 <link>https://jacadzaca.github.io/blog/are_landlords_cringe.html</link>
-                <pubDate>Wed, 22 Dec 2021 19:04:05 0200</pubDate>
+                <pubDate>Wed, 22 Dec 2021 19:04:05 +0200</pubDate>
                 <description>
                     <![CDATA[ 
-            I've noticed that the contempt for <a target="_blank" href="https://www.youtube.com/watch?v=6fBA2CBurVg">landlords</a> (<a target="_blank" href="https://www.youtube.com/watch?v=mDfRl6dJcYI">example in polish</a>)
-            has recently reached a new level - landlord being are equated with social parasites, who are going to cause an <a target="_blank" href="https://www.theguardian.com/commentisfree/2018/apr/16/landlords-social-parasites-last-people-should-be-honouring-buy-to-let">overpopulation crisis in literal hell</a>.
-            Surely, behind such brutal rhetoric stands some merit?
-            <h2>Landlords bad!1!1!</h2>
-            <p>
-                Landlords are said not to do any work - they just siphon others' efforts. If you and your landlord earn a similar wage and you're both saving for a new flat, it's going to be your landlord that can buy it first, although they already have a place of their own. Albeit, a landlord makes sure your apartment is a decent place to live (e.g they call in a plumber once in a while)
-                it doesn't lessens their parasitism, because then they become a <a target="_blank" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/We_Can_Do_It%21_NARA_535413_-_Restoration_2.jpg/463px-We_Can_Do_It%21_NARA_535413_-_Restoration_2.jpg">redundant middleman</a> (it's not rocket science to call a plumber).
-                Some might claim that becoming a landlord actually requires much effort - you must take risk, familiarize yourself with the appropriate laws, go around searching for a property etc. but why someone should bother with it all? Can't we
-                organize into housing cooperatives or establish a government monopoly on rentiership and thus socialize the trouble?
-            </p>
-            <h2>Landlords bad?</h2>
-            <p>
-                Imagine you're moving into city of Ekslandia - let's say you've landed a job opportunity there. You're pretty sure that you won't stay in Ekslandia for more than N years. Sadly, all of the established housing cooperatives are already full (they provide high quality housing, so nobody want to leave)
-                and the ongoing initiatives either will take more than N years to provide you with a quarter (establishing an organization is not a timely process) or are not welcoming of total strangers that hardly have a job in the city (<a target="_blank" href="https://en.wikipedia.org/wiki/Housing_cooperative">housing coops are allowed to select who's to live with them</a>). You try applying for social housing, but it turns out that it favors people with turbulent past.
-                Running out of options (and since people on the internet told you that all landlords do is exploit), you want to take out a loan and buy an apartment. You meet up with your financial adviser and he tells you that the loan over the N years that you plan to stay in the city will cost you X, however he also mentions that
-                due to the growth of available housing alternatives, the typical rent has fallen drastically and it wouldn't be hard to find a similar apartment that over the next N years will only cost you (X - 1). Since everyone can subtract, you quickly figure out that by renting you could actually save one unit of value... Since when does being exploited saves you money?
-            </p>
-            <h2>Landlord good???</h2>
-            <p>
-            Although the above story lays down a rather specific scenario (all 'better' options are unavailable, <a target="_blank" href="https://www.nerdwallet.com/mortgages/rent-vs-buy-calculator">renting is cheaper</a> etc.) and thus is not very convincing,
-            it's still a scenario that seems to presume most of the skeptics' propositions, while allowing a landlord to contribute to a society. Basically, what a landlord does is allowing the tenant not to buy an apartment; if we were to let go of some skeptics' tenets, e.g that
-            housing coops are <em>always</em> more economically efficient, we could ask whether the landlord doesn't produce value by elevating the tenant from the chore of attending coop's board meetings? Surly, if someone is attending a board meeting they are not, for example, spending time with their family.
-            Summarizing, we cannot conclude whether landlords are cringe and useless <em>ex offico</em> - when a landlord grants you affordable accommodation they are not cringe otherwise they probably are.
-            </p>
-         ]]>
+                <h1>are landlords cringe?</h1>
+                <p>I’ve noticed that the contempt for <a
+                href="https://www.youtube.com/watch?v=6fBA2CBurVg"
+                target="_blank">landlords</a> (<a
+                href="https://www.youtube.com/watch?v=mDfRl6dJcYI"
+                target="_blank">example in polish</a>) has recently
+                reached a new level - landlord being are equated with
+                social parasites, who are going to cause an <a
+                href="https://www.theguardian.com/commentisfree/2018/apr/16/landlords-social-parasites-last-people-should-be-honouring-buy-to-let"
+                target="_blank">overpopulation crisis in literal
+                hell</a>. Surely, behind such brutal rhetoric stands
+                some merit?</p>
+                <h2 id="landlords-bad11">Landlords bad!1!1!</h2>
+                <p>Landlords are said not to do any work - they just
+                siphon others’ efforts. If you and your landlord earn a
+                similar wage and you’re both saving for a new flat, it’s
+                going to be your landlord that can buy it first,
+                although they already have a place of their own. Albeit,
+                a landlord makes sure your apartment is a decent place
+                to live (e.g they call in a plumber once in a while) it
+                doesn’t lessens their parasitism, because then they
+                become a <a
+                href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/We_Can_Do_It%21_NARA_535413_-_Restoration_2.jpg/463px-We_Can_Do_It%21_NARA_535413_-_Restoration_2.jpg"
+                target="_blank">redundant middleman</a> (it’s not rocket
+                science to call a plumber). Some might claim that
+                becoming a landlord actually requires much effort - you
+                must take risk, familiarize yourself with the
+                appropriate laws, go around searching for a property
+                etc. but why someone should bother with it all? Can’t we
+                organize into housing cooperatives or establish a
+                government monopoly on rentiership and thus socialize
+                the trouble?</p>
+                <h2 id="landlords-bad">Landlords bad?</h2>
+                <p>Imagine you’re moving into city of Ekslandia - let’s
+                say you’ve landed a job opportunity there. You’re pretty
+                sure that you won’t stay in Ekslandia for more than N
+                years. Sadly, all of the established housing
+                cooperatives are already full (they provide high quality
+                housing, so nobody want to leave) and the ongoing
+                initiatives either will take more than N years to
+                provide you with a quarter (establishing an organization
+                is not a timely process) or are not welcoming of total
+                strangers that hardly have a job in the city <a
+                href="https://en.wikipedia.org/wiki/Housing_cooperative"
+                target="_blank">housing coops are allowed to select
+                who’s to live with them</a>). You try applying for
+                social housing, but it turns out that it favors people
+                with turbulent past. Running out of options (and since
+                people on the internet told you that all landlords do is
+                exploit), you want to take out a loan and buy an
+                apartment. You meet up with your financial adviser and
+                he tells you that the loan over the N years that you
+                plan to stay in the city will cost you X, however he
+                also mentions that due to the growth of available
+                housing alternatives, the typical rent has fallen
+                drastically and it wouldn’t be hard to find a similar
+                apartment that over the next N years will only cost you
+                (X - 1). Since everyone can subtract, you quickly figure
+                out that by renting you could actually save one unit of
+                value… Since when does being exploited saves you
+                money?</p>
+                <h2 id="landlord-good">Landlord good???</h2>
+                <p>Although the above story lays down a rather specific
+                scenario (all ‘better’ options are unavailable, <a
+                href="https://www.nerdwallet.com/mortgages/rent-vs-buy-calculator"
+                target="_blank">renting is cheaper</a> etc.) and thus is
+                not very convincing, it’s still a scenario that seems to
+                presume most of the skeptics’ propositions, while
+                allowing a landlord to contribute to a society.
+                Basically, what a landlord does is allowing the tenant
+                not to buy an apartment; if we were to let go of some
+                skeptics’ tenets, e.g that housing coops are
+                <em>always</em> more economically efficient, we could
+                ask whether the landlord doesn’t produce value by
+                elevating the tenant from the chore of attending coop’s
+                board meetings? Surly, if someone is attending a board
+                meeting they are not, for example, spending time with
+                their family. Summarizing, we cannot conclude whether
+                landlords are cringe and useless <em>ex offico</em> -
+                when a landlord grants you affordable accommodation they
+                are not cringe otherwise they probably are.</p>
+             ]]>
                 </description>
             </item>
             <item>
                 <title>other way to find sin of 18</title>
                 <guid>https://jacadzaca.github.io/blog/other_way_to_find_sin_of_18.html</guid>
                 <link>https://jacadzaca.github.io/blog/other_way_to_find_sin_of_18.html</link>
-                <pubDate>Tue, 28 Sep 2021 13:43:07 0200</pubDate>
+                <pubDate>Tue, 28 Sep 2021 13:43:07 +0200</pubDate>
                 <description>
                     <![CDATA[ 
-        It turns out that you can find the value of sin(18&#176;) by the following method:
-        <p>
-            Notice that by the sin addition formula:
-            <a target="_blank" href="/pix/equation1.svg"><img loading="lazy" src="/pix/equation1.svg"/></a>
-            Also:
-            <a target="_blank" href="/pix/equation2.svg"><img loading="lazy" src="/pix/equation2.svg"/></a>
-            Moreover, by the double cosine formula:
-            <a target="_blank" href="/pix/equation3.svg"><img loading="lazy" src="/pix/equation3.svg"/></a>
-            Now use the Pythagorean identity like this:
-            <a target="_blank" href="/pix/equation4.svg"><img loading="lazy" src="/pix/equation4.svg"/></a>
-            Now equate the right-hand side of equation 2&#176; with the right-hand side of statement 1&#176;, and substitute for <i>cos(36&#176;)</i>:
-            <a target="_blank" href="/pix/equation5.svg"><img loading="lazy" src="/pix/equation5.svg"/></a>
-            Notice that for t = 1 the equation is satisfied, so:
-            <a target="_blank" href="/pix/equation6.svg"><img loading="lazy" src="/pix/equation6.svg"/></a>
-            Now notice that <i>1 &gt; t &gt; 0</i>, because <i>sin(x)</i> is an increasing function when <i>90 &gt; x &gt; 0</i> and <i>sin(90&#176;) = 1 > sin(18&#176;) > sin(0&#176;) = 0</i>,
-            so <i> t = sin(18&#176;) = <sup>(-1 + &#8730;5)</sup>&frasl;<sub>4</sub> </i>, since that's the only solutions that meets the criteria
-         ]]>
+                <h1>other way of finding sin of 18 degrees</h1>
+                <p>It turns out that you can find the value of sin(18°)
+                by the following method:</p>
+                <p>Notice that by the sin addition formula: <a
+                href="/files/images/other_way_of_finding_sin_of_18/equation1.svg"
+                target="_blank"><img
+                src="/files/images/other_way_of_finding_sin_of_18/equation1.svg"
+                loading="lazy" /></a> Also: <a
+                href="/files/images/other_way_of_finding_sin_of_18/equation2.svg"
+                target="_blank"><img
+                src="/files/images/other_way_of_finding_sin_of_18/equation2.svg"
+                loading="lazy" /></a> Moreover, by the double cosine
+                formula: <a
+                href="/files/images/other_way_of_finding_sin_of_18/equation3.svg"
+                target="_blank"><img
+                src="/files/images/other_way_of_finding_sin_of_18/equation3.svg"
+                loading="lazy" /></a> Now use the Pythagorean identity
+                like this: <a
+                href="/files/images/other_way_of_finding_sin_of_18/equation4.svg"
+                target="_blank"><img
+                src="/files/images/other_way_of_finding_sin_of_18/equation4.svg"
+                loading="lazy" /></a> Now equate the right-hand side of
+                equation 2° with the right-hand side of statement 1°,
+                and substitute for <em>cos(36°)</em>: <a
+                href="/files/images/other_way_of_finding_sin_of_18/equation5.svg"
+                target="_blank"><img
+                src="/files/images/other_way_of_finding_sin_of_18/equation5.svg"
+                loading="lazy" /></a> Notice that for t = 1 the equation
+                is satisfied, so: <a
+                href="/files/images/other_way_of_finding_sin_of_18/equation6.svg"
+                target="_blank"><img
+                src="/files/images/other_way_of_finding_sin_of_18/equation6.svg"
+                loading="lazy" /></a> Now notice that <em>1 &gt; t &gt;
+                0</em>, because <em>sin(x)</em> is an increasing
+                function when <em>90 &gt; x &gt; 0</em> and <em>sin(90°)
+                = 1 &gt; sin(18°) &gt; sin(0°) = 0</em>, so <em>t =
+                sin(18°) = <sup>(-1 + √5)</sup>⁄<sub>4</sub></em> ,
+                since that’s the only solutions that meets the
+                criteria</p>
+                <p>While this method works, it’s not easy to come up
+                with the first equation. I stumbled on it by pure
+                coincidence. I personally prefer the <a
+                href="/files/images/other_way_of_finding_sin_of_18/geo_sin18.avif"
+                target="_blank">geometrical</a> way of finding the value
+                of sin(18), because it strikes me as the more obvious
+                way of doing it.</p>
+             ]]>
                 </description>
             </item>
             <item>
                 <title>how sin is computed</title>
                 <guid>https://jacadzaca.github.io/blog/how_sin_is_computed.html</guid>
                 <link>https://jacadzaca.github.io/blog/how_sin_is_computed.html</link>
-                <pubDate>Wed, 18 Aug 2021 14:35:08 0200</pubDate>
+                <pubDate>Wed, 18 Aug 2021 14:35:08 +0200</pubDate>
                 <description>
                     <![CDATA[ 
-            I can recall the first time I wrote a program that used a trigonometric function - it
-            was back in secondary school. I was making a game and wanted to make some object float around
-            another. Back then, I didn't know what trig functions were and how they worked, so I copied
-            some code from the web and, to my astonishment, it worked. I got curious how these functions worked, so
-            I pressed F3 in my IDE and tried to look for the source code of Math.sin. I can't remember whether I found
-            the code and didn't understand it or whether I couldn't find the implementation at all. It doesn't really
-            matter. What dose, is that back then I swore to myself that one day I will implement my own sin function.
-            Two days ago, I've learned about <a target="_blank" href="https://www.khanacademy.org/math/ap-calculus-bc/bc-series-new#bc-10-11">Taylor Series</a>.
-            <p>
-            <h2>Taylors, how do they work?</h2>
-            Taylor series is a tool to express some function as a polynomial, using its nth derivative.
-            Since <i>sin(x)</i> and its derivatives are differentiable, we can express <i>f(x) = sin(x)</i> as:
-            <a target="_blank" href="/pix/taylor_equation.svg"><img loading="lazy" src="/pix/taylor_equation.svg"/></a>
-            In this case, we can't add infinitely many terms in a finite amount of time, so we have
-            to approximate. Since this is a toy implementation, we will just compare it with python's
-            math.sin implementation and call it quits when they will converge <i>good enough</i>.
-            </p>
-            <p>
-            <h2>Implementation</h2>
-            First, we need some way of obtaining the nth derivative of sin, evaluated at some center <i>a</i>.
-            By writing down sin's first fifteen derivatives, we can see that the odd derivatives are either <i>1 * cos(x)</i> or
-            <i>(-1) * cos(x)</i>, while the plural ones take the form of 1 * <i>sin(x)</i> or (-1) * <i>sin(x)</i>. What is more difficult
-            to see, is that derivatives with an ordinal that yields a reminder of two or three when divided by four are the
-            derivatives with and minus sign. I don't know how to formally prove it... <em>yet</em>, but you need to trust me on this one.
-            Translating into python code:
-            <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nth_sin_derivative</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">4</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
-        <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">function</span> <span class="o">=</span> <span class="n">sin</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">function</span> <span class="o">=</span> <span class="n">cos</span>
-<span class="k">return</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></pre></div>
-            Second, we need to actually be able to evaluate both <i>cos(x)</i> and <i>sin(x)</i> at our center. Since we are implementing <i>sin(x)</i>,
-            we should deal with <i>cos(x)</i> first. We don't have to implement <i>cos(x)</i> separately -  notice that <i>sin(<sup>&#960</sup>&frasl;<sub>2</sub> - x) = cos(x)</i>:
-            <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cos</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">sin</span><span class="p">((</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span></pre></div>
-            Great. That solves the <i>cos(x)</i> part. Now, we can finally implement <i>sin(x)</i>:
-            <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">term_count</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">values</span> <span class="o">=</span> <span class="p">(((</span><span class="n">x</span> <span class="o">-</span> <span class="n">center</span><span class="p">)</span><span class="o">**</span><span class="n">i</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">*</span> <span class="n">nth_sin_derivative</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">center</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">term_count</span><span class="p">))</span>
-        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span></pre></div>
-            We specify two special cases: <i>x = <sup>&#960</sup>&frasl;<sub>2</sub></i> for evaluating sin derivatives that require to compute <i>sin(x)</i> at center,
-            and <i>x = 0</i> for evaluating sin derivatives that require to compute <i>cos(x)</i> at center. Else, we compute the Taylor series.
-            </p>
-            <p>
-            <h2>Is the implementation any good?</h2>
-            Well, it sure can compute <i>sin(x)</i>! With term_count=19 the approximation is nearly as good as the python's
-            math.sin:
-            <hr>
-            <a target="_blank" href="/pix/sin_taylor_series_barplot.gif"><img loading="lazy" src="/pix/sin_taylor_series_barplot.gif"></img></a>
-            <hr>
-            <a target="_blank" href="/pix/sin_taylor_series.gif"><img loading="lazy" src="/pix/sin_taylor_series.gif"></img></a>
-            <hr>
-            However, assemblies actually provide an <a target="_blank" href="https://cs.fit.edu/~mmahoney/cse3101/nasmdocb.html#section-B.4.100">fsin</a> instruction, so
-            computing <i>sin(x)</i> in software when speed matters is kinda cringe. On the side note, CPUs don't actually use a Taylor series
-            to compute trig functions - they use <a target="_blank" href="https://en.wikipedia.org/wiki/Cordic">CORDIC</a>.
-            </p>
-            <p>
-                <a target="_blank" href="https://gist.github.com/jacadzaca/0b76d75411566d506df3d8897204e00e">Code that generates the graphs</a>
-            </p>
-         ]]>
+                <h1>how sin is computed?</h1>
+                <p>I can recall the first time I wrote a program that
+                used a trigonometric function - it was back in secondary
+                school. I was making a game and wanted to make some
+                object float around another. Back then, I didn’t know
+                what trig functions were and how they worked, so I
+                copied some code from the web and, to my astonishment,
+                it worked. I got curious how these functions worked, so
+                I pressed F3 in my IDE and tried to look for the source
+                code of Math.sin. I can’t remember whether I found the
+                code and didn’t understand it or whether I couldn’t find
+                the implementation at all. It doesn’t really matter.
+                What dose, is that back then I swore to myself that one
+                day I will implement my own sin function. Two days ago,
+                I’ve learned about <a
+                href="https://www.khanacademy.org/math/ap-calculus-bc/bc-series-new#bc-10-11"
+                target="_blank">Taylor Series</a>.</p>
+                <h2 id="taylors-how-do-they-work">Taylors, how do they
+                work?</h2>
+                <p>Taylor series is a tool to express some function as a
+                polynomial, using its nth derivative. Since
+                <em>sin(x)</em> and its derivatives are differentiable,
+                we can express <em>f(x) = sin(x)</em> as:</p>
+                <p><a
+                href="/files/images/how_sin_is_computed/taylor_equation.svg"
+                target="_blank"><img
+                src="/files/images/how_sin_is_computed/taylor_equation.svg"
+                loading="lazy" /></a></p>
+                <p>In this case, we can’t add infinitely many terms in a
+                finite amount of time, so we have to approximate. Since
+                this is a toy implementation, we will just compare it
+                with python’s math.sin implementation and call it quits
+                when they will converge <em>good enough</em>.</p>
+                <h2 id="implementation">Implementation</h2>
+                <p>First, we need some way of obtaining the nth
+                derivative of sin, evaluated at some center <em>a</em>.
+                By writing down sin’s first fifteen derivatives, we can
+                see that the odd derivatives are either <em>1 *
+                cos(x)</em> or <em>(-1) * cos(x)</em>, while the plural
+                ones take the form of 1 * <em>sin(x)</em> or (-1) *
+                <em>sin(x)</em>. What is more difficult to see, is that
+                derivatives with an ordinal that yields a reminder of
+                two or three when divided by four are the derivatives
+                with and minus sign. I don’t know how to formally prove
+                it... <em>yet</em>, but you need to trust me on this
+                one. Translating into python code:</p>
+                <div class="sourceCode" id="cb1"><pre
+                class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> nth_sin_derivative(n, a<span class="op">=</span>math.pi<span class="op">/</span><span class="dv">2</span>):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">%</span> <span class="dv">4</span> <span class="kw">in</span> (<span class="dv">2</span>,<span class="dv">3</span>):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            sign <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            sign <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            function <span class="op">=</span> sin</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            function <span class="op">=</span> cos</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sign <span class="op">*</span> function(a)</span></code></pre></div>
+                <p>Second, we need to actually be able to evaluate both
+                <em>cos(x)</em> and <em>sin(x)</em> at our center. Since
+                we are implementing <em>sin(x)</em>, we should deal with
+                <em>cos(x)</em> first. We don’t have to implement
+                <em>cos(x)</em> separately - notice that
+                <em>sin(<sup>π</sup>⁄<sub>2</sub> - x) =
+                cos(x)</em>:</p>
+                <div class="sourceCode" id="cb2"><pre
+                class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> cos(x):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sin((math.pi<span class="op">/</span><span class="dv">2</span>) <span class="op">-</span> x)</span></code></pre></div>
+                <p>Great. That solves the <em>cos(x)</em> part. Now, we
+                can finally implement <em>sin(x)</em>:</p>
+                <div class="sourceCode" id="cb3"><pre
+                class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> sin(x, center<span class="op">=</span>math.pi<span class="op">/</span><span class="dv">2</span>, term_count<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> x <span class="op">==</span> math.pi<span class="op">/</span><span class="dv">2</span>:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            values <span class="op">=</span> (((x <span class="op">-</span> center)<span class="op">**</span>i <span class="op">/</span> math.factorial(i)) <span class="op">*</span> nth_sin_derivative(i, a<span class="op">=</span>center) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(term_count))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">sum</span>(values)</span></code></pre></div>
+                <p>We specify two special cases: <em>x =
+                <sup>π</sup>⁄<sub>2</sub></em> for evaluating sin
+                derivatives that require to compute <em>sin(x)</em> at
+                center, and <em>x = 0</em> for evaluating sin
+                derivatives that require to compute <em>cos(x)</em> at
+                center. Else, we compute the Taylor series.</p>
+                <h2 id="is-the-implementation-any-good">Is the
+                implementation any good?</h2>
+                <p>Well, it sure can compute <em>sin(x)</em>! With
+                term_count=19 the approximation is nearly as good as the
+                python’s math.sin:</p>
+                <hr />
+                <p><a
+                href="/files/images/how_sin_is_computed/sin_taylor_series_barplot.gif"
+                target="_blank"><img
+                src="/files/images/how_sin_is_computed/sin_taylor_series_barplot.gif"
+                loading="lazy" /></a></p>
+                <hr />
+                <p><a
+                href="/files/images/how_sin_is_computed/sin_taylor_series.gif"
+                target="_blank"><img
+                src="/files/images/how_sin_is_computed/sin_taylor_series.gif"
+                loading="lazy" /></a></p>
+                <hr />
+                <p>However, assemblies actually provide an <a
+                href="https://cs.fit.edu/~mmahoney/cse3101/nasmdocb.html#section-B.4.100"
+                target="_blank">fsin</a> instruction, so computing
+                <em>sin(x)</em> in software when speed matters is kinda
+                cringe. On the side note, CPUs don’t actually use a
+                Taylor series to compute trig functions - they use <a
+                href="https://en.wikipedia.org/wiki/Cordic"
+                target="_blank">CORDIC</a>.</p>
+                <p><a
+                href="https://gist.github.com/jacadzaca/0b76d75411566d506df3d8897204e00e"
+                target="_blank">Code that generates the graphs</a></p>
+             ]]>
                 </description>
             </item>
             <item>
                 <title>transfer files with netcat</title>
                 <guid>https://jacadzaca.github.io/blog/transfer_files_with_netcat.html</guid>
                 <link>https://jacadzaca.github.io/blog/transfer_files_with_netcat.html</link>
-                <pubDate>Tue, 27 Jul 2021 01:25:29 0200</pubDate>
+                <pubDate>Tue, 27 Jul 2021 01:25:29 +0200</pubDate>
                 <description>
                     <![CDATA[ 
-        As I don't use my <a target="_blank" href="/blog/btw_i_use_arch.html">arch laptop</a> that much, I've figured
-        that I can use it as a backup storage for my collections - collections of memes and movies.
-            <p>
-                <h2>Rsync is bloat?</h2>
-                Using some kind of a USB as an intermediary wouldn't do the
-                trick, because my meme collection is 14GB big (pathetic), whereas my movies
-                take 139GB. My first though was to use <a target="_blank" href="https://rsync.samba.org/examples.html">rsync</a>.
-                I've never used rsync before, so I perused its man page and quickly found out that you can use:
-                <div class="highlight"><pre><span></span><span class="n">rsync</span><span class="w"> </span><span class="o">-</span><span class="n">vzP</span><span class="w"> </span><span class="o">/</span><span class="ow">some</span><span class="o">/</span><span class="k">path</span><span class="w"> </span><span class="k">user</span><span class="nv">@remote</span>:<span class="o">/</span><span class="ow">some</span><span class="o">/</span><span class="n">other</span><span class="o">/</span><span class="k">path</span><span class="w"></span></pre></div>
-                to sync the files. Then... I got a ssh error. I couldn't be bothered to install a ssh server on
-                my laptop, because that would only bloat my precious <em><strong>Arch</strong></em> Linux install. I continued the search.
-            </p>
-            <p>
-                <h2>Rsync is bloat, so let's pipe stuff into some program</h2>
-                I've <a target="_blank" href="https://superuser.com/questions/153176/how-to-rsync-a-large-file-with-as-little-cpu-and-bandwidth-expense-as-possible#answer-1020737">stumbled on this</a>
-                StackOverflow answer. Not only does this guy have a method that would allow me to transfer my movies without installing a ssh server, but he also claims that it's faster
-                (rsync shines more when it comes to syncing
-                <a target="_blank" href="https://fedoramagazine.org/copying-large-files-with-rsync-and-some-misconceptions/">files that are 'similar'</a>).
-                It turns out that you can compress the files with tar and then use netcat to send them over the network with:
-                <div class="highlight"><pre><span></span>tar -cpv --atime-preserve<span class="o">=</span>system /path/to/ <span class="p">|</span> nc -q <span class="m">10</span> -l -p <span class="m">45454</span></pre></div>
-                on the source machine, and
-                <div class="highlight"><pre><span></span>nc -w <span class="m">10</span> X.X.X.X <span class="m">45454</span> <span class="p">|</span> tar -xpv</pre></div>
-                on the destination computer. The traffic isn't encrypted at all, but that's not a problem over LAN (e.g sending movies
-                to my laptop). Albeit, <a target="_blank" href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-35">encryption can be provided with ssh</a> or 
-                <a target="_blank" href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-936">with a VPN</a>.
-            </p>
-        I think this method is very linux-like, because it combines two programs in some unusual fashion to create something new. I might consider replacing
-        <a target="_blank" href="https://www.man7.org/linux/man-pages/man1/scp.1.html">scp</a> with the ssh version of this trick.
-         ]]>
+                <h1>transfer files with netcat</h1>
+                <p>As I don’t use my <a href="/blog/btw_i_use_arch.html"
+                target="_blank">arch laptop</a> that much, I’ve figured
+                that I can use it as a backup storage for my collections
+                - collections of memes and movies.</p>
+                <h2 id="rsync-is-bloat">Rsync is bloat?</h2>
+                <p>Using some kind of a USB as an intermediary wouldn’t
+                do the trick, because my meme collection is 14GB big
+                (pathetic), whereas my movies take 139GB. My first
+                though was to use <a
+                href="https://rsync.samba.org/examples.html"
+                target="_blank">rsync</a>. I’ve never used rsync before,
+                so I perused its man page and quickly found out that you
+                can use:</p>
+                <pre class="shell"><code>    rsync -vzP /some/path user@remote:/some/other/path</code></pre>
+                <p>to sync the files. Then... I got a ssh error. I
+                couldn’t be bothered to install a ssh server on my
+                laptop, because that would only bloat my precious
+                <strong><em>Arch</em></strong> Linux install. I
+                continued the search.</p>
+                <h2
+                id="rsync-is-bloat-so-lets-pipe-stuff-into-some-program">Rsync
+                is bloat, so let’s pipe stuff into some program</h2>
+                <p>I’ve <a
+                href="https://superuser.com/questions/153176/how-to-rsync-a-large-file-with-as-little-cpu-and-bandwidth-expense-as-possible#answer-1020737"
+                target="_blank">stumbled on this</a> StackOverflow
+                answer. Not only does this guy have a method that would
+                allow me to transfer my movies without installing a ssh
+                server, but he also claims that it’s faster (rsync
+                shines more when it comes to syncing <a
+                href="https://fedoramagazine.org/copying-large-files-with-rsync-and-some-misconceptions/"
+                target="_blank">files that are ‘similar’</a>). It turns
+                out that you can compress the files with tar and then
+                use netcat to send them over the network with:</p>
+                <pre class="shell"><code>    tar -cpv --atime-preserve=system /path/to/ | nc -q 10 -l -p 45454</code></pre>
+                <p>on the source machine, and</p>
+                <pre class="shell"><code>    nc -w 10 X.X.X.X 45454 | tar -xpv</code></pre>
+                <p>on the destination computer. The traffic isn’t
+                encrypted at all, but that’s not a problem over LAN (e.g
+                sending movies to my laptop). Albeit, <a
+                href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-35"
+                target="_blank">encryption can be provided with ssh</a>
+                or <a
+                href="https://screenage.de/blog/2007/12/30/using-netcat-and-tar-for-network-file-transfer/#comment-936"
+                target="_blank">with a VPN</a>.</p>
+                <p>I think this method is very linux-like, because it
+                combines two programs in some unusual fashion to create
+                something new. I might consider replacing <a
+                href="https://www.man7.org/linux/man-pages/man1/scp.1.html"
+                target="_blank">scp</a> with the ssh version of this
+                trick.</p>
+             ]]>
                 </description>
             </item>
             <item>
                 <title>my calendar system</title>
                 <guid>https://jacadzaca.github.io/blog/my_calendar_system.html</guid>
                 <link>https://jacadzaca.github.io/blog/my_calendar_system.html</link>
-                <pubDate>Fri, 18 Jun 2021 23:42:06 0200</pubDate>
+                <pubDate>Fri, 18 Jun 2021 23:42:06 +0200</pubDate>
                 <description>
                     <![CDATA[ 
-        <b>TL;DR</b>: I spend too much time on the Internet, should find some <a target="_blank" href="https://www.urbandictionary.com/define.php?term=fren">frens</a> and go out more lol?
-            <p>
-                Over the past three years, I've developed this odd habit of writing down <b>everything</b>
-                I do in my calendar. I've developed the habit mostly out of curiosity: I wanted to know how much
-                time I spend on the Internet, playing video games, programming etc. Besides, I'm rather sentimental.
-            </p>
-            <p>
-                Last week, I realized that having one calendar doesn't actually allow me to do that, because each
-                event has a unique name (e.g if a play some video concrete game I write down that I'm playing concretely it).
-                That means that running some <em>simple</em> script, on the calendar, to sum the events' durations
-                would not be plausible (just imagine the regex!). I should have several calendars, so that I
-                could sort each event in to its proper category.
-            </p>
-            <p>
-                <h2>Categories</h2>
-                Coming up with the categories turned out to be more difficult that I've anticipated.
-                They should be both not too specific, yet not too broad, so the 'time spent on X statistic' wouldn't
-                be complete bullocks.
-                Should working out be considered its own category, or should I just put it under the 'necessary,
-                cannot live without it, but boring' label? Is distro-hopping programming related?
-                Should competitive programming be considered as studying or as programming? In the end, I've converged on these ten different categories:
+                <h1>my calendar system&lt;</h1>
+                <p><strong>TL;DR</strong>: I spend too much time on the
+                Internet, should find some <a
+                href="https://www.urbandictionary.com/define.php?term=fren"
+                target="_blank">frens</a> and go out more lol?</p>
+                <p>Over the past three years, I’ve developed this odd
+                habit of writing down <strong>everything</strong> I do
+                in my calendar. I’ve developed the habit mostly out of
+                curiosity: I wanted to know how much time I spend on the
+                Internet, playing video games, programming etc. Besides,
+                I’m rather sentimental.</p>
+                <p>Last week, I realized that having one calendar
+                doesn’t actually allow me to do that, because each event
+                has a unique name (e.g if a play some video concrete
+                game I write down that I’m playing concretely it). That
+                means that running some <em>simple</em> script, on the
+                calendar, to sum the events’ durations would not be
+                plausible (just imagine the regex!). I should have
+                several calendars, so that I could sort each event in to
+                its proper category.</p>
+                <h2 id="categories">Categories</h2>
+                <p>Coming up with the categories turned out to be more
+                difficult that I’ve anticipated. They should be both not
+                too specific, yet not too broad, so the ‘time spent on X
+                statistic’ wouldn’t be complete bullocks. Should working
+                out be considered its own category, or should I just put
+                it under the ‘necessary, cannot live without it, but
+                boring’ label? Is distro-hopping programming related?
+                Should competitive programming be considered as studying
+                or as programming? In the end, I’ve converged on these
+                ten different categories:</p>
                 <ul>
-                    <li>relaxing (basically every time, when I don't do anything 'productive' and don't browse the Internet)</li>
-                    <li>studying (that includes reading books; dose not include homework)</li>
-                    <li>programming (includes distro-hopping and such)</li>
-                    <li>chores (includes homework, working, being at, going to and coming back from school, shopping etc.)</li>
-                    <li>social (includes writing emails)</li>
-                    <li>internet (does NOT include responsible usage; e.g. looking up public transport info)</li>
-                    <li>games (video games, not board games or whatever - that goes into social)</li>
-                    <li>movies (watching them, NOT going to cinema - that's social... sometimes)</li>
-                    <li>blog</li>
-                    <li>life (the 'necessary, cannot live without it, but boring' category. Does include working out, because my life quality would decrease without it)</li>
+                <li>relaxing (basically every time, when I don’t do
+                anything ‘productive’ and don’t browse the
+                Internet)</li>
+                <li>studying (that includes reading books; dose not
+                include homework)</li>
+                <li>programming (includes distro-hopping and such)</li>
+                <li>chores (includes homework, working, being at, going
+                to and coming back from school, shopping etc.)</li>
+                <li>social (includes writing emails)</li>
+                <li>internet (does NOT include responsible usage;
+                e.g. looking up public transport info)</li>
+                <li>games (video games, not board games or whatever -
+                that goes into social)</li>
+                <li>movies (watching them, NOT going to cinema - that’s
+                social... sometimes)</li>
+                <li>blog</li>
+                <li>life (the ‘necessary, cannot live without it, but
+                boring’ category. Does include working out, because my
+                life quality would decrease without it)</li>
                 </ul>
-                Splitting the calendar (nearly 10k events) proved to be impossible by hand; wrote a <a target="_blank" href="https://raw.githubusercontent.com/jacadzaca/ical-utils/main/split_calendar.py">script</a> for it.
-                I concur that some events that should be in the 'chores' category landed in the 'life' category, but only pedants would notice that.
-            </p>
-            <p>
-                <h2>Results</h2>
-                <a target="_blank" href="/pix/calendar.avif"><img loading="lazy" src="/pix/calendar.avif"></img></a>
-                <p>
-                Basically, over the last three years I've spent around 36.8% of my time on mindless Internet browsing, while allocating
-                about 2.3% of it to being 'off the grid' (relaxing + social).
-                On the other hand, I've used about 37% of my time on doing useful stuff (i.e programming, studying/reading and chores; the number goes down to 22.7%, if
-                doing chores would NOT to be included).
-                </p>
-            </p>
-            <p>
-                <h2>Conclusion</h2>
-                Well, it's kind of problematic to draw conclusion from my 'experiment', because... I have no clue what the average might be.
-                How can I tell if I'm doing 'good', whether I'm spending too much (or too little?) time on the Internet, studying etc?
-                Besides, the <a target="_blank" href="https://www.merriam-webster.com/dictionary/antecedent">antecedent</a> (that's literally the fanciest word I know)
-                presupposes that the average even exist or is possible to 'compute'! Nonetheless, I surely should try leaving my basement more often, because with that 2.3% staying constant I will
-                either lose eyesight or die from vitamin D deficiency - not going outside is surely not <a target="_blank" href="https://www.urbandictionary.com/define.php?term=Lindy&page=2">lindy</a>.
-                I also like how calendaring makes me think about my life - when you go on to write down yet another five hour long mindless Internet browsing session, you kinda start to doubt your life decisions lol.
-                It kinda functions like Benjamin Franklin's <a target="_blank" href="https://en.wikipedia.org/wiki/Benjamin_Franklin#Thirteen_Virtues">13 Virtues</a> [<a target="_blank" href="https://daringtolivefully.com/wp-content/uploads/2013/06/13-virtues-chart.jpg">sample chart</a>]
-            </p>
-         ]]>
-                </description>
-            </item>
-            <item>
-                <title>btw i use arch</title>
-                <guid>https://jacadzaca.github.io/blog/btw_i_use_arch.html</guid>
-                <link>https://jacadzaca.github.io/blog/btw_i_use_arch.html</link>
-                <pubDate>Sun, 23 May 2021 15:29:14 0200</pubDate>
-                <description>
-                    <![CDATA[ 
-        I've finally got around to installing Arch Linux on my laptop.
-        Installing Arch was simple enough, the only problem that I've had
-        was understanding the difference between a boot partition and a
-        'boot partition'. A BIOS boot partition is a type of a partition, whereas
-        a 'boot partition' is a partition you create for your /boot/ directory -
-        you don't actually need a 'boot partition', while a boot partition
-        is more or less required - manually telling your boot loader
-        (most likely GRUB) where everything is located is way too tedious.
-            <p>
-            <h2>Programs I run</h2>
-            The first thing that I installed was GNOME3. I run GNOME on my
-            Ubuntu desktop and it works just fine, I especially like the DE; it
-            looks nice out of the box and the Activities tab is amazing. But
-            that's mutter36 (mutter is the GNOME DE). mutter40 is nothing like it.
-            As of now I run <a href="https://wiki.archlinux.org/title/Xfce">xfce4</a>
-            on my laptop and it's alright, albeit a little retro. Actually, xfce's so
-            vintage that it might be the best desktop environment for
-            an eldery person, but that's neither here or there.
-            I'm actually thinking of switching to <a href="https://dwm.suckless.org/">
-            dwm</a> or <a href="https://i3wm.org/">i3</a>, but I'm yet
-            to decide which one is better. For the login manager I've chosen
-            LightDM - it just worked.
-            </p>
-            <p>
-            I don't run <a href="https://developer.gnome.org/NetworkManager/stable/NetworkManager.html">NetworkManager</a>, because
-            I have no need for it - just connecting to wi-fi with <a href="https://wiki.archlinux.org/title/Iwd">iwd</a>
-            and running a dhcpcd daemon in the background works for me. I also
-            installed an <a href="https://github.com/J-Lentz/iwgtk">iwd frontend program</a>,
-            because some normal person might have to input a wi-fi password into my
-            laptop someday.
-            </p>
-            <p>
-            I use <a href="https://wiki.archlinux.org/title/Udisks">udisks</a> with
-            <a href="https://man.archlinux.org/man/community/udiskie/udiskie.8.en">udiskie</a>
-            for automating USB mounting. I also run gvfs, so I can have a Trash bin (which
-            is less useful than I've thought). gvfs also seems to provide an
-            alternative to <a href="https://wiki.archlinux.org/title/Insync">insync</a>, but
-            it remains unclear whether you can actually use gvfs effectively without all the
-            GNOME bloat.
-            </p>
-            <p>
-            I use <a href="https://wiki.archlinux.org/title/CUPS">CUPS</a> directly
-            for printer manging. I even have a desktop shortcut to a
-            <a href="https://www.mankier.com/1/chromium-browser#--app">chromium app</a>
-            that starts the CUPS web gui.
-            </p>
-            <p>
-            I also considered installing a cron-like program (most probably <a href="https://en.wikipedia.org/wiki/Anacron">anacron</a>)
-            and running a simple pacman update script, but after a little <a href="https://bbs.archlinux.org/viewtopic.php?id=83118">
-                research</a>, I've decided to postpone creating such cron job.
-            If after a while of updating nothing breaks, I will surely consider it.
-            </p>
-            <p>
-            <h2>Final thoughts</h2>
-            As of now, Arch Linux is my favourite distro; it boots faster than
-            Ubuntu, it eats a lot less RAM (which is cool, becouse now I can
-            brag on the internet about how little memory my setup needs) and the
-            package manager seems to be full of useful programs, especially
-            compared to apt. Also, there's AUR, which looks like a both more
-            managable and faster version of snap,
-            </p>
-         ]]>
+                <p>Splitting the calendar (nearly 10k events) proved to
+                be impossible by hand; wrote a <a
+                href="https://raw.githubusercontent.com/jacadzaca/ical-utils/main/split_calendar.py"
+                target="_blank">script</a> for it. I concur that some
+                events that should be in the ‘chores’ category landed in
+                the ‘life’ category, but only pedants would notice
+                that.</p>
+                <h2 id="results">Results</h2>
+                <hr />
+                <p><a
+                href="/files/images/my_calendar_system/calendar.avif"
+                target="_blank"><img
+                src="/files/images/my_calendar_system/calendar.avif"
+                loading="lazy" /></a></p>
+                <hr />
+                <p>Basically, over the last three years I’ve spent
+                around 36.8% of my time on mindless Internet browsing,
+                while allocating about 2.3% of it to being ‘off the
+                grid’ (relaxing + social). On the other hand, I’ve used
+                about 37% of my time on doing useful stuff (i.e
+                programming, studying/reading and chores; the number
+                goes down to 22.7%, if doing chores would NOT to be
+                included).</p>
+                <h2 id="conclusion">Conclusion</h2>
+                <p>Well, it’s kind of problematic to draw conclusion
+                from my ‘experiment’, because... I have no clue what the
+                average might be. How can I tell if I’m doing ‘good’,
+                whether I’m spending too much (or too little?) time on
+                the Internet, studying etc? Besides, the <a
+                href="https://www.merriam-webster.com/dictionary/antecedent"
+                target="_blank">antecedent</a> (that’s literally the
+                fanciest word I know) presupposes that the average even
+                exist or is possible to ‘compute’! Nonetheless, I surely
+                should try leaving my basement more often, because with
+                that 2.3% staying constant I will either lose eyesight
+                or die from vitamin D deficiency - not going outside is
+                surely not <a
+                href="https://www.urbandictionary.com/define.php?term=Lindy&amp;page=2"
+                target="_blank">lindy</a>. I also like how calendaring
+                makes me think about my life - when you go on to write
+                down yet another five hour long mindless Internet
+                browsing session, you kinda start to doubt your life
+                decisions lol. It kinda functions like Benjamin
+                Franklin’s <a
+                href="https://en.wikipedia.org/wiki/Benjamin_Franklin#Thirteen_Virtues"
+                target="_blank">13 Virtues</a> [<a
+                href="https://daringtolivefully.com/wp-content/uploads/2013/06/13-virtues-chart.jpg"
+                target="_blank">sample chart</a>]</p>
+             ]]>
                 </description>
             </item>
     </channel>
