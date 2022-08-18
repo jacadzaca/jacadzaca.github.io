@@ -11,6 +11,77 @@
             <link>https://jacadzaca.github.io/rss.xml</link>
         </image>
             <item>
+                <title>simple code generator</title>
+                <guid>https://jacadzaca.github.io/blog/simple_code_generator.html</guid>
+                <link>https://jacadzaca.github.io/blog/simple_code_generator.html</link>
+                <pubDate>Thu, 18 Aug 2022 15:11:49 +0200</pubDate>
+                <description>
+                    <![CDATA[ 
+                <h1>simple code generator</h1>
+                <p>Last semester I was taking a mandatory "Programming
+                101" course, aka. drawing stairs made out of stars and
+                watching my classmates struggle with basic tasks, the
+                course - a time truly well spent. Even though the course
+                problems weren’t too enlightening, the silliness of one
+                of the tasks’ requirements gave me a chance to write a
+                simple code generator.</p>
+                <h2 id="problem">Problem</h2>
+                <p>Without using an associative table (they weren’t
+                covered in class), write a program that encodes a
+                message using <a
+                href="https://en.wikipedia.org/wiki/Morse_code"
+                target="_blank">morse code</a>. The characters should
+                map as follow (yes, a picture; who needs copy-paste
+                anyway?):</p>
+                <hr />
+                <p><a
+                href="/files/images/simple_code_generator/morse_code_mapping.avif"
+                target="_blank"><img
+                src="/files/images/simple_code_generator/morse_code_mapping.avif"
+                title="ASCII to morse mapping" loading="lazy"
+                alt="ASCII to morse mapping" /></a></p>
+                <hr />
+                <h2 id="implementation">Implementation</h2>
+                <p>First, I looked online for the table in a <a
+                href="https://stackoverflow.com/questions/48563810/why-does-my-morse-code-converter-display-no-output"
+                target="_blank">text format</a>, downloaded it and,
+                using a <a href="https://vim.fandom.com/wiki/Macros"
+                target="_blank">vim macro</a>, formatted it so that each
+                line would contain one of the ASCII symbols and its
+                Morse representation separated by a space. Since I
+                wanted to use <a
+                href="https://www.tutorialspoint.com/unix_commands/envsubst.htm"
+                target="_blank">envsubst</a>, I created a file like
+                so:</p>
+                <div class="sourceCode" id="cb1"><pre
+                class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> <span class="kw">(</span><span class="ex">morse_representation</span> == <span class="st">&quot;</span><span class="va">${CASE}</span><span class="st">&quot;</span><span class="kw">)</span> <span class="kw">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&#39;${VALUE}&#39;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">}</span></span></code></pre></div>
+                <p>Then, I wrote a script that reads each line from the
+                ‘translation file’, and places the Morse representation
+                inside the <em>if’s</em> condition and the ASCII symbol
+                next to the <em>return</em> statement:</p>
+                <div class="sourceCode" id="cb2"><pre
+                class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#!/usr/bin/env sh</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="bu">read</span> <span class="va">line</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">line</span><span class="op">=</span><span class="va">($line)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">export</span> <span class="va">CASE</span><span class="op">=</span><span class="va">${line</span><span class="op">[</span><span class="dv">1</span><span class="op">]</span><span class="va">}</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">export</span> <span class="va">VALUE</span><span class="op">=</span><span class="va">${line</span><span class="op">[</span><span class="dv">0</span><span class="op">]</span><span class="va">}</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">truncate</span> <span class="at">-s-1</span> from_morse_code.cc</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="ex">envsubst</span> <span class="op">&lt;</span> switch_case.cc <span class="op">&gt;&gt;</span> from_morse_code.cc</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span> <span class="op">&lt;</span> morse_code.txt</span></code></pre></div>
+                <p>I ran it, ran it again with the values of the
+                <em>CASE</em> and <em>VALUE</em> variables switched as
+                to generate the other way translation, removed the
+                unneeded <em>elses</em> at the bottom, copy-pasted the
+                big <em>if</em> chains into the file where I would write
+                the wrapper code... and voila! An hour of time was just
+                saved (if you’re not counting the hour it took me to
+                write this lol)!</p>
+             ]]>
+                </description>
+            </item>
+            <item>
                 <title>website update 2</title>
                 <guid>https://jacadzaca.github.io/blog/website_update_2.html</guid>
                 <link>https://jacadzaca.github.io/blog/website_update_2.html</link>
@@ -888,116 +959,6 @@
                 href="https://www.man7.org/linux/man-pages/man1/scp.1.html"
                 target="_blank">scp</a> with the ssh version of this
                 trick.</p>
-             ]]>
-                </description>
-            </item>
-            <item>
-                <title>my calendar system</title>
-                <guid>https://jacadzaca.github.io/blog/my_calendar_system.html</guid>
-                <link>https://jacadzaca.github.io/blog/my_calendar_system.html</link>
-                <pubDate>Fri, 18 Jun 2021 23:42:06 +0200</pubDate>
-                <description>
-                    <![CDATA[ 
-                <h1>my calendar system&lt;</h1>
-                <p><strong>TL;DR</strong>: I spend too much time on the
-                Internet, should find some <a
-                href="https://www.urbandictionary.com/define.php?term=fren"
-                target="_blank">frens</a> and go out more lol?</p>
-                <p>Over the past three years, I’ve developed this odd
-                habit of writing down <strong>everything</strong> I do
-                in my calendar. I’ve developed the habit mostly out of
-                curiosity: I wanted to know how much time I spend on the
-                Internet, playing video games, programming etc. Besides,
-                I’m rather sentimental.</p>
-                <p>Last week, I realized that having one calendar
-                doesn’t actually allow me to do that, because each event
-                has a unique name (e.g if a play some video concrete
-                game I write down that I’m playing concretely it). That
-                means that running some <em>simple</em> script, on the
-                calendar, to sum the events’ durations would not be
-                plausible (just imagine the regex!). I should have
-                several calendars, so that I could sort each event in to
-                its proper category.</p>
-                <h2 id="categories">Categories</h2>
-                <p>Coming up with the categories turned out to be more
-                difficult that I’ve anticipated. They should be both not
-                too specific, yet not too broad, so the ‘time spent on X
-                statistic’ wouldn’t be complete bullocks. Should working
-                out be considered its own category, or should I just put
-                it under the ‘necessary, cannot live without it, but
-                boring’ label? Is distro-hopping programming related?
-                Should competitive programming be considered as studying
-                or as programming? In the end, I’ve converged on these
-                ten different categories:</p>
-                <ul>
-                <li>relaxing (basically every time, when I don’t do
-                anything ‘productive’ and don’t browse the
-                Internet)</li>
-                <li>studying (that includes reading books; dose not
-                include homework)</li>
-                <li>programming (includes distro-hopping and such)</li>
-                <li>chores (includes homework, working, being at, going
-                to and coming back from school, shopping etc.)</li>
-                <li>social (includes writing emails)</li>
-                <li>internet (does NOT include responsible usage;
-                e.g. looking up public transport info)</li>
-                <li>games (video games, not board games or whatever -
-                that goes into social)</li>
-                <li>movies (watching them, NOT going to cinema - that’s
-                social... sometimes)</li>
-                <li>blog</li>
-                <li>life (the ‘necessary, cannot live without it, but
-                boring’ category. Does include working out, because my
-                life quality would decrease without it)</li>
-                </ul>
-                <p>Splitting the calendar (nearly 10k events) proved to
-                be impossible by hand; wrote a <a
-                href="https://raw.githubusercontent.com/jacadzaca/ical-utils/main/split_calendar.py"
-                target="_blank">script</a> for it. I concur that some
-                events that should be in the ‘chores’ category landed in
-                the ‘life’ category, but only pedants would notice
-                that.</p>
-                <h2 id="results">Results</h2>
-                <hr />
-                <p><a
-                href="/files/images/my_calendar_system/calendar.avif"
-                target="_blank"><img
-                src="/files/images/my_calendar_system/calendar.avif"
-                loading="lazy" /></a></p>
-                <hr />
-                <p>Basically, over the last three years I’ve spent
-                around 36.8% of my time on mindless Internet browsing,
-                while allocating about 2.3% of it to being ‘off the
-                grid’ (relaxing + social). On the other hand, I’ve used
-                about 37% of my time on doing useful stuff (i.e
-                programming, studying/reading and chores; the number
-                goes down to 22.7%, if doing chores would NOT to be
-                included).</p>
-                <h2 id="conclusion">Conclusion</h2>
-                <p>Well, it’s kind of problematic to draw conclusion
-                from my ‘experiment’, because... I have no clue what the
-                average might be. How can I tell if I’m doing ‘good’,
-                whether I’m spending too much (or too little?) time on
-                the Internet, studying etc? Besides, the <a
-                href="https://www.merriam-webster.com/dictionary/antecedent"
-                target="_blank">antecedent</a> (that’s literally the
-                fanciest word I know) presupposes that the average even
-                exist or is possible to ‘compute’! Nonetheless, I surely
-                should try leaving my basement more often, because with
-                that 2.3% staying constant I will either lose eyesight
-                or die from vitamin D deficiency - not going outside is
-                surely not <a
-                href="https://www.urbandictionary.com/define.php?term=Lindy&amp;page=2"
-                target="_blank">lindy</a>. I also like how calendaring
-                makes me think about my life - when you go on to write
-                down yet another five hour long mindless Internet
-                browsing session, you kinda start to doubt your life
-                decisions lol. It kinda functions like Benjamin
-                Franklin’s <a
-                href="https://en.wikipedia.org/wiki/Benjamin_Franklin#Thirteen_Virtues"
-                target="_blank">13 Virtues</a> [<a
-                href="https://daringtolivefully.com/wp-content/uploads/2013/06/13-virtues-chart.jpg"
-                target="_blank">sample chart</a>]</p>
              ]]>
                 </description>
             </item>

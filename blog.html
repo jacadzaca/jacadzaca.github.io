@@ -44,6 +44,7 @@
             <a href="/linux_tech_tips.html" title="Linux facts">💡Linux Tech Tips</a>
             <a href="/bookmarks.html" title="My Browser bookmarks">🔖Bookmarks</a>
             <hr>
+            <a href="#simple_code_generator">simple code generator</a>
             <a href="#website_update_2">website update 2</a>
             <a href="#generating_a_maths_worksheet">generating a maths worksheet</a>
             <a href="#website_update">website update</a>
@@ -59,6 +60,78 @@
             <a href="#welcome!">welcome!</a>
         </nav>
         <main>
+                <h2 id="simple_code_generator">simple code generator</h2>
+                <small>
+                    [
+                    <a href="#simple_code_generator">link</a> —
+                    <a href="blog/simple_code_generator.html">standalone</a>
+                    ] <time datetime="Thu, 18 Aug 2022 15:11:49">Thu, 18 Aug 2022 15:11:49</time>
+                </small>
+                <article class="indent" >
+                    <p>
+                <h1>simple code generator</h1>
+                <p>Last semester I was taking a mandatory "Programming
+                101" course, aka. drawing stairs made out of stars and
+                watching my classmates struggle with basic tasks, the
+                course - a time truly well spent. Even though the course
+                problems weren’t too enlightening, the silliness of one
+                of the tasks’ requirements gave me a chance to write a
+                simple code generator.</p>
+                <h2 id="problem">Problem</h2>
+                <p>Without using an associative table (they weren’t
+                covered in class), write a program that encodes a
+                message using <a
+                href="https://en.wikipedia.org/wiki/Morse_code"
+                target="_blank">morse code</a>. The characters should
+                map as follow (yes, a picture; who needs copy-paste
+                anyway?):</p>
+                <hr />
+                <p><a
+                href="/files/images/simple_code_generator/morse_code_mapping.avif"
+                target="_blank"><img
+                src="/files/images/simple_code_generator/morse_code_mapping.avif"
+                title="ASCII to morse mapping" loading="lazy"
+                alt="ASCII to morse mapping" /></a></p>
+                <hr />
+                <h2 id="implementation">Implementation</h2>
+                <p>First, I looked online for the table in a <a
+                href="https://stackoverflow.com/questions/48563810/why-does-my-morse-code-converter-display-no-output"
+                target="_blank">text format</a>, downloaded it and,
+                using a <a href="https://vim.fandom.com/wiki/Macros"
+                target="_blank">vim macro</a>, formatted it so that each
+                line would contain one of the ASCII symbols and its
+                Morse representation separated by a space. Since I
+                wanted to use <a
+                href="https://www.tutorialspoint.com/unix_commands/envsubst.htm"
+                target="_blank">envsubst</a>, I created a file like
+                so:</p>
+                <div class="sourceCode" id="cb1"><pre
+                class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> <span class="kw">(</span><span class="ex">morse_representation</span> == <span class="st">&quot;</span><span class="va">${CASE}</span><span class="st">&quot;</span><span class="kw">)</span> <span class="kw">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&#39;${VALUE}&#39;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">}</span></span></code></pre></div>
+                <p>Then, I wrote a script that reads each line from the
+                ‘translation file’, and places the Morse representation
+                inside the <em>if’s</em> condition and the ASCII symbol
+                next to the <em>return</em> statement:</p>
+                <div class="sourceCode" id="cb2"><pre
+                class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#!/usr/bin/env sh</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="bu">read</span> <span class="va">line</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">line</span><span class="op">=</span><span class="va">($line)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">export</span> <span class="va">CASE</span><span class="op">=</span><span class="va">${line</span><span class="op">[</span><span class="dv">1</span><span class="op">]</span><span class="va">}</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">export</span> <span class="va">VALUE</span><span class="op">=</span><span class="va">${line</span><span class="op">[</span><span class="dv">0</span><span class="op">]</span><span class="va">}</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">truncate</span> <span class="at">-s-1</span> from_morse_code.cc</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="ex">envsubst</span> <span class="op">&lt;</span> switch_case.cc <span class="op">&gt;&gt;</span> from_morse_code.cc</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span> <span class="op">&lt;</span> morse_code.txt</span></code></pre></div>
+                <p>I ran it, ran it again with the values of the
+                <em>CASE</em> and <em>VALUE</em> variables switched as
+                to generate the other way translation, removed the
+                unneeded <em>elses</em> at the bottom, copy-pasted the
+                big <em>if</em> chains into the file where I would write
+                the wrapper code... and voila! An hour of time was just
+                saved (if you’re not counting the hour it took me to
+                write this lol)!</p>
+            </p>
+                </article>
                 <h2 id="website_update_2">website update 2</h2>
                 <small>
                     [
